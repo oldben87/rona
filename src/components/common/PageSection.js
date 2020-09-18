@@ -7,6 +7,7 @@ export function PageSection({ children, background }) {
 
 const Section = styled.section`
   display: flex;
+  flex-direction: column;
   padding: 2rem 3rem;
   box-sizing: border-box;
   margin: 0 1rem;

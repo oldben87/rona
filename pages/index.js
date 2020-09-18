@@ -33,14 +33,18 @@ export default function Home({ data }) {
                 <p>New Cases in last 24 hours: {item.newCases}</p>
               ) : null}
               {item.caseChange ? (
-                <p>Change in cases from previous day: {item.caseChange}</p>
+                <p>
+                  Change in cases from previous day: {item.caseChange}{" "}
+                  {item.casePercentage}%
+                </p>
               ) : null}
               {item.newTests ? (
                 <p>Tests in last 24 hours: {item.newTests}</p>
               ) : null}
               {item.testChange ? (
                 <p>
-                  Change in tests number from previous day: {item.testChange}
+                  Change in tests number from previous day: {item.testChange}{" "}
+                  {item.testPercentage}%
                 </p>
               ) : null}
             </PageSection>

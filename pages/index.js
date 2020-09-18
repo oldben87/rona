@@ -28,16 +28,20 @@ export default function Home({ data }) {
               key={i}
               background={colour ? "white" : theme.colours.gray}
             >
-              {item.date ? <p>Date: {item.date}</p> : null}
-              {item.newCases ? <p>New Cases: {item.newCases}</p> : null}
+              {item.date ? <p>{item.date}</p> : null}
+              {item.newCases ? (
+                <p>New Cases in last 24 hours: {item.newCases}</p>
+              ) : null}
               {item.caseChange ? (
-                <p>Change in cases: {item.caseChange}</p>
+                <p>Change in cases from previous day: {item.caseChange}</p>
               ) : null}
               {item.newTests ? (
                 <p>Tests in last 24 hours: {item.newTests}</p>
               ) : null}
               {item.testChange ? (
-                <p>Change in tests: {item.testChange}</p>
+                <p>
+                  Change in tests number from previous day: {item.testChange}
+                </p>
               ) : null}
             </PageSection>
           )

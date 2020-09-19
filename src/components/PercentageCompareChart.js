@@ -59,7 +59,7 @@ export default function PercentageCompareChart({ data }) {
         {
           scaleLabel: {
             display: true,
-            labelString: "Percentage Changes",
+            labelString: "% Percentage Changes",
           },
         },
       ],
@@ -123,6 +123,24 @@ export default function PercentageCompareChart({ data }) {
           number of cases.
         </Text>
       </Flex>
+      <RadioGroup
+        onChange={(e) => setDayCount(e.target.value)}
+        isInline
+        value={dayCount}
+        spacing={5}
+        size="lg"
+        style={{ alignSelf: "center" }}
+      >
+        <Radio value="7" variantColor="green">
+          Last 7 Days
+        </Radio>
+        <Radio value="14" variantColor="green">
+          Last 14 Days
+        </Radio>
+        <Radio value="28" variantColor="green">
+          Last 28 Days
+        </Radio>
+      </RadioGroup>
       <Line
         data={chartData}
         maintainAspectRatio={false}
@@ -140,23 +158,6 @@ export default function PercentageCompareChart({ data }) {
           alignItems: "center",
         }}
       >
-        <RadioGroup
-          onChange={(e) => setDayCount(e.target.value)}
-          isInline
-          value={dayCount}
-          spacing={5}
-          size="lg"
-        >
-          <Radio value="7" variantColor="green">
-            Last 7 Days
-          </Radio>
-          <Radio value="14" variantColor="green">
-            Last 14 Days
-          </Radio>
-          <Radio value="28" variantColor="green">
-            Last 28 Days
-          </Radio>
-        </RadioGroup>
         <Text fontSize="0.8rem" style={{ margin: "1rem" }}>
           This data alone cannot indicate whether we are seeing a new wave of
           the virus. It needs to be taken in consideration with lots of other

@@ -24,8 +24,8 @@ export default async (req, res) => {
           const testChange = new_tests.reduce((a, b) => a - b)
           const caseChange = new_cases.reduce((a, b) => a - b)
 
-          const testPercentage = Math.floor((testChange / new_tests[1]) * 100)
-          const casePercentage = Math.floor((caseChange / new_cases[1]) * 100)
+          const testPercentage = ((testChange / new_tests[1]) * 100).toFixed(1)
+          const casePercentage = ((caseChange / new_cases[1]) * 100).toFixed(1)
 
           return {
             ...fill,

@@ -9,9 +9,11 @@ import {
 } from "../src/components/common"
 import { page_header_name } from "../src/resources/strings"
 import theme from "../styles/theme"
+import PercentageCompareChart from "../src/components/PercentageCompareChart"
 
 export default function Home({ data }) {
   let colour = false
+  const chartFirst30 = data.slice(0, 31)
 
   return (
     <div className={styles.container}>
@@ -21,6 +23,7 @@ export default function Home({ data }) {
       </Head>
       <PageHeader name={page_header_name} />
       <PageWrap>
+        <PercentageCompareChart data={chartFirst30} />
         {data.map((item, i) => {
           colour = !colour
           return (
@@ -34,8 +37,8 @@ export default function Home({ data }) {
               ) : null}
               {item.caseChange ? (
                 <p>
-                  Change in cases from previous day: {item.caseChange}{" "}
-                  {item.casePercentage}%
+                  Change in cases from previous day: {item.caseChange} (
+                  {item.casePercentage}%)
                 </p>
               ) : null}
               {item.newTests ? (
@@ -43,8 +46,8 @@ export default function Home({ data }) {
               ) : null}
               {item.testChange ? (
                 <p>
-                  Change in tests number from previous day: {item.testChange}{" "}
-                  {item.testPercentage}%
+                  Change in tests number from previous day: {item.testChange} (
+                  {item.testPercentage}%)
                 </p>
               ) : null}
             </PageSection>

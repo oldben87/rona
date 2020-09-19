@@ -12,8 +12,7 @@ import theme from "../styles/theme"
 import PercentageCompareChart from "../src/components/PercentageCompareChart"
 
 export default function Home({ data }) {
-  let colour = false
-  const chartFirst30 = data.slice(0, 31)
+  let colour = true
 
   return (
     <div className={styles.container}>
@@ -23,7 +22,7 @@ export default function Home({ data }) {
       </Head>
       <PageHeader name={page_header_name} />
       <PageWrap>
-        <PercentageCompareChart data={chartFirst30} />
+        <PercentageCompareChart data={data} />
         {data.map((item, i) => {
           colour = !colour
           return (

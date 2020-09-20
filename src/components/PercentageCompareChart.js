@@ -130,13 +130,13 @@ export default function PercentageCompareChart({ data }) {
         spacing={5}
         style={{ alignSelf: "center" }}
       >
-        <Radio value="7" variantColor="green" borderColor="lightGrey">
+        <Radio value="7" variantColor="green" borderColor="rgb(226, 232, 240)">
           Last 7 Days
         </Radio>
-        <Radio value="14" variantColor="green" borderColor="lightGrey">
+        <Radio value="14" variantColor="green" borderColor="rgb(226, 232, 240)">
           Last 14 Days
         </Radio>
-        <Radio value="28" variantColor="green" borderColor="lightGrey">
+        <Radio value="28" variantColor="green" borderColor="rgb(226, 232, 240)">
           Last 28 Days
         </Radio>
       </RadioGroup>

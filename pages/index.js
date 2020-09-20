@@ -22,7 +22,7 @@ export default function Home({ data }) {
         <link rel="icon" href="/assets/rona2.png" />
       </Head>
       <PageHeader name={page_header_name} />
-      {/* <PageWrap>
+      <PageWrap>
         <PercentageCompareChart data={data} />
         {data.map((item, i) => {
           colour = !colour
@@ -53,22 +53,25 @@ export default function Home({ data }) {
             </PageSection>
           )
         })}
-      </PageWrap> */}
+      </PageWrap>
       <PageFooter />
     </div>
   )
 }
 
-// export async function getStaticProps() {
-//   const host = await absoluteUrl(req, req.headers.host)
-//   const callRona = `${host.origin}/api/hello`
-//   const res = await fetch(callRona)
-//   const response = await res.json()
-//   if (!response.error) {
-//     return {
-//       props: {
-//         data: response.data,
-//       },
-//     }
-//   }
-// }
+export async function getStaticProps() {
+  const callRona = `${
+    process.env.NODE_ENV === "production"
+      ? "https://rona-olive.vercel.app"
+      : "http://localhost:3000"
+  }/api/hello`
+  const res = await fetch(callRona)
+  const response = await res.json()
+  if (!response.error) {
+    return {
+      props: {
+        data: response.data,
+      },
+    }
+  }
+}

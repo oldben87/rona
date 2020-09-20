@@ -59,12 +59,14 @@ export default function Home({ data }) {
 }
 
 export async function getStaticProps() {
-  const callRona = "http://localhost:3000/api/hello"
+  const callRona = `/api/hello`
   const res = await fetch(callRona)
   const response = await res.json()
-  return {
-    props: {
-      data: response.data,
-    },
+  if (!response.error) {
+    return {
+      props: {
+        data: response.data,
+      },
+    }
   }
 }

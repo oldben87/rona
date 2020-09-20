@@ -44,7 +44,7 @@ export default function PercentageCompareChart({ data }) {
         pointBorderWidth: 1,
         pointHoverRadius: 5,
         pointHoverBackgroundColor: "rgb(66, 201, 54)",
-        pointHoverBorderColor: "rgb(66, 201, 54)",
+        pointHoverBorderColor: "rgb(220,220,220)",
         pointHoverBorderWidth: 2,
         pointRadius: 3,
         pointHitRadius: 10,
@@ -161,7 +161,7 @@ export default function PercentageCompareChart({ data }) {
         <Text fontSize="0.8rem" style={{ margin: "1rem" }}>
           This data alone cannot indicate whether we are seeing a new wave of
           the virus. It needs to be taken in consideration with lots of other
-          factors. For example, a 50% increase in cases could indicate a big
+          factors. For example, a 100% increase in cases could indicate a big
           jump, but if that is from 1 case to 2 cases, this is obviously not a
           big jump. So this chart alone does not provide a complete picture, but
           will hopefully help when there are larger jumps in the data.

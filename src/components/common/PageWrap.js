@@ -8,5 +8,4 @@ export function PageWrap({ children }) {
 const Main = styled.main`
   box-sizing: border-box;
   flex-grow: 1;
-  padding-top: 1rem;
 `

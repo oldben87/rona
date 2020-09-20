@@ -1,3 +1,21 @@
+import { theme as defaultTheme } from "@chakra-ui/core"
+
 export default {
-  colours: { transparent: "transparent", gray: "#cfcfcf" },
+  ...defaultTheme,
+  colors: {
+    ...defaultTheme.colors,
+    transparent: "transparent",
+    gray: "#cfcfcf",
+    primary: {
+      100: "#CFD1FD",
+      200: "#A7ABFB",
+      300: "#8388F9",
+      400: "#6268F8",
+      500: "#444BF7",
+      600: "#262EF6",
+      700: "#0B14F5",
+      800: "#0911DD",
+      900: "#080FC7",
+    },
+  },
 }

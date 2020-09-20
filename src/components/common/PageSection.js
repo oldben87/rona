@@ -7,8 +7,11 @@ export function PageSection({ children, background }) {
 
 const Section = styled.section`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-grow: 1;
   padding: 2rem 3rem;
   box-sizing: border-box;
   margin: 0 1rem;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
 `

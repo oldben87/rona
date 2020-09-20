@@ -128,16 +128,15 @@ export default function PercentageCompareChart({ data }) {
         isInline
         value={dayCount}
         spacing={5}
-        size="lg"
         style={{ alignSelf: "center" }}
       >
-        <Radio value="7" variantColor="green">
+        <Radio value="7" variantColor="green" borderColor="lightGrey">
           Last 7 Days
         </Radio>
-        <Radio value="14" variantColor="green">
+        <Radio value="14" variantColor="green" borderColor="lightGrey">
           Last 14 Days
         </Radio>
-        <Radio value="28" variantColor="green">
+        <Radio value="28" variantColor="green" borderColor="lightGrey">
           Last 28 Days
         </Radio>
       </RadioGroup>

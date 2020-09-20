@@ -1,5 +1,4 @@
 import Head from "next/head"
-import absoluteUrl from "next-absolute-url"
 import React from "react"
 import styles from "../styles/Home.module.css"
 import {
@@ -8,13 +7,11 @@ import {
   PageSection,
   PageFooter,
 } from "../src/components/common"
+import DayStats from "../src/components/DayStats"
 import { page_header_name } from "../src/resources/strings"
-import theme from "../styles/theme"
 import PercentageCompareChart from "../src/components/PercentageCompareChart"
 
 export default function Home({ data }) {
-  let colour = true
-
   return (
     <div className={styles.container}>
       <Head>
@@ -24,35 +21,16 @@ export default function Home({ data }) {
       <PageHeader name={page_header_name} />
       <PageWrap>
         <PercentageCompareChart data={data} />
-        {data.map((item, i) => {
-          colour = !colour
-          return (
-            <PageSection
-              key={i}
-              background={colour ? "white" : theme.colours.gray}
-            >
-              {item.date ? <p>{item.date}</p> : null}
-              {item.newCases ? (
-                <p>New Cases in last 24 hours: {item.newCases}</p>
-              ) : null}
-              {item.caseChange ? (
-                <p>
-                  Change in cases from previous day: {item.caseChange} (
-                  {item.casePercentage}%)
-                </p>
-              ) : null}
-              {item.newTests ? (
-                <p>Tests in last 24 hours: {item.newTests}</p>
-              ) : null}
-              {item.testChange ? (
-                <p>
-                  Change in tests number from previous day: {item.testChange} (
-                  {item.testPercentage}%)
-                </p>
-              ) : null}
-            </PageSection>
-          )
-        })}
+        <div
+          style={{ display: "flex", width: "100%", justifyContent: "center" }}
+        >
+          <h2>Daily Stats since begining of the records</h2>
+        </div>
+        <PageSection>
+          {data.map((item, i) => (
+            <DayStats item={item} key={i} />
+          ))}
+        </PageSection>
       </PageWrap>
       <PageFooter />
     </div>

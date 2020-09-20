@@ -9,7 +9,7 @@ export default async function hello(req, res) {
         // reformat to populate null responses from fetch
         const noNull = response.map((item) => {
           let result_no_null = {
-            date: item.date,
+            date: item.date.split("-").reverse().join(" - "),
             newCases: item.newCases || 0,
             newTests: item.newTests || 0,
           }

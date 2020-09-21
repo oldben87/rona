@@ -44,6 +44,7 @@ export async function getStaticProps() {
       : "http://localhost:3000"
   }/api/overview`
   const res = await fetch(callRona)
+  console.log(res)
   const response = await res.json()
   return {
     props: {

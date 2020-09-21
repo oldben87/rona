@@ -24,10 +24,10 @@ export default function Home({ data }) {
         <div
           style={{ display: "flex", width: "100%", justifyContent: "center" }}
         >
-          <h2>Daily Stats since begining of the records</h2>
+          <h2>Daily stats for the last 28 Days</h2>
         </div>
         <PageSection>
-          {data.map((item, i) => (
+          {data.slice(0, 28).map((item, i) => (
             <DayStats item={item} key={i} />
           ))}
         </PageSection>

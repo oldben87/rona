@@ -57,6 +57,27 @@ export default function DayStats({ item }) {
           <Divider />
         </>
       ) : null}
+      {item.caseSevenDay ? (
+        <>
+          <TextRow>
+            <Text>Cases average from last 7 days:</Text>
+            <Text textAlign="end">
+              {item.caseSevenDay} (
+              <span
+                style={
+                  item.sevenDayCasePercentage > 0
+                    ? { color: "red" }
+                    : { color: "green" }
+                }
+              >
+                {item.sevenDayCasePercentage}%
+              </span>
+              )
+            </Text>
+          </TextRow>
+          <Divider />
+        </>
+      ) : null}
       {item.newTests ? (
         <>
           <TextRow>
@@ -67,20 +88,45 @@ export default function DayStats({ item }) {
         </>
       ) : null}
       {item.testChange ? (
-        <TextRow>
-          <Text>Change in tests number from previous day:</Text>
-          <Text textAlign="end">
-            {item.testChange} (
-            <span
-              style={
-                item.testPercentage < 0 ? { color: "red" } : { color: "green" }
-              }
-            >
-              {item.testPercentage}%
-            </span>
-            )
-          </Text>
-        </TextRow>
+        <>
+          <TextRow>
+            <Text>Change in tests number from previous day:</Text>
+            <Text textAlign="end">
+              {item.testChange} (
+              <span
+                style={
+                  item.testPercentage < 0
+                    ? { color: "red" }
+                    : { color: "green" }
+                }
+              >
+                {item.testPercentage}%
+              </span>
+              )
+            </Text>
+          </TextRow>
+          <Divider />
+        </>
+      ) : null}
+      {item.testSevenDay ? (
+        <>
+          <TextRow>
+            <Text>Testing average last 7 days:</Text>
+            <Text textAlign="end">
+              {item.testSevenDay} (
+              <span
+                style={
+                  item.sevenDayTestPercentage < 0
+                    ? { color: "red" }
+                    : { color: "green" }
+                }
+              >
+                {item.sevenDayTestPercentage}%
+              </span>
+              )
+            </Text>
+          </TextRow>
+        </>
       ) : null}
     </Flex>
   )

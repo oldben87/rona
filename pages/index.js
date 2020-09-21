@@ -42,7 +42,7 @@ export async function getStaticProps() {
     process.env.NODE_ENV === "production"
       ? "https://rona-olive.vercel.app"
       : "http://localhost:3000"
-  }/api/hello`
+  }/api/overview`
   const res = await fetch(callRona)
   const response = await res.json()
   if (!response.error) {

@@ -52,5 +52,10 @@ export async function getStaticProps() {
       },
       revalidate: 60,
     }
+  } else {
+    return {
+      props: { error: error },
+      revalidate: 60,
+    }
   }
 }

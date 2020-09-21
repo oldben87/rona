@@ -45,17 +45,10 @@ export async function getStaticProps() {
   }/api/overview`
   const res = await fetch(callRona)
   const response = await res.json()
-  if (!response.error) {
-    return {
-      props: {
-        data: response.data,
-      },
-      revalidate: 60,
-    }
-  } else {
-    return {
-      props: { error: error },
-      revalidate: 60,
-    }
+  return {
+    props: {
+      data: response.data,
+    },
+    revalidate: 60,
   }
 }

@@ -11,7 +11,7 @@ import DayStats from "../src/components/DayStats"
 import { page_header_name } from "../src/resources/strings"
 import PercentageCompareChart from "../src/components/PercentageCompareChart"
 
-export default function Home() {
+export default function Home({ data }) {
   return (
     <div className={styles.container}>
       <Head>
@@ -20,7 +20,7 @@ export default function Home() {
       </Head>
       <PageHeader name={page_header_name} />
       <PageWrap>
-        {/* <PercentageCompareChart data={data} />
+        <PercentageCompareChart data={data} />
         <div
           style={{ display: "flex", width: "100%", justifyContent: "center" }}
         >
@@ -30,25 +30,25 @@ export default function Home() {
           {data.slice(0, 28).map((item, i) => (
             <DayStats item={item} key={i} />
           ))}
-        </PageSection> */}
+        </PageSection>
       </PageWrap>
       <PageFooter />
     </div>
   )
 }
 
-// export async function getStaticProps() {
-//   const callRona = `${
-//     process.env.NODE_ENV === "production"
-//       ? "https://rona-olive.vercel.app"
-//       : "http://localhost:3000"
-//   }/api/overview`
-//   await fetch(callRona)
-//     const response = await res.json()
-//   return {
-//     props: {
-//       data: response.data,
-//     },
-//     revalidate: 60,
-//   }
-// }
+export async function getStaticProps() {
+  const callRona = `${
+    process.env.NODE_ENV === "production"
+      ? "https://rona-olive.vercel.app"
+      : "http://localhost:3000"
+  }/api/overview`
+  await fetch(callRona)
+  const response = await res.json()
+  return {
+    props: {
+      data: response.data,
+    },
+    revalidate: 60,
+  }
+}

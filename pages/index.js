@@ -43,7 +43,7 @@ export async function getStaticProps() {
       ? "https://rona-olive.vercel.app"
       : "http://localhost:3000"
   }/api/overview`
-  await fetch(callRona)
+  const res = await fetch(callRona)
   const response = await res.json()
   return {
     props: {

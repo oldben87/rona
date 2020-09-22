@@ -45,7 +45,7 @@ const Home = () => {
       </Head>
       <PageHeader name={page_header_name} />
       <PageWrap>
-        {error === "" ? null : (
+        {error === "" && loading ? null : (
           <h1 style={{ margin: "5rem", color: "red" }}>{error}</h1>
         )}
         {!loading ? (

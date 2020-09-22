@@ -24,7 +24,7 @@ const Home = () => {
           process.env.NODE_ENV === "production"
             ? "https://rona-olive.vercel.app"
             : "http://localhost:3000"
-        }http://localhost:3000/api/overview`
+        }/api/overview`
       )
       setData(getData.data.data)
       if (getData.data !== undefined) {

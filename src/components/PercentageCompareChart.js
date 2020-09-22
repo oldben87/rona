@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { Flex, Text, Radio, RadioGroup } from "@chakra-ui/core"
+import { Flex, Text, Radio, RadioGroup, Divider } from "@chakra-ui/core"
 import { Line } from "react-chartjs-2"
 
 export default function PercentageCompareChart({ data }) {
@@ -9,7 +9,7 @@ export default function PercentageCompareChart({ data }) {
     labels: chartFirst30.map((item) => item.date).reverse(),
     datasets: [
       {
-        label: "% in change of No# of tests",
+        label: "Tests",
         fill: false,
         lineTension: 0.1,
         backgroundColor: "rgba(54, 167, 201,0.4)",
@@ -30,7 +30,7 @@ export default function PercentageCompareChart({ data }) {
         data: chartFirst30.map((item) => item.testPercentage).reverse(),
       },
       {
-        label: "% in change of No# of cases",
+        label: "Cases",
         fill: false,
         lineTension: 0.1,
         backgroundColor: "rgba(66, 201, 54,0.4)",
@@ -51,7 +51,7 @@ export default function PercentageCompareChart({ data }) {
         data: chartFirst30.map((item) => item.casePercentage).reverse(),
       },
       {
-        label: "% Change in 7-day Case No#",
+        label: "7-day Cases",
         fill: false,
         lineTension: 0.1,
         backgroundColor: "rgba(150, 50, 50,0.4)",
@@ -72,7 +72,7 @@ export default function PercentageCompareChart({ data }) {
         data: chartFirst30.map((item) => item.sevenDayCasePercentage).reverse(),
       },
       {
-        label: "% Change in 7-day Test No#",
+        label: "7-day Tests",
         fill: false,
         lineTension: 0.1,
         backgroundColor: "rgba(150, 150, 50,0.4)",
@@ -96,6 +96,13 @@ export default function PercentageCompareChart({ data }) {
   }
 
   const options = {
+    title: {
+      text: "Change in case and test numbers by percentage",
+      display: true,
+    },
+    legend: {
+      position: "bottom",
+    },
     scales: {
       yAxes: [
         {
@@ -136,31 +143,44 @@ export default function PercentageCompareChart({ data }) {
       >
         <Text
           style={{
-            padding: "1rem",
+            padding: "0.5rem",
             alignSelf: "center",
-            fontStyle: "italic",
+            fontSize: "1.4rem",
+            fontStyle: "bold",
             color: "black",
           }}
         >
           "Does the change in new cases reflect the change in the number of
-          tests, or is it something else?"
+          tests?"
         </Text>
-        <Text fontSize="0.8rem">
+        <Text fontSize="1rem" fontStyle="italic">
+          I have been hearing a lot lately, that the rise in COVID-19 cases in
+          the UK can be attributed to the rise in testing numbers. I hadn't
+          really seen any data supporting this theory so thought I would attempt
+          to find an answer to that statement.
+        </Text>
+        <Divider width={"50%"} alignSelf="center" />
+        <Text fontSize="0.8rem" padding="0.2rem">
           This chart aims to show the change in the new number of COVID-19 cases
           in the UK, compared to the change in the new number of tests completed
           in a 24 hour period.
         </Text>
-
-        <Text fontSize="0.8rem">
-          If the two lines follow each other and are close together, then the
-          change in numbers can be seen to reflect each other, so a 10% increase
-          in tests causes a 10% increase in new cases.
+        <Text fontSize="0.8rem" padding="0.2rem">
+          This is done by showing what percentage have these figures changed
+          compared to the day before. The green line shows the cases, and the
+          blue shows the tests. It also shows the average for the last 7 days in
+          the cases and tests, the Red and Yellow lines.
         </Text>
-        <Text fontSize="0.8rem">
-          If there is a significantly higher spike on the green line compared to
+        <Text fontSize="0.8rem" padding="0.2rem">
+          If the lines follow each other and are close together, then the change
+          in numbers can be seen to reflect each other, so a 10% increase in
+          tests causes a 10% increase in new cases.
+        </Text>
+        <Text fontSize="0.8rem" padding="0.2rem">
+          If there are significantly higher spikes on the green line compared to
           the blue line. This indicates that there has been an increase in cases
           that is not directly related to a change in testing numbers. The same
-          is true for the opposite, a spike on the blue line would indicate that
+          is true for the opposite, spikes on the blue line would indicate that
           more testing has been done, but has not drastically increased the
           number of cases.
         </Text>
@@ -199,13 +219,22 @@ export default function PercentageCompareChart({ data }) {
           alignItems: "center",
         }}
       >
-        <Text fontSize="0.8rem" style={{ margin: "1rem" }}>
-          This data alone cannot indicate whether we are seeing a new wave of
-          the virus. It needs to be taken in consideration with lots of other
-          factors. For example, a 100% increase in cases could indicate a big
-          jump, but if that is from 1 case to 2 cases, this is obviously not a
-          big jump. So this chart alone does not provide a complete picture, but
-          will hopefully help when there are larger jumps in the data.
+        <Text fontSize="0.8rem" style={{ marginTop: "1rem" }}>
+          If this chart is showing all the lines close together, then case
+          numbers and test numbers will be following a similar trend, and it is
+          likely any change in case number is due in part to the change in
+          testing figures. Seeing a higher percentage of cases compared to tests
+          is a worry, so if the green and red lines are constantly higher than
+          the blue and yellow lines, then this is a cause for concern. Ideally
+          if the UK is doing well against the spread of the COVID virus, we
+          would see the Blue and Yellow lines higher then the 0 percentile line,
+          and the Red and Green line consistently below the 0 percentile line
+        </Text>
+        <Text fontSize="0.8rem" style={{ margin: "1rem 0" }}>
+          This data needs to be taken in consideration with other factors. For
+          example, a 100% increase in cases could indicate a big jump, but if
+          that is from 1 case to 2 cases, this is obviously not a big jump. So
+          this chart alone does not provide a complete picture.
         </Text>
       </Flex>
     </Flex>

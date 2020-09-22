@@ -1,12 +1,25 @@
 import React from "react"
-import { Flex, Heading } from "@chakra-ui/core"
+import { Flex, Heading, List, ListItem } from "@chakra-ui/core"
+import Link from "next/link"
 import styled from "styled-components"
 
 export function PageHeader({ name }) {
   return (
     <Header>
-      <Flex height={"100%"} align="center" justify="center">
+      <Flex height={"100%"} align="center" justify="space-between">
         <Heading as="h1">{name}</Heading>
+        <List>
+          <ListItem>
+            <Link href="/">
+              <a>Home</a>
+            </Link>
+          </ListItem>
+          <ListItem>
+            <Link href="/about">
+              <a>About Us</a>
+            </Link>
+          </ListItem>
+        </List>
       </Flex>
     </Header>
   )

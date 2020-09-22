@@ -5,6 +5,8 @@ export function PageFooter() {
   return (
     <Footer>
       <a href={"/"}>Home</a>
+      <br />
+      <a href={"mailto: b-webb@outlook.com"}>Email</a>
     </Footer>
   )
 }

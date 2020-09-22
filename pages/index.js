@@ -37,7 +37,7 @@ export default function Home({ data }) {
   )
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const callRona = `${
     process.env.NODE_ENV === "production"
       ? "https://rona-olive.vercel.app"
@@ -49,6 +49,5 @@ export async function getStaticProps() {
     props: {
       data: response.data,
     },
-    revalidate: 60,
   }
 }

@@ -63,10 +63,10 @@ export default async function hello(req, res) {
             caseChange,
             testPercentage,
             casePercentage,
-            [testSevenDay]: testSevenDay.toFixed(1),
-            [caseSevenDay]: caseSevenDay.toFixed(1),
-            [sevenDayTestPercentage]: sevenDayTestPercentage.toFixed(2),
-            [sevenDayCasePercentage]: sevenDayCasePercentage.toFixed(2),
+            testSevenDay: testSevenDay.toFixed(1),
+            caseSevenDay: caseSevenDay.toFixed(1),
+            sevenDayTestPercentage: sevenDayTestPercentage.toFixed(2),
+            sevenDayCasePercentage: sevenDayCasePercentage.toFixed(2),
           }
         })
         //send result of data

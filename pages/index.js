@@ -19,7 +19,13 @@ const Home = () => {
 
   async function fetchData() {
     try {
-      const getData = await useSWR("http://localhost:3000/api/overview")
+      const getData = await useSWR(
+        `${
+          process.env.NODE_ENV === "production"
+            ? "https://rona-olive.vercel.app"
+            : "http://localhost:3000"
+        }http://localhost:3000/api/overview`
+      )
       setData(getData.data.data)
       if (getData.data !== undefined) {
         setLoading(false)

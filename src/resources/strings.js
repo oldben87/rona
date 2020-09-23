@@ -1,1 +1,1 @@
-export const page_header_name = "Ask The Covid Data"
+export const page_header_name = "Questions About Covid"

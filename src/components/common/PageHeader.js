@@ -1,34 +1,43 @@
 import React from "react"
-import { Flex, Heading, List, ListItem } from "@chakra-ui/core"
+import { Flex, Heading } from "@chakra-ui/core"
 import Link from "next/link"
 import styled from "styled-components"
 
 export function PageHeader({ name }) {
   return (
     <Header>
-      <Flex height={"100%"} align="center" justify="space-between">
-        <Heading as="h1">{name}</Heading>
-        <List>
-          <ListItem>
-            <Link href="/">
-              <a>Home</a>
-            </Link>
-          </ListItem>
-          <ListItem>
-            <Link href="/about">
-              <a>About Us</a>
-            </Link>
-          </ListItem>
-        </List>
+      <Heading as="h1" p="0.5rem">
+        {name}
+      </Heading>
+      <Flex justify="center">
+        <Link href="/">
+          <NavLink>Home</NavLink>
+        </Link>
+        <Link href="/about">
+          <NavLink>About</NavLink>
+        </Link>
       </Flex>
     </Header>
   )
 }
 
 const Header = styled.header`
-  box-sizing: border-box;
   padding: 0.5rem;
   width: 100%;
-  height: 5rem;
-  box-shadow: 0 0.3rem 0.5rem #cfcfcf;
+  flex-direction: column;
+  justify-content: center;
+`
+const NavLink = styled.a`
+  padding: 0.1rem 1rem;
+  margin: 0.2rem;
+  border-bottom: #cfcfcf 2px solid;
+  box-sizing: border-box;
+  &:hover {
+    background-color: #cfcfcf;
+    cursor: pointer;
+    border-radius: 3px;
+  }
+  &:focus {
+    outline: blue;
+  }
 `

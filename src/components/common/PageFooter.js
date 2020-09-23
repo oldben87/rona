@@ -1,12 +1,14 @@
 import React from "react"
 import styled from "styled-components"
+import { Divider } from "@chakra-ui/core"
 
 export function PageFooter() {
   return (
     <Footer>
-      <a href={"/"}>Home</a>
-      <br />
-      <a href={"mailto: b-webb@outlook.com"}>Email</a>
+      <Divider color="grey" />
+      <a href="mailto:questionsaboutcovid@gmail.com" target="_blank">
+        Email
+      </a>
     </Footer>
   )
 }
@@ -16,4 +18,5 @@ const Footer = styled.footer`
   width: 100%;
   height: 5rem;
   padding: 1rem;
+  margin-bottom: 1rem;
 `

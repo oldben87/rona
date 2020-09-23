@@ -6,7 +6,7 @@ import styled from "styled-components"
 export function PageHeader({ name }) {
   return (
     <Header>
-      <Heading as="h1" p="0.5rem">
+      <Heading as="h1" p="0.5rem" paddingLeft="1rem">
         {name}
       </Heading>
       <Flex justify="center">
@@ -26,12 +26,13 @@ const Header = styled.header`
   width: 100%;
   flex-direction: column;
   justify-content: center;
+  box-sizing: border-box;
 `
 const NavLink = styled.a`
-  padding: 0.1rem 1rem;
+  padding: 0.1rem 0.5rem;
   margin: 0.2rem;
   border-bottom: #cfcfcf 2px solid;
-  box-sizing: border-box;
+  border-bottom-length: 75%;
   &:hover {
     background-color: #cfcfcf;
     cursor: pointer;

@@ -9,7 +9,6 @@ import {
   PageSection,
   PageFooter,
 } from "../src/components/common"
-import { page_header_name } from "../src/resources/strings"
 
 export default function about() {
   return (
@@ -36,27 +35,46 @@ export default function about() {
               about the statistics, can ask questions using the data made
               publicly available.
             </Text>
-            <Divider width={"50%"} alignSelf="center" />
-            <Text fontSize="0.8rem" padding="0.2rem">
-              I would like to use this website as a place of learning. A place
+            <Text fontSize="0.8rem" p="0.2rem">
+              We would like to use this website as a place of learning. A place
               to ask questions and see them answered using the data that we have
               available. I will do my utmost to remove any bias I may have, and
               just show and explain the data.
             </Text>
-            <Text fontSize="0.8rem" padding="0.2rem">
+            <Text fontSize="0.8rem" p="0.2rem">
               Please do get in contact if you have any questions you may have
               regarding available data, or if there is something you would like
               to know.
             </Text>
+          </Flex>
+        </PageSection>
+        <PageSection>
+          <Flex
+            style={{
+              margin: "0.7rem auto",
+              flexDirection: "column",
+              justifyContent: "center",
+              width: "75%",
+              minWidth: "290px",
+              color: "dimgray",
+            }}
+          >
             <Text fontSize="1rem" fontStyle="italic">
               Where do you get your data from?
             </Text>
-            <Divider width={"50%"} alignSelf="center" />
-            <Text fontSize="0.8rem" padding="0.2rem">
+            <Text fontSize="0.8rem" p="0.2rem">
               We currently are getting all our data straight from the government
-              API.
+              API. It is worth mentioning, that at present our 7 day figure is
+              not calculated the same way as the governments. They use the 3
+              days before and the 3 days afterwards. Our 7 day figure is
+              currently calculated using the 6 previous days.
             </Text>
-            <Link href="https://coronavirus.data.gov.uk/" target="_blank">
+            <Link
+              href="https://coronavirus.data.gov.uk/"
+              target="_blank"
+              alignSelf="flex-start"
+              p="0.2rem"
+            >
               Government COVID Dashboard
             </Link>
           </Flex>

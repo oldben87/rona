@@ -13,6 +13,7 @@ import { page_header_name } from "../src/resources/strings"
 import PercentageCompareChart from "../src/components/PercentageCompareChart"
 
 const Home = ({ data }) => {
+  const { error } = data
   return (
     <div className={styles.container}>
       <Head>
@@ -21,22 +22,28 @@ const Home = ({ data }) => {
       </Head>
       <PageHeader name={page_header_name} />
       <PageWrap>
-        <PercentageCompareChart data={data} />
+        {error ? (
+          <p>Error Loading Page Data </p>
+        ) : (
+          <>
+            <PercentageCompareChart data={data} />
 
-        <div
-          style={{
-            display: "flex",
-            width: "100%",
-            justifyContent: "center",
-          }}
-        >
-          <h2>Daily stats for the last 28 Days</h2>
-        </div>
-        <PageSection>
-          {data.slice(0, 28).map((item, i) => (
-            <DayStats item={item} key={i} />
-          ))}
-        </PageSection>
+            <div
+              style={{
+                display: "flex",
+                width: "100%",
+                justifyContent: "center",
+              }}
+            >
+              <h2>Daily stats for the last 28 Days</h2>
+            </div>
+            <PageSection>
+              {data.slice(0, 28).map((item, i) => (
+                <DayStats item={item} key={i} />
+              ))}
+            </PageSection>
+          </>
+        )}
       </PageWrap>
       <PageFooter />
     </div>
@@ -53,6 +60,7 @@ export async function getServerSideProps() {
   }/api/overview`
   const res = await fetch(callRona)
   const response = await res.json()
+
   return {
     props: {
       data: response.data,

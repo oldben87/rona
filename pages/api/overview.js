@@ -83,12 +83,24 @@ export default async function hello(req, res) {
             }
           }
         })
-        //send result of data
-        res.send({ status: 200, data: result })
+        // send result of data
+        if (data.statusCode > 204) {
+          throw Error("Not good status")
+        } else {
+          res.send({ status: 200, data: result })
+        }
       })
-      .catch(() => res.send({ status: 400, error: "Failed to Fetch" }))
+      .catch(() =>
+        res.send({
+          status: 500,
+          data: { error: "No response from Corona API Server" },
+        })
+      )
   } catch (err) {
-    console.log(err)
+    res.send({
+      status: 500,
+      data: { error: "No response from server" },
+    })
   }
 }
 

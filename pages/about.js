@@ -64,10 +64,7 @@ export default function about() {
             </Text>
             <Text fontSize="0.8rem" p="0.2rem">
               We currently are getting all our data straight from the government
-              API. It is worth mentioning, that at present our 7 day figure is
-              not calculated the same way as the governments. They use the 3
-              days before and the 3 days afterwards. Our 7 day figure is
-              currently calculated using the 6 previous days.
+              API.
             </Text>
             <Link
               href="https://coronavirus.data.gov.uk/"

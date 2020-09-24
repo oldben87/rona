@@ -29,11 +29,11 @@ export default async function hello(req, res) {
 
           const testSevenDay =
             noNull
-              .slice(index, index + 7)
+              .slice(index - 3, index + 3)
               .map(tests)
               .reduce((a, b) => a + b, 0) / 7
 
-          const testSevenDaySlice = noNull.slice(index + 1, index + 8)
+          const testSevenDaySlice = noNull.slice(index - 2, index + 4)
           const sevenDay2 = (
             testSevenDaySlice
               .map(tests)
@@ -57,16 +57,30 @@ export default async function hello(req, res) {
 
           const sevenDayCasePercentage =
             ((caseSevenDay - sevenDay3) / sevenDay3) * 100
-          return {
-            ...fill,
-            testChange,
-            caseChange,
-            testPercentage,
-            casePercentage,
-            testSevenDay: testSevenDay.toFixed(1),
-            caseSevenDay: caseSevenDay.toFixed(1),
-            sevenDayTestPercentage: sevenDayTestPercentage.toFixed(2),
-            sevenDayCasePercentage: sevenDayCasePercentage.toFixed(2),
+          if (
+            !sevenDayTestPercentage ||
+            sevenDayTestPercentage === Infinity ||
+            sevenDayTestPercentage === -100
+          ) {
+            return {
+              ...fill,
+              testChange,
+              caseChange,
+              testPercentage,
+              casePercentage,
+            }
+          } else {
+            return {
+              ...fill,
+              testChange,
+              caseChange,
+              testPercentage,
+              casePercentage,
+              testSevenDay: testSevenDay.toFixed(1),
+              caseSevenDay: caseSevenDay.toFixed(1),
+              sevenDayTestPercentage: sevenDayTestPercentage.toFixed(2),
+              sevenDayCasePercentage: sevenDayCasePercentage.toFixed(2),
+            }
           }
         })
         //send result of data

@@ -96,6 +96,7 @@ export default function PercentageCompareChart({ data }) {
   }
 
   const options = {
+    responsive: true,
     title: {
       text: "Change in case and test numbers by percentage",
       display: true,

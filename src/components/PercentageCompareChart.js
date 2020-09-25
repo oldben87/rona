@@ -203,12 +203,7 @@ export default function PercentageCompareChart({ data }) {
           Last 28 Days
         </Radio>
       </RadioGroup>
-      <Line
-        data={chartData}
-        maintainAspectRatio={false}
-        height={100}
-        options={options}
-      />
+      <Line data={chartData} maintainAspectRatio={false} options={options} />
       <Flex
         style={{
           margin: "1rem auto",

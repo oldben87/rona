@@ -29,12 +29,22 @@ export default async function hello(req, res) {
               .map(cases)
               .reduce((a, b) => a + b, 0) / 7
 
-          return {
-            ...fill,
-            newCases: fill.newCases,
-            newTests: fill.newTests,
-            testSevenDay: testSevenDay.toFixed(1),
-            caseSevenDay: caseSevenDay.toFixed(1),
+          if (index < 3) {
+            return {
+              ...fill,
+              date: fill.date,
+              newCases: fill.newCases,
+              newTests: fill.newTests,
+            }
+          } else {
+            return {
+              ...fill,
+              date: fill.date,
+              newCases: fill.newCases,
+              newTests: fill.newTests,
+              testSevenDay: testSevenDay.toFixed(1),
+              caseSevenDay: caseSevenDay.toFixed(1),
+            }
           }
         })
         // send result of data

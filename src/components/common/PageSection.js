@@ -9,7 +9,7 @@ const Section = styled.section`
   display: flex;
   flex-direction: row;
   flex-grow: 1;
-  padding: 2rem 3rem;
+  padding: 1rem;
   box-sizing: border-box;
   margin: 0 1rem;
   flex-wrap: wrap;

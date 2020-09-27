@@ -9,7 +9,6 @@ export default function MixedChart({
   mainTitle,
   baseLineTitle,
   dates,
-  title,
   xTitle,
   yTitle,
 }) {
@@ -113,19 +112,7 @@ export default function MixedChart({
           minWidth: "290px",
           color: "dimgray",
         }}
-      >
-        <Text
-          style={{
-            padding: "0.5rem",
-            alignSelf: "center",
-            fontSize: "1.4rem",
-            fontStyle: "bold",
-            color: "black",
-          }}
-        >
-          {title}
-        </Text>
-      </Flex>
+      ></Flex>
       <Line data={chartData} maintainAspectR options={options} />
     </Flex>
   )

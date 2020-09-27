@@ -31,7 +31,7 @@ export default function DayStats({ item }) {
         <>
           <TextRow>
             <Text>New Cases in last 24 hours:</Text>
-            <Text textAlign="end">{item.newCases}</Text>
+            <Text textAlign="end">{item.newCases.toLocaleString()}</Text>
           </TextRow>
           <Divider />
         </>
@@ -41,7 +41,7 @@ export default function DayStats({ item }) {
           <TextRow>
             <Text>Change in cases from previous day:</Text>
             <Text textAlign="end">
-              {item.caseChange} (
+              {item.caseChange.toLocaleString()} (
               <span
                 style={
                   item.casePercentage > 0
@@ -62,7 +62,7 @@ export default function DayStats({ item }) {
           <TextRow>
             <Text>Cases average from last 7 days:</Text>
             <Text textAlign="end">
-              {item.caseSevenDay} (
+              {parseInt(item.caseSevenDay).toLocaleString()} (
               <span
                 style={
                   item.sevenDayCasePercentage > 0
@@ -82,13 +82,13 @@ export default function DayStats({ item }) {
         <>
           <TextRow>
             <Text>Tests in last 24 hours:</Text>
-            <Text textAlign="end">{item.newTests}</Text>
+            <Text textAlign="end">{item.newTests.toLocaleString()}</Text>
           </TextRow>
           <Divider />
           <TextRow>
             <Text>Change in tests number from previous day:</Text>
             <Text textAlign="end">
-              {item.testChange} (
+              {item.testChange.toLocaleString()} (
               <span
                 style={
                   item.testPercentage < 0
@@ -109,7 +109,7 @@ export default function DayStats({ item }) {
           <TextRow>
             <Text>Testing average last 7 days:</Text>
             <Text textAlign="end">
-              {item.testSevenDay} (
+              {parseInt(item.testSevenDay).toLocaleString()} (
               <span
                 style={
                   item.sevenDayTestPercentage < 0

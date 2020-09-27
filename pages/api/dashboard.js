@@ -55,6 +55,7 @@ export default async function hello(req, res) {
         if (data.statusCode > 204) {
           throw Error("Not good status")
         } else {
+          res.setHeader("Cache-Control", "s-maxage=60, stale-while-revalidate")
           res.send({ status: 200, data: result })
         }
       })

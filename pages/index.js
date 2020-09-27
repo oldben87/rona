@@ -53,12 +53,16 @@ const Home = ({ data }) => {
 export default Home
 
 export async function getServerSideProps() {
+  const headers = new Headers()
+  headers.append("pragma", "no-cache")
+  headers.append("cache-control", "no-store")
+
   const callRona = `${
     process.env.NODE_ENV === "production"
       ? "https://rona-olive.vercel.app"
       : "http://localhost:3000"
   }/api/overview`
-  const res = await fetch(callRona)
+  const res = await fetch(callRona, headers)
   const response = await res.json()
 
   return {

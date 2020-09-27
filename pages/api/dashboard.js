@@ -1,8 +1,12 @@
 export default async function hello(req, res) {
+  const headers = new Headers()
+  headers.append("pragma", "no-cache")
+  headers.append("cache-control", "no-store")
+
   const callRona =
     "https://api.coronavirus.data.gov.uk/v1/data?filters=areaType=overview&structure={%22date%22:%22date%22,%22newCases%22:%22newCasesByPublishDate%22,%20%22newTests%22:%22newTestsByPublishDate%22}"
   try {
-    await fetch(callRona)
+    await fetch(callRona, headers)
       .then((response) => response.json())
       .then((data) => {
         const response = data.data

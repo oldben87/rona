@@ -1,57 +1,64 @@
 import React from "react"
 import { Flex, Text } from "@chakra-ui/core"
 import { Line } from "react-chartjs-2"
+import moment from "moment"
 
 export default function MixedChart({
-  bar,
-  line,
-  barTitle,
-  lineTitle,
+  main,
+  baseLine,
+  mainTitle,
+  baseLineTitle,
   dates,
   title,
   xTitle,
-  ytitle,
+  yTitle,
 }) {
   const chartData = {
-    labels: dates.map((item) => item).reverse(),
+    labels: dates.map((item) => moment(item, "DD/MM/YYYY")).reverse(),
     datasets: [
       {
-        label: barTitle,
-        type: "bar",
-        fill: true,
-        lineTension: 0.1,
-        backgroundColor: "rgba(54, 167, 201, 1)",
-        borderColor: "rgb(54, 167, 201)",
-        borderCapStyle: "butt",
-        borderDash: [],
-        borderDashOffset: 0.0,
-        borderJoinStyle: "miter",
-        pointBorderColor: "rgb(54, 167, 201)",
-        pointBackgroundColor: "#fff",
-
-        data: bar.map((item) => item).reverse(),
-      },
-      {
-        label: lineTitle,
+        label: baseLineTitle,
         fill: false,
         type: "line",
         lineTension: 0.1,
-        backgroundColor: "rgba(66, 200, 30,0.7)",
-        borderColor: "rgb(66, 200, 30)",
+        backgroundColor: "rgba(112, 5, 0,1)",
+        borderColor: "rgb(112, 5, 0)",
         borderCapStyle: "butt",
         borderDash: [],
         borderDashOffset: 0.0,
         borderJoinStyle: "miter",
-        pointBorderColor: "rgb(66, 200, 30)",
+        pointBorderColor: "rgb(112, 5, 0)",
         pointBackgroundColor: "#fff",
         pointBorderWidth: 1,
         pointHoverRadius: 5,
-        pointHoverBackgroundColor: "rgb(66, 200, 30)",
+        pointHoverBackgroundColor: "rgb(112, 5, 0)",
         pointHoverBorderColor: "rgb(220,220,220)",
         pointHoverBorderWidth: 2,
         pointRadius: 0,
         pointHitRadius: 10,
-        data: line.map((item) => item).reverse(),
+        data: baseLine.reverse(),
+      },
+      {
+        label: mainTitle,
+        type: "line",
+        fill: true,
+        lineTension: 0.1,
+        backgroundColor: "rgba(189, 11, 2, 0.8)",
+        borderColor: "rgb(189, 11, 2)",
+        borderCapStyle: "butt",
+        borderDash: [],
+        borderDashOffset: 0.0,
+        borderJoinStyle: "miter",
+        pointBorderColor: "rgb(189, 11, 2)",
+        pointBackgroundColor: "#fff",
+        pointBorderWidth: 1,
+        pointHoverRadius: 5,
+        pointHoverBackgroundColor: "rgb(189, 11, 2)",
+        pointHoverBorderColor: "rgb(220,220,220)",
+        pointHoverBorderWidth: 2,
+        pointRadius: 0,
+        pointHitRadius: 10,
+        data: main.reverse(),
       },
     ],
   }
@@ -67,7 +74,7 @@ export default function MixedChart({
         {
           scaleLabel: {
             display: true,
-            labelString: xTitle,
+            labelString: yTitle,
           },
         },
       ],
@@ -75,13 +82,19 @@ export default function MixedChart({
         {
           scaleLabel: {
             display: true,
-            labelString: ytitle,
+            labelString: xTitle,
+          },
+          type: "time",
+          time: {
+            unit: "month",
+            displayFormats: {
+              month: "MMM",
+            },
           },
         },
       ],
     },
   }
-
   return (
     <Flex
       style={{

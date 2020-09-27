@@ -1,12 +1,15 @@
 import React, { useState } from "react"
 import { Flex, Text, Radio, RadioGroup, Divider } from "@chakra-ui/core"
 import { Line } from "react-chartjs-2"
+import moment from "moment"
 
 export default function PercentageCompareChart({ data }) {
   const [dayCount, setDayCount] = useState("14")
   const chartFirst30 = data.slice(0, dayCount)
   const chartData = {
-    labels: chartFirst30.map((item) => item.date).reverse(),
+    labels: chartFirst30
+      .map((item) => moment(item.date, "DD/MM/YYYY"))
+      .reverse(),
     datasets: [
       {
         label: "Tests",
@@ -118,6 +121,13 @@ export default function PercentageCompareChart({ data }) {
           scaleLabel: {
             display: true,
             labelString: `Last ${dayCount} Days`,
+          },
+          type: "time",
+          time: {
+            unit: "month",
+            displayFormats: {
+              month: "MMM",
+            },
           },
         },
       ],

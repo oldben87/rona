@@ -26,14 +26,26 @@ const Home = ({ data }) => {
           <>
             <PageSection>
               <MixedChart
-                bar={data.map((item) => item.newCases)}
-                line={data.map((item) => item.caseSevenDay)}
-                barTitle={"New Cases"}
-                lineTitle={"7 Day Cases"}
+                main={data.map((item) => item.newCases)}
+                baseLine={data.map((item) => item.caseSevenDay)}
+                mainTitle={"New Cases"}
+                baseLineTitle={"7 Day Cases"}
                 dates={data.map((item) => item.date)}
                 title={"Cases Over The Year"}
-                xTitle={"Dates"}
-                ytitle={"Cases"}
+                xTitle={"Date"}
+                yTitle={"Cases"}
+              />
+            </PageSection>
+            <PageSection>
+              <MixedChart
+                main={data.map((item) => item.newTests)}
+                baseLine={data.map((item) => item.testSevenDay)}
+                mainTitle={"New Tests"}
+                baseLineTitle={"7 Day Tests"}
+                dates={data.map((item) => item.date)}
+                title={"Testing Over The Year"}
+                xTitle={"Date"}
+                yTitle={"Tests"}
               />
             </PageSection>
           </>

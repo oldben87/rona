@@ -16,6 +16,9 @@ export function PageHeader({ name }) {
         <Link href="/about">
           <NavLink>About</NavLink>
         </Link>
+        <Link href="/dashboard">
+          <NavLink>UK Stats</NavLink>
+        </Link>
       </Flex>
     </Header>
   )

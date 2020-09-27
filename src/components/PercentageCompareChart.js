@@ -5,11 +5,11 @@ import moment from "moment"
 
 export default function PercentageCompareChart({ data }) {
   const [dayCount, setDayCount] = useState("14")
-  const chartFirst30 = data.slice(0, dayCount)
+  const chartFirst30 = data.slice(0, 90)
+  const dateArray = chartFirst30.map((item) => moment(item.date, "DD/MM/YYYY"))
+
   const chartData = {
-    labels: chartFirst30
-      .map((item) => moment(item.date, "DD/MM/YYYY"))
-      .reverse(),
+    labels: dateArray.slice(0, dayCount).reverse(),
     datasets: [
       {
         label: "Tests",
@@ -30,7 +30,16 @@ export default function PercentageCompareChart({ data }) {
         pointHoverBorderWidth: 2,
         pointRadius: 3,
         pointHitRadius: 10,
-        data: chartFirst30.map((item) => item.testPercentage).reverse(),
+        data: chartFirst30
+          .map((item) => {
+            if (item.testPercentage != -100) {
+              return item.testPercentage
+            } else {
+              return null
+            }
+          })
+          .slice(0, dayCount)
+          .reverse(),
       },
       {
         label: "Cases",
@@ -51,7 +60,10 @@ export default function PercentageCompareChart({ data }) {
         pointHoverBorderWidth: 2,
         pointRadius: 3,
         pointHitRadius: 10,
-        data: chartFirst30.map((item) => item.casePercentage).reverse(),
+        data: chartFirst30
+          .map((item) => item.casePercentage)
+          .slice(0, dayCount)
+          .reverse(),
       },
       {
         label: "7-day Cases",
@@ -72,7 +84,10 @@ export default function PercentageCompareChart({ data }) {
         pointHoverBorderWidth: 2,
         pointRadius: 3,
         pointHitRadius: 10,
-        data: chartFirst30.map((item) => item.sevenDayCasePercentage).reverse(),
+        data: chartFirst30
+          .map((item) => item.sevenDayCasePercentage)
+          .slice(0, dayCount)
+          .reverse(),
       },
       {
         label: "7-day Tests",
@@ -93,7 +108,10 @@ export default function PercentageCompareChart({ data }) {
         pointHoverBorderWidth: 2,
         pointRadius: 3,
         pointHitRadius: 10,
-        data: chartFirst30.map((item) => item.sevenDayTestPercentage).reverse(),
+        data: chartFirst30
+          .map((item) => item.sevenDayTestPercentage)
+          .slice(0, dayCount)
+          .reverse(),
       },
     ],
   }
@@ -124,9 +142,9 @@ export default function PercentageCompareChart({ data }) {
           },
           type: "time",
           time: {
-            unit: "month",
+            unit: "day",
             displayFormats: {
-              month: "MMM",
+              month: "DD/MM",
             },
           },
         },
@@ -211,6 +229,9 @@ export default function PercentageCompareChart({ data }) {
         </Radio>
         <Radio value="28" variantColor="green" borderColor="rgb(226, 232, 240)">
           Last 28 Days
+        </Radio>
+        <Radio value="90" variantColor="green" borderColor="rgb(226, 232, 240)">
+          Last 90 Days
         </Radio>
       </RadioGroup>
       <Line data={chartData} maintainAspectRatio={false} options={options} />

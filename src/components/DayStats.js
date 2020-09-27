@@ -85,10 +85,6 @@ export default function DayStats({ item }) {
             <Text textAlign="end">{item.newTests}</Text>
           </TextRow>
           <Divider />
-        </>
-      ) : null}
-      {item.testChange ? (
-        <>
           <TextRow>
             <Text>Change in tests number from previous day:</Text>
             <Text textAlign="end">

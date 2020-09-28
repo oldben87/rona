@@ -2,6 +2,10 @@ export default async function hello(req, res) {
   const headers = new Headers()
   headers.append("Pragma", "no-cache")
   headers.append("Cache-Control", "no-store, must-revalidate, no-cache")
+  headers.append("Expires", 0)
+  res.setHeader("Pragma", "no-cache")
+  res.setHeader("Cache-Control", "no-store, must-revalidate, no-cache")
+  res.setHeader("Expires", 0)
 
   const callRona =
     "https://api.coronavirus.data.gov.uk/v1/data?filters=areaType=overview" +
@@ -15,6 +19,9 @@ export default async function hello(req, res) {
     await fetch(callRona, headers)
       .then((response) => response.json())
       .then((data) => {
+        if (data.statusCode > 204) {
+          throw Error("Not good status")
+        }
         const response = data.data
         // reformat to populate null responses from fetch
         const noNull = response.map((item) => {
@@ -49,30 +56,18 @@ export default async function hello(req, res) {
           if (index < 3) {
             return {
               ...fill,
-              date: fill.date,
-              newCases: fill.newCases,
-              newTests: fill.newTests,
-              newDeaths: fill.newDeaths,
             }
           } else {
             return {
               ...fill,
-              date: fill.date,
-              newCases: fill.newCases,
-              newTests: fill.newTests,
               testSevenDay: testSevenDay.toFixed(1),
               caseSevenDay: caseSevenDay.toFixed(1),
-              newDeaths: fill.newDeaths,
               deathSevenDay: deathSevenDay.toFixed(1),
             }
           }
         })
         // send result of data
-        if (data.statusCode > 204) {
-          throw Error("Not good status")
-        } else {
-          res.send({ status: 200, data: result })
-        }
+        res.send({ status: 200, data: result })
       })
       .catch(() =>
         res.send({

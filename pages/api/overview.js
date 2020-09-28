@@ -2,6 +2,10 @@ export default async function hello(req, res) {
   const headers = new Headers()
   headers.append("Pragma", "no-cache")
   headers.append("Cache-Control", "no-store, must-revalidate, no-cache")
+  headers.append("Expires", 0)
+  res.setHeader("Pragma", "no-cache")
+  res.setHeader("Cache-Control", "no-store, must-revalidate, no-cache")
+  res.setHeader("Expires", 0)
 
   const callRona =
     "https://api.coronavirus.data.gov.uk/v1/data?filters=areaType=overview&structure={" +
@@ -12,6 +16,9 @@ export default async function hello(req, res) {
     await fetch(callRona, headers)
       .then((response) => response.json())
       .then((data) => {
+        if (data.statusCode > 204) {
+          throw Error("Not good status")
+        }
         const response = data.data
         // reformat to populate null responses from fetch
         const noNull = response.map((item) => {
@@ -42,9 +49,7 @@ export default async function hello(req, res) {
 
           const testSevenDaySlice = noNull.slice(index - 2, index + 4)
           const sevenDay2 = (
-            testSevenDaySlice
-              .map(tests)
-              .reduce((sum, current) => sum + current, 0) / 7
+            testSevenDaySlice.map(tests).reduce((a, b) => a + b, 0) / 7
           ).toFixed(1)
 
           const sevenDayTestPercentage =
@@ -57,9 +62,7 @@ export default async function hello(req, res) {
               .reduce((a, b) => a + b) / 7
 
           const sevenDay3 = (
-            testSevenDaySlice
-              .map(cases)
-              .reduce((sum, current) => sum + current, 0) / 7
+            testSevenDaySlice.map(cases).reduce((a, b) => a + b, 0) / 7
           ).toFixed(1)
 
           const sevenDayCasePercentage =
@@ -91,11 +94,7 @@ export default async function hello(req, res) {
           }
         })
         // send result of data
-        if (data.statusCode > 204) {
-          throw Error("Not good status")
-        } else {
-          res.send({ status: 200, data: result })
-        }
+        res.send({ status: 200, data: result })
       })
       .catch(() =>
         res.send({

@@ -127,6 +127,7 @@ export async function getServerSideProps() {
   const headers = new Headers()
   headers.append("Pragma", "no-cache")
   headers.append("Cache-Control", "no-store, must-revalidate, no-cache")
+  headers.append("Expires", 0)
 
   const callRona = `${
     process.env.NODE_ENV === "production"

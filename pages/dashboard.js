@@ -129,13 +129,13 @@ export async function getServerSideProps() {
   headers.append("Cache-Control", "no-store, must-revalidate, no-cache")
   headers.append("Expires", 0)
 
-  const callRona = `${
+  const uri = `${
     process.env.NODE_ENV === "production"
       ? "https://rona-olive.vercel.app"
       : "http://localhost:3000"
   }/api/dashboard`
 
-  const res = await fetch(callRona, headers)
+  const res = await fetch(uri, headers)
   const response = await res.json()
 
   return {

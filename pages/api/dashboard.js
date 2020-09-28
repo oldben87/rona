@@ -1,4 +1,5 @@
 export default async function hello(req, res) {
+  // fuck this header shit
   const headers = new Headers()
   headers.append("Pragma", "no-cache")
   headers.append("Cache-Control", "no-store, must-revalidate, no-cache")

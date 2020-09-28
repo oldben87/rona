@@ -3,7 +3,11 @@ export default async function hello(req, res) {
   headers.append("pragma", "no-cache")
 
   const callRona =
-    "https://api.coronavirus.data.gov.uk/v1/data?filters=areaType=overview&structure={%22date%22:%22date%22,%22newCases%22:%22newCasesByPublishDate%22,%20%22newTests%22:%22newTestsByPublishDate%22}"
+    "https://api.coronavirus.data.gov.uk/v1/data?filters=areaType=overview" +
+    "&structure={%22date%22:%22date%22," +
+    "%22newCases%22:%22newCasesByPublishDate%22," +
+    "%22newTests%22:%22newTestsByPublishDate%22," +
+    "%22newDeaths%22:%22newDeaths28DaysByDeathDate%22}"
   try {
     await fetch(callRona, headers)
       .then((response) => response.json())
@@ -15,6 +19,7 @@ export default async function hello(req, res) {
             date: item.date.split("-").reverse().join("-"),
             newCases: item.newCases || 0,
             newTests: item.newTests || 0,
+            newDeaths: item.newDeaths || 0,
           }
           return result_no_null
         })
@@ -32,12 +37,19 @@ export default async function hello(req, res) {
               .map(cases)
               .reduce((a, b) => a + b, 0) / 7
 
+          const deathSevenDay =
+            noNull
+              .slice(index - 3, index + 3)
+              .map(deaths)
+              .reduce((a, b) => a + b, 0) / 7
+
           if (index < 3) {
             return {
               ...fill,
               date: fill.date,
               newCases: fill.newCases,
               newTests: fill.newTests,
+              newDeaths: fill.newDeaths,
             }
           } else {
             return {
@@ -47,6 +59,8 @@ export default async function hello(req, res) {
               newTests: fill.newTests,
               testSevenDay: testSevenDay.toFixed(1),
               caseSevenDay: caseSevenDay.toFixed(1),
+              newDeaths: fill.newDeaths,
+              deathSevenDay: deathSevenDay.toFixed(1),
             }
           }
         })
@@ -78,4 +92,8 @@ export function cases(item) {
 
 export function tests(item) {
   return item.newTests
+}
+
+export function deaths(item) {
+  return item.newDeaths
 }

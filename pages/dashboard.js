@@ -82,6 +82,37 @@ const Home = ({ data }) => {
                 yTitle={"Tests"}
               />
             </PageSection>
+            <PageSection>
+              <Flex w="100%" flexDir="column">
+                <Text as="h2" alignSelf="center">
+                  Daily Death Numbers
+                </Text>
+                <Flex justify="space-evenly" w="100%">
+                  <Text>
+                    Most Recent:{" "}
+                    {data[2].newDeaths !== 0
+                      ? data[2].newDeaths.toLocaleString()
+                      : "No Data"}
+                  </Text>
+                  <Text>
+                    Total Deaths:{" "}
+                    {data
+                      .map((item) => item.newDeaths)
+                      .reduce((a, b) => a + b)
+                      .toLocaleString()}
+                  </Text>
+                </Flex>
+              </Flex>
+              <CompareChart
+                main={data.map((item) => item.newDeaths)}
+                baseLine={data.map((item) => item.deathSevenDay)}
+                mainTitle={"New Deaths"}
+                baseLineTitle={"7 Day Deaths"}
+                dates={data.map((item) => item.date)}
+                xTitle={"Date"}
+                yTitle={"Deaths"}
+              />
+            </PageSection>
           </>
         )}
       </PageWrap>
@@ -102,6 +133,7 @@ export async function getServerSideProps() {
       ? "https://rona-olive.vercel.app"
       : "http://localhost:3000"
   }/api/dashboard`
+
   const res = await fetch(callRona, headers)
   const response = await res.json()
 

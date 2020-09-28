@@ -1,6 +1,7 @@
 export default async function hello(req, res) {
   const headers = new Headers()
   headers.append("Pragma", "no-cache")
+  headers.append("Cache-Control", "no-store, must-revalidate, no-cache")
 
   const callRona =
     "https://api.coronavirus.data.gov.uk/v1/data?filters=areaType=overview" +
@@ -70,7 +71,6 @@ export default async function hello(req, res) {
         if (data.statusCode > 204) {
           throw Error("Not good status")
         } else {
-          res.setHeader("Cache-Control", "no-store, must-revalidate, no-cache")
           res.send({ status: 200, data: result })
         }
       })

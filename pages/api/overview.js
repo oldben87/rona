@@ -3,7 +3,10 @@ export default async function hello(req, res) {
   headers.append("pragma", "no-cache")
 
   const callRona =
-    "https://api.coronavirus.data.gov.uk/v1/data?filters=areaType=overview&structure={%22date%22:%22date%22,%22newCases%22:%22newCasesByPublishDate%22,%20%22newTests%22:%22newTestsByPublishDate%22}"
+    "https://api.coronavirus.data.gov.uk/v1/data?filters=areaType=overview&structure={" +
+    "%22date%22:%22date%22," +
+    "%22newCases%22:%22newCasesByPublishDate%22," +
+    "%20%22newTests%22:%22newTestsByPublishDate%22}"
   try {
     await fetch(callRona, headers)
       .then((response) => response.json())
@@ -90,7 +93,7 @@ export default async function hello(req, res) {
         if (data.statusCode > 204) {
           throw Error("Not good status")
         } else {
-          res.setHeader("Cache-Control", "s-maxage=60, stale-while-revalidate")
+          res.setHeader("Cache-Control", "no-store, must-revalidate, no-cache")
           res.send({ status: 200, data: result })
         }
       })

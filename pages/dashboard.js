@@ -2,14 +2,8 @@ import Head from "next/head"
 import React from "react"
 import fetch from "isomorphic-unfetch"
 import styles from "../styles/Home.module.css"
-import { Text, Flex, Divider } from "@chakra-ui/core"
-import {
-  PageHeader,
-  PageWrap,
-  PageSection,
-  PageFooter,
-} from "../src/components/common"
-import CompareChart from "../src/components/CompareChart"
+import { PageHeader, PageWrap, PageFooter } from "../src/components/common"
+import ThreeLineChart from "../src/components/ThreeLineChart"
 import ChartSection from "../src/components/Dashboard/ChartSection"
 
 const Home = ({ data }) => {
@@ -47,7 +41,7 @@ const Home = ({ data }) => {
               background="rgba(0,0,0,0.1)"
             />
             <ChartSection
-              chartTitle="Covid-19 Death Numbers"
+              chartTitle="Covid-19 Death Figures"
               main={data.map((item) => item.newDeaths)}
               mainTitle={"New Deaths"}
               yTitle={"Deaths"}
@@ -55,37 +49,18 @@ const Home = ({ data }) => {
               baseLineTitle={"7 Day Average"}
               dates={dates}
             />
-            <PageSection background="rgba(0,0,0,0.1)">
-              <Flex w="100%" flexDir="column">
-                <Text as="h2" alignSelf="center">
-                  Daily Hospital Numbers
-                </Text>
-                <Flex justify="space-between" w="100%">
-                  <Text>
-                    Most Recent:{" "}
-                    {data[2].newAdmissions !== 0
-                      ? data[2].newAdmissions.toLocaleString()
-                      : "No Data"}
-                  </Text>
-                  <Text>
-                    Total Admissions:{" "}
-                    {data
-                      .map((item) => item.newAdmissions)
-                      .reduce((a, b) => a + b)
-                      .toLocaleString()}
-                  </Text>
-                </Flex>
-              </Flex>
-              <CompareChart
-                main={data.map((item) => item.hospitalCases)}
-                baseLine={data.map((item) => item.covidBeds)}
-                mainTitle={"New Hospital Cases"}
-                baseLineTitle={"Ventilator Beds"}
-                dates={dates}
-                xTitle={"Date"}
-                yTitle={"Hospital"}
-              />
-            </PageSection>
+            <ChartSection
+              chartTitle="Hospitals And Healthcare"
+              main={data.map((item) => item.hospitalCases)}
+              mainTitle={"New Hospital Cases"}
+              yTitle={"Hospital"}
+              baseLine={data.map((item) => item.covidBeds)}
+              baseLineTitle={"Ventilator Beds"}
+              thirdLine={data.map((item) => item.newAdmissions)}
+              thirdLineTitle="New Admissions"
+              dates={dates}
+              background="rgba(0,0,0,0.1)"
+            />
           </>
         )}
       </PageWrap>

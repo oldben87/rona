@@ -2,6 +2,7 @@ import React from "react"
 import { Text, Flex, Divider } from "@chakra-ui/core"
 import { PageSection } from "../common"
 import CompareChart from "../CompareChart"
+import ThreeLineChart from "../ThreeLineChart"
 
 export default function ChartSection({
   chartTitle,
@@ -10,6 +11,8 @@ export default function ChartSection({
   yTitle,
   baseLine,
   baseLineTitle,
+  thirdLine,
+  thirdLineTitle,
   dates,
   background,
 }) {
@@ -31,15 +34,29 @@ export default function ChartSection({
           Total {yTitle}: {main.reduce((a, b) => a + b).toLocaleString()}
         </Text>
       </Flex>
-      <CompareChart
-        main={main}
-        baseLine={baseLine}
-        mainTitle={mainTitle}
-        baseLineTitle={baseLineTitle}
-        dates={dates}
-        xTitle={"Date"}
-        yTitle={yTitle}
-      />
+      {thirdLine ? (
+        <ThreeLineChart
+          main={main}
+          baseLine={baseLine}
+          mainTitle={mainTitle}
+          baseLineTitle={baseLineTitle}
+          thirdLine={thirdLine}
+          thirdLineTitle={thirdLineTitle}
+          dates={dates}
+          xTitle={"Date"}
+          yTitle={yTitle}
+        />
+      ) : (
+        <CompareChart
+          main={main}
+          baseLine={baseLine}
+          mainTitle={mainTitle}
+          baseLineTitle={baseLineTitle}
+          dates={dates}
+          xTitle={"Date"}
+          yTitle={yTitle}
+        />
+      )}
     </PageSection>
   )
 }

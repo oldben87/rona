@@ -17,10 +17,10 @@ export default function MixedChart({
     datasets: [
       {
         label: baseLineTitle,
-        fill: false,
+        fill: true,
         type: "line",
         lineTension: 0.1,
-        backgroundColor: "rgba(112, 5, 0,1)",
+        backgroundColor: "rgba(112, 5, 0,0.3)",
         borderColor: "rgb(112, 5, 0)",
         borderCapStyle: "butt",
         borderDash: [],
@@ -42,7 +42,7 @@ export default function MixedChart({
         type: "line",
         fill: true,
         lineTension: 0.1,
-        backgroundColor: "rgba(189, 11, 2, 0.8)",
+        backgroundColor: "rgba(189, 11, 2, 0.3)",
         borderColor: "rgb(189, 11, 2)",
         borderCapStyle: "butt",
         borderDash: [],
@@ -63,10 +63,9 @@ export default function MixedChart({
   }
 
   const options = {
-    maintainAspectR: true,
     responsive: true,
     legend: {
-      position: "bottom",
+      position: "top",
     },
     scales: {
       yAxes: [
@@ -96,24 +95,13 @@ export default function MixedChart({
   }
   return (
     <Flex
-      style={{
-        margin: "1rem",
-        flexDirection: "column",
-        justifyContent: "center",
-        flexGrow: 1,
-      }}
+      width={["100%", "100%", "70%", "70%"]}
+      m="1rem auto"
+      flexDir="row"
+      justify="center"
+      maxWidth="800px"
     >
-      <Flex
-        style={{
-          margin: "1rem auto",
-          flexDirection: "column",
-          justifyContent: "center",
-          width: "75%",
-          minWidth: "290px",
-          color: "dimgray",
-        }}
-      ></Flex>
-      <Line data={chartData} maintainAspectR options={options} />
+      <Line data={chartData} options={options} />
     </Flex>
   )
 }

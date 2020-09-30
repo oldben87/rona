@@ -2,7 +2,7 @@ import Head from "next/head"
 import React from "react"
 import fetch from "isomorphic-unfetch"
 import styles from "../styles/Home.module.css"
-import { Text, Flex } from "@chakra-ui/core"
+import { Text, Flex, Divider } from "@chakra-ui/core"
 import {
   PageHeader,
   PageWrap,
@@ -10,107 +10,80 @@ import {
   PageFooter,
 } from "../src/components/common"
 import CompareChart from "../src/components/CompareChart"
+import ChartSection from "../src/components/Dashboard/ChartSection"
 
 const Home = ({ data }) => {
   const { error } = data
+  const dates = data.map((item) => item.date)
   return (
     <div className={styles.container}>
       <Head>
         <title>COVID-19 UK Figures</title>
         <link rel="icon" href="/assets/rona2.png" />
       </Head>
-      <PageHeader name="Covis Stats" />
+      <PageHeader name="Covid-19 Stats" />
       <PageWrap>
         {error ? (
-          <p>Error Loading Page Data </p>
+          <p>{error}</p>
         ) : (
           <>
-            <PageSection>
+            <ChartSection
+              chartTitle="Daily Testing Numbers"
+              main={data.map((item) => item.newTests)}
+              mainTitle={"New Tests"}
+              yTitle={"Tests"}
+              baseLine={data.map((item) => item.testSevenDay)}
+              baseLineTitle={"7 Day Average"}
+              dates={dates}
+            />
+            <ChartSection
+              chartTitle="Daily Case Numbers"
+              main={data.map((item) => item.newCases)}
+              mainTitle={"New Cases"}
+              yTitle={"Cases"}
+              baseLine={data.map((item) => item.caseSevenDay)}
+              baseLineTitle={"7 Day Average"}
+              dates={dates}
+              background="rgba(0,0,0,0.1)"
+            />
+            <ChartSection
+              chartTitle="Covid-19 Death Numbers"
+              main={data.map((item) => item.newDeaths)}
+              mainTitle={"New Deaths"}
+              yTitle={"Deaths"}
+              baseLine={data.map((item) => item.deathSevenDay)}
+              baseLineTitle={"7 Day Average"}
+              dates={dates}
+            />
+            <PageSection background="rgba(0,0,0,0.1)">
               <Flex w="100%" flexDir="column">
                 <Text as="h2" alignSelf="center">
-                  Daily Case Numbers
+                  Daily Hospital Numbers
                 </Text>
-                <Flex justify="space-evenly" w="100%">
-                  <Text>Most Recent: {data[0].newCases.toLocaleString()}</Text>
-                  <Text>
-                    Total Cases:{" "}
-                    {data
-                      .map((item) => item.newCases)
-                      .reduce((a, b) => a + b)
-                      .toLocaleString()}
-                  </Text>
-                </Flex>
-              </Flex>
-              <CompareChart
-                main={data.map((item) => item.newCases)}
-                baseLine={data.map((item) => item.caseSevenDay)}
-                mainTitle={"New Cases"}
-                baseLineTitle={"7 Day Cases"}
-                dates={data.map((item) => item.date)}
-                xTitle={"Date"}
-                yTitle={"Cases"}
-              />
-            </PageSection>
-            <PageSection>
-              <Flex w="100%" flexDir="column">
-                <Text as="h2" alignSelf="center">
-                  Daily Testing Numbers
-                </Text>
-                <Flex justify="space-evenly" w="100%">
+                <Flex justify="space-between" w="100%">
                   <Text>
                     Most Recent:{" "}
-                    {data[0].newTests !== 0
-                      ? data[0].newTests.toLocaleString()
+                    {data[2].newAdmissions !== 0
+                      ? data[2].newAdmissions.toLocaleString()
                       : "No Data"}
                   </Text>
                   <Text>
-                    Total Tests:{" "}
+                    Total Admissions:{" "}
                     {data
-                      .map((item) => item.newTests)
+                      .map((item) => item.newAdmissions)
                       .reduce((a, b) => a + b)
                       .toLocaleString()}
                   </Text>
                 </Flex>
               </Flex>
               <CompareChart
-                main={data.map((item) => item.newTests)}
-                baseLine={data.map((item) => item.testSevenDay)}
-                mainTitle={"New Tests"}
-                baseLineTitle={"7 Day Tests"}
-                dates={data.map((item) => item.date)}
+                main={data.map((item) => item.hospitalCases)}
+                baseLine={data.map((item) => item.covidBeds)}
+                mainTitle={"New Hospital Cases"}
+                baseLineTitle={"Ventilator Beds"}
+                dates={dates}
                 xTitle={"Date"}
-                yTitle={"Tests"}
-              />
-            </PageSection>
-            <PageSection>
-              <Flex w="100%" flexDir="column">
-                <Text as="h2" alignSelf="center">
-                  Daily Death Numbers
-                </Text>
-                <Flex justify="space-evenly" w="100%">
-                  <Text>
-                    Most Recent:{" "}
-                    {data[2].newDeaths !== 0
-                      ? data[2].newDeaths.toLocaleString()
-                      : "No Data"}
-                  </Text>
-                  <Text>
-                    Total Deaths:{" "}
-                    {data
-                      .map((item) => item.newDeaths)
-                      .reduce((a, b) => a + b)
-                      .toLocaleString()}
-                  </Text>
-                </Flex>
-              </Flex>
-              <CompareChart
-                main={data.map((item) => item.newDeaths)}
-                baseLine={data.map((item) => item.deathSevenDay)}
-                mainTitle={"New Deaths"}
-                baseLineTitle={"7 Day Deaths"}
-                dates={data.map((item) => item.date)}
-                xTitle={"Date"}
-                yTitle={"Deaths"}
+                yTitle={"Hospital"}
               />
             </PageSection>
           </>

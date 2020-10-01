@@ -5,44 +5,67 @@ import styles from "../styles/Home.module.css"
 import {
   PageHeader,
   PageWrap,
-  PageSection,
   PageFooter,
   ErrorText,
 } from "../src/components/common"
-import DayStats from "../src/components/DayStats"
-import { page_header_name } from "../src/resources/strings"
-import PercentageCompareChart from "../src/components/PercentageCompareChart"
+import ChartSection from "../src/components/Dashboard/ChartSection"
 
 const Home = ({ data }) => {
   const { error } = data
+
+  const dates = !data.error ? data.map((item) => item.date) : null
   return (
     <div className={styles.container}>
       <Head>
         <title>COVID-19 UK Figures</title>
         <link rel="icon" href="/assets/rona2.png" />
       </Head>
-      <PageHeader name={page_header_name} />
+      <PageHeader name="Covid-19 Stats" />
       <PageWrap>
         {error ? (
           <ErrorText error={error} />
         ) : (
           <>
-            <PercentageCompareChart data={data} />
-
-            <div
-              style={{
-                display: "flex",
-                width: "100%",
-                justifyContent: "center",
-              }}
-            >
-              <h2>Daily stats for the last 28 Days</h2>
-            </div>
-            <PageSection>
-              {data.slice(0, 28).map((item, i) => (
-                <DayStats item={item} key={i} />
-              ))}
-            </PageSection>
+            <ChartSection
+              chartTitle="Daily Testing Numbers"
+              main={data.map((item) => item.newTests)}
+              mainTitle={"New Tests"}
+              yTitle={"Tests"}
+              baseLine={data.map((item) => item.testSevenDay)}
+              baseLineTitle={"7 Day Average"}
+              dates={dates}
+            />
+            <ChartSection
+              chartTitle="Daily Case Numbers"
+              main={data.map((item) => item.newCases)}
+              mainTitle={"New Cases"}
+              yTitle={"Cases"}
+              baseLine={data.map((item) => item.caseSevenDay)}
+              baseLineTitle={"7 Day Average"}
+              dates={dates}
+              background="rgba(0,0,0,0.1)"
+            />
+            <ChartSection
+              chartTitle="Covid-19 Death Figures"
+              main={data.map((item) => item.newDeaths)}
+              mainTitle={"New Deaths"}
+              yTitle={"Deaths"}
+              baseLine={data.map((item) => item.deathSevenDay)}
+              baseLineTitle={"7 Day Average"}
+              dates={dates}
+            />
+            <ChartSection
+              chartTitle="Hospitals And Healthcare"
+              main={data.map((item) => item.newAdmissions)}
+              mainTitle={"New Hospital Admissions"}
+              yTitle={"Patients"}
+              baseLine={data.map((item) => item.covidBeds)}
+              baseLineTitle={"Ventilator Beds"}
+              thirdLine={data.map((item) => item.hospitalCases)}
+              thirdLineTitle="Total In Hospital"
+              dates={dates}
+              background="rgba(0,0,0,0.1)"
+            />
           </>
         )}
       </PageWrap>
@@ -63,7 +86,7 @@ export async function getServerSideProps() {
     process.env.NODE_ENV === "production"
       ? "https://rona-olive.vercel.app"
       : "http://localhost:3000"
-  }/api/overview`
+  }/api/dashboard`
 
   const res = await fetch(uri, headers)
   const response = await res.json()

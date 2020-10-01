@@ -51,13 +51,13 @@ const Home = ({ data }) => {
             />
             <ChartSection
               chartTitle="Hospitals And Healthcare"
-              main={data.map((item) => item.hospitalCases)}
-              mainTitle={"New Hospital Cases"}
-              yTitle={"Hospital"}
+              main={data.map((item) => item.newAdmissions)}
+              mainTitle={"New Hospital Admissions"}
+              yTitle={"Patients"}
               baseLine={data.map((item) => item.covidBeds)}
               baseLineTitle={"Ventilator Beds"}
-              thirdLine={data.map((item) => item.newAdmissions)}
-              thirdLineTitle="New Admissions"
+              thirdLine={data.map((item) => item.hospitalCases)}
+              thirdLineTitle="Total In Hospital"
               dates={dates}
               background="rgba(0,0,0,0.1)"
             />

@@ -23,7 +23,7 @@ const Home = ({ data }) => {
       <PageHeader name={page_header_name} />
       <PageWrap>
         {error ? (
-          <p>Error Loading Page Data </p>
+          <p>{error}</p>
         ) : (
           <>
             <PercentageCompareChart data={data} />

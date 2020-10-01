@@ -17,7 +17,7 @@ const Home = ({ data }) => {
   return (
     <div className={styles.container}>
       <Head>
-        <title>COVID-19 UK Figures</title>
+        <title>COVID-19 UK Stats</title>
         <link rel="icon" href="/assets/rona2.png" />
       </Head>
       <PageHeader name="Covid-19 Stats" />
@@ -27,15 +27,6 @@ const Home = ({ data }) => {
         ) : (
           <>
             <ChartSection
-              chartTitle="Daily Testing Numbers"
-              main={data.map((item) => item.newTests)}
-              mainTitle={"New Tests"}
-              yTitle={"Tests"}
-              baseLine={data.map((item) => item.testSevenDay)}
-              baseLineTitle={"7 Day Average"}
-              dates={dates}
-            />
-            <ChartSection
               chartTitle="Daily Case Numbers"
               main={data.map((item) => item.newCases)}
               mainTitle={"New Cases"}
@@ -43,7 +34,16 @@ const Home = ({ data }) => {
               baseLine={data.map((item) => item.caseSevenDay)}
               baseLineTitle={"7 Day Average"}
               dates={dates}
-              background="rgba(0,0,0,0.1)"
+            />
+            <ChartSection
+              chartTitle="Daily Testing Numbers"
+              main={data.map((item) => item.newTests)}
+              mainTitle={"New Tests"}
+              yTitle={"Tests"}
+              baseLine={data.map((item) => item.testSevenDay)}
+              baseLineTitle={"7 Day Average"}
+              dates={dates}
+              background="#fff5f5"
             />
             <ChartSection
               chartTitle="Covid-19 Death Figures"
@@ -64,7 +64,7 @@ const Home = ({ data }) => {
               thirdLine={data.map((item) => item.hospitalCases)}
               thirdLineTitle="Total In Hospital"
               dates={dates}
-              background="rgba(0,0,0,0.1)"
+              background="#fff5f5"
             />
           </>
         )}

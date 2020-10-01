@@ -23,12 +23,12 @@ export default function ChartSection({
         flexDir="column"
         w={["100%", "100%", "25%", "25%"]}
       >
-        <Text as="h2" p={2} fontSize="3xl" color="blue.900">
+        <Text as="h2" p={2} fontSize="3xl" color="red.800">
           {chartTitle}
         </Text>
         <Divider w="75%" alignSelf="center" />
         <Text paddingLeft="1rem">
-          Most Recent: {main.find((item) => item > 0)}
+          Most Recent {yTitle}: {main.find((item) => item > 0)}
         </Text>
         <Text paddingLeft="1rem">
           Total {yTitle}: {main.reduce((a, b) => a + b).toLocaleString()}

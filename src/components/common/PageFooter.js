@@ -5,7 +5,7 @@ import { Divider } from "@chakra-ui/core"
 export function PageFooter() {
   return (
     <Footer>
-      <Divider color="grey" />
+      <Divider color="red.800" />
       <a href="mailto:questionsaboutcovid@gmail.com" target="_blank">
         Email
       </a>

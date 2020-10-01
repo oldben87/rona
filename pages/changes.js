@@ -18,7 +18,7 @@ const Changes = ({ data }) => {
   return (
     <div className={styles.container}>
       <Head>
-        <title>COVID-19 UK Figures</title>
+        <title>COVID-19 UK Questions</title>
         <link rel="icon" href="/assets/rona2.png" />
       </Head>
       <PageHeader name={page_header_name} />

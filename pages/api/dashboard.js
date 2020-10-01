@@ -91,14 +91,14 @@ export default async function hello(req, res) {
   }
 }
 
-export function cases(item) {
+function cases(item) {
   return item.newCases
 }
 
-export function tests(item) {
+function tests(item) {
   return item.newTests
 }
 
-export function deaths(item) {
+function deaths(item) {
   return item.newDeaths
 }

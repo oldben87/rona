@@ -24,8 +24,8 @@ export default async function hello(req, res) {
     await fetch(callRona, headers)
       .then((response) => response.json())
       .then((data) => {
-        if (data.statusCode > 204) {
-          throw Error("Not good status")
+        if (data.statusCode > 204 || data.data === null) {
+          throw new Error("Not good status")
         }
         const response = data.data
         // reformat to populate null responses from fetch

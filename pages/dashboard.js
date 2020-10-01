@@ -2,13 +2,18 @@ import Head from "next/head"
 import React from "react"
 import fetch from "isomorphic-unfetch"
 import styles from "../styles/Home.module.css"
-import { PageHeader, PageWrap, PageFooter } from "../src/components/common"
-import ThreeLineChart from "../src/components/ThreeLineChart"
+import {
+  PageHeader,
+  PageWrap,
+  PageFooter,
+  ErrorText,
+} from "../src/components/common"
 import ChartSection from "../src/components/Dashboard/ChartSection"
 
 const Home = ({ data }) => {
   const { error } = data
-  const dates = data.map((item) => item.date)
+
+  const dates = !data.error ? data.map((item) => item.date) : null
   return (
     <div className={styles.container}>
       <Head>
@@ -18,7 +23,7 @@ const Home = ({ data }) => {
       <PageHeader name="Covid-19 Stats" />
       <PageWrap>
         {error ? (
-          <p>{error}</p>
+          <ErrorText error={error} />
         ) : (
           <>
             <ChartSection

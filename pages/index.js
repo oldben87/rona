@@ -7,6 +7,7 @@ import {
   PageWrap,
   PageSection,
   PageFooter,
+  ErrorText,
 } from "../src/components/common"
 import DayStats from "../src/components/DayStats"
 import { page_header_name } from "../src/resources/strings"
@@ -23,7 +24,7 @@ const Home = ({ data }) => {
       <PageHeader name={page_header_name} />
       <PageWrap>
         {error ? (
-          <p>{error}</p>
+          <ErrorText error={error} />
         ) : (
           <>
             <PercentageCompareChart data={data} />

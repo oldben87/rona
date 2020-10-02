@@ -28,7 +28,7 @@ export default function ChartSection({
         </Text>
         <Divider w="75%" alignSelf="center" />
         <Text paddingLeft="1rem">
-          Most Recent {yTitle}: {main.find((item) => item > 0)}
+          Most Recent {yTitle}: {main.find((item) => item > 0).toLocaleString()}
         </Text>
         <Text paddingLeft="1rem">
           Total {yTitle}: {main.reduce((a, b) => a + b).toLocaleString()}

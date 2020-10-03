@@ -14,7 +14,7 @@ export default async function hello(req, res) {
     "%22date%22:%22date%22," +
     "%22newCases%22:%22newCasesByPublishDate%22," +
     "%22newTests%22:%22newTestsByPublishDate%22," +
-    "%22newDeaths%22:%22newDeaths28DaysByDeathDate%22," +
+    "%22newDeaths%22:%22newDeaths28DaysByPublishDate%22," +
     "%22newAdmissions%22:%22newAdmissions%22," +
     "%22covidBeds%22:%22covidOccupiedMVBeds%22," +
     "%22hospitalCases%22:%22hospitalCases%22" +

@@ -17,15 +17,18 @@ export function PageHeader({ name }) {
         {name}
       </Heading>
       <Flex justify="center">
-        <Link href="/">
+        <Link href="/" passHref>
           <NavLink>Home</NavLink>
         </Link>
-        <Link href="/about">
+        <Link href="/about" passHref>
           <NavLink>About</NavLink>
         </Link>
-        <Link href="/changes">
+        <Link href="/changes" passHref>
           <NavLink>Questions</NavLink>
         </Link>
+        {/* <Link href="/newpage">
+          <NavLink>New Page</NavLink>
+        </Link> */}
       </Flex>
     </Header>
   )
@@ -50,6 +53,7 @@ const NavLink = styled.a`
     color: #fff;
   }
   &:focus {
-    outline: blue;
+    outline-color: #212121;
+    outline-width: 5px;
   }
 `

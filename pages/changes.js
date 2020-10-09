@@ -1,6 +1,7 @@
 import Head from "next/head"
 import React from "react"
 import fetch from "isomorphic-unfetch"
+import {Flex, Text} from '@chakra-ui/core'
 import styles from "../styles/Home.module.css"
 import {
   PageHeader,
@@ -36,12 +37,16 @@ const Changes = ({ data }) => {
                 justifyContent: "center",
               }}
             >
-              <h2>Daily stats for the last 28 Days</h2>
             </div>
-            <PageSection>
-              {data.slice(0, 28).map((item, i) => (
-                <DayStats item={item} key={i} />
-              ))}
+            <PageSection 
+              background="#fff5f5"
+              flexDir="column">
+                <Text as="h2" p={2} fontSize="3xl" color="red.800">Daily stats for the last 28 Days</Text>
+              <Flex overflow="auto">
+                {data.slice(0, 28).map((item, i) => (
+                  <DayStats item={item} key={i} />
+                ))}
+              </Flex>
             </PageSection>
           </>
         )}

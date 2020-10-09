@@ -100,7 +100,7 @@ export default function casestotests({ data }) {
                 {data.slice(0, 90).map((item) => {
                   
                   return (
-                    <Flex width="200px" direction="column" key={item.date} flexShrink={0} boxShadow="md" m="2" p="2" backgroundColor="white">
+                    <Flex width="200px" direction="column" key={item.date} flexShrink={0} boxShadow="0 0 0.1rem 0.1rem rgba(0, 0, 0, 0.2)" m="2" p="2" paddingY="4" backgroundColor="white" borderRadius="0.2rem">
                       <TextRow>{item.date}</TextRow>
                       <TextRow><p>Cases:</p><p>{item.newCases.toLocaleString()}</p></TextRow>
                       <TextRow><p>Tests:</p><p>{item.newTests.toLocaleString()}</p></TextRow>

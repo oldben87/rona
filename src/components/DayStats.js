@@ -14,8 +14,8 @@ export default function DayStats({ item }) {
       border="1px dimgrey solid"
       boxShadow="0 0 0.1rem 0.1rem rgba(0, 0, 0, 0.2)"
       width={[
-        "100%", // base
-        "100%", // 480px upwards
+        "90%", // base
+        "90%", // 480px upwards
         "45%", // 768px upwards
         "45%", // 992px upwards
       ]}

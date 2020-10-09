@@ -1,11 +1,11 @@
 import React from "react"
 import styled from "styled-components"
 
-export const PageSection = ({ children, background, justify }) => (
+export const PageSection = ({ children, background, justify="space-evenly" }) => (
   <Section
     style={{
       backgroundColor: background,
-      justifyContent: justify ? justify : "space-evenly",
+      justifyContent: justify,
     }}
   >
     {children}
@@ -18,10 +18,9 @@ const Section = styled.section`
   box-sizing: border-box;
   margin: 0 1rem;
   flex-wrap: wrap;
-  max-width: 1500px;
+  max-width: calc(100vw - 4rem);
   @media (max-width 425px) : {
     padding: 0.25rem;
     flexdirection: column;
   }
-  overflow: hidden;
 `

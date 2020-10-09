@@ -23,7 +23,7 @@ export function PageHeader({ name }) {
         <Link href="/about" passHref>
           <NavLink>About</NavLink>
         </Link>
-        <Link href="/changes" passHref>
+        <Link href="/questions" passHref>
           <NavLink>Questions</NavLink>
         </Link>
         {/* <Link href="/newpage">

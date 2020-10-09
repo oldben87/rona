@@ -34,6 +34,7 @@ const Home = ({ data }) => {
               baseLine={data.map((item) => item.caseSevenDay)}
               baseLineTitle={"7 Day Average"}
               dates={dates}
+              background="#fff5f5"
             />
             <ChartSection
               chartTitle="Daily Testing Numbers"
@@ -43,7 +44,6 @@ const Home = ({ data }) => {
               baseLine={data.map((item) => item.testSevenDay)}
               baseLineTitle={"7 Day Average"}
               dates={dates}
-              background="#fff5f5"
             />
             <ChartSection
               chartTitle="Covid-19 Death Figures"
@@ -53,6 +53,7 @@ const Home = ({ data }) => {
               baseLine={data.map((item) => item.deathSevenDay)}
               baseLineTitle={"7 Day Average"}
               dates={dates}
+              background="#fff5f5"
             />
             <ChartSection
               chartTitle="Hospitals And Healthcare"
@@ -64,7 +65,6 @@ const Home = ({ data }) => {
               thirdLine={data.map((item) => item.hospitalCases)}
               thirdLineTitle="Total In Hospital"
               dates={dates}
-              background="#fff5f5"
             />
           </>
         )}

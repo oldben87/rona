@@ -8,7 +8,7 @@ export default function questions() {
       tabTitle="COVID-19 UK Questions"
       headerTitle="Questions about COVID"
     >
-      <PageSection background="rgba(0,0,0,0.05)" justify="start">
+      <PageSection background="#fff5f5" justify="start">
         <Link href="/changes" passHref>
           <a>
             Does the change in new cases reflect the change in the number of

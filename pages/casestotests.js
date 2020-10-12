@@ -1,5 +1,5 @@
-import React from "react"
-import { Divider, Flex, Text } from "@chakra-ui/core"
+import React, { useState } from "react"
+import { Divider, Flex, Text, Button, Box } from "@chakra-ui/core"
 import { Line } from "react-chartjs-2"
 import moment from "moment"
 import {
@@ -11,6 +11,7 @@ import {
 
 export default function casestotests({ data }) {
   const { error } = data
+  const [showLine, setShowLine] = useState(true)
 
   const chartData = {
     labels: data.map((item) => moment(item.date, "DD/MM/YYYY")).reverse(),
@@ -36,7 +37,7 @@ export default function casestotests({ data }) {
         pointHoverBorderWidth: 2,
         pointRadius: 0,
         pointHitRadius: 10,
-        data: data.map((item) => item.percentage).reverse(),
+        data: showLine ? data.map((item) => item.percentage).reverse() : null,
       },
     ],
   }
@@ -44,7 +45,7 @@ export default function casestotests({ data }) {
   const options = {
     responsive: true,
     legend: {
-      position: "top",
+      display: false,
     },
     scales: {
       yAxes: [
@@ -84,10 +85,25 @@ export default function casestotests({ data }) {
             </Text>
             <Divider />
             <Text fontSize="0.8rem" padding="0.2rem">
-              Boom
+              This chart will aim to show what the current percentage the number
+              of Covid cases is in relation to the number of tests done.
             </Text>
           </PageSection>
           <PageSection>
+            <Button
+              onClick={() => setShowLine(!showLine)}
+              fontSize="0.8rem"
+              p="0.5rem"
+            >
+              <Box
+                h={3}
+                w={6}
+                border={"1px solid rgb(200, 5, 11)"}
+                backgroundColor={"rgba(200, 5, 11,0.3)"}
+                marginRight={2}
+              ></Box>
+              Cases to Tests
+            </Button>
             <Line data={chartData} options={options} />
           </PageSection>
           <PageSection background="#fff5f5" flexDir="column">

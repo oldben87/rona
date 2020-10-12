@@ -1,12 +1,12 @@
 import React from "react"
-import { Flex, Text } from "@chakra-ui/core"
+import { Divider, Flex, Text } from "@chakra-ui/core"
 import { Line } from "react-chartjs-2"
 import moment from "moment"
 import {
   PageSection,
   ErrorText,
   TextRow,
-  PageLayout
+  PageLayout,
 } from "../src/components/common"
 
 export default function casestotests({ data }) {
@@ -51,7 +51,7 @@ export default function casestotests({ data }) {
         {
           scaleLabel: {
             display: true,
-            labelString: "% of cases to tests",
+            labelString: "%",
           },
         },
       ],
@@ -74,35 +74,60 @@ export default function casestotests({ data }) {
 
   return (
     <PageLayout tabTitle="Cases to Tests" headerTitle="Cases vs Tests">
-        {error ? (
-          <ErrorText>{error}</ErrorText>
-        ) : (
-          <>
-            <PageSection>
-              <Line data={chartData} options={options} />
-            </PageSection>
-            <PageSection
-              background="#fff5f5"
-              flexDir="column"
-            >
-              <Text as="h2" p={2} fontSize="3xl" color="red.800">Cases to tests</Text>
-              <Flex overflow="auto">
-                {data.slice(0, 31).map((item) => {
-                  
-                  return (
-                    <Flex width="200px" direction="column" key={item.date} flexShrink={0} boxShadow="0 0 0.1rem 0.1rem rgba(0, 0, 0, 0.2)" m="2" p="2" paddingY="4" backgroundColor="white" borderRadius="0.2rem">
-                      <TextRow>{item.date}</TextRow>
-                      <TextRow><p>Cases:</p><p>{item.newCases.toLocaleString()}</p></TextRow>
-                      <TextRow><p>Tests:</p><p>{item.newTests.toLocaleString()}</p></TextRow>
-                      <TextRow>{item.percentage}%</TextRow>
-                    </Flex>
-                  )
-                })}
-              </Flex>
-            </PageSection>
-          </>
-        )}
-     </PageLayout>
+      {error ? (
+        <ErrorText>{error}</ErrorText>
+      ) : (
+        <>
+          <PageSection background="#fff5f5" flexDir="column">
+            <Text as="h2" p={2} fontSize="2xl" color="red.800">
+              What is the current percentage of Cases to Tests?
+            </Text>
+            <Divider />
+            <Text fontSize="0.8rem" padding="0.2rem">
+              Boom
+            </Text>
+          </PageSection>
+          <PageSection>
+            <Line data={chartData} options={options} />
+          </PageSection>
+          <PageSection background="#fff5f5" flexDir="column">
+            <Text as="h2" p={2} fontSize="2xl" color="red.800">
+              Cases to tests
+            </Text>
+
+            <Flex overflow="auto">
+              {data.slice(0, 31).map((item) => {
+                return (
+                  <Flex
+                    width="200px"
+                    direction="column"
+                    key={item.date}
+                    flexShrink={0}
+                    boxShadow="0 0 0.1rem 0.1rem rgba(0, 0, 0, 0.2)"
+                    m="2"
+                    p="2"
+                    paddingY="4"
+                    backgroundColor="white"
+                    borderRadius="0.2rem"
+                  >
+                    <TextRow>{item.date}</TextRow>
+                    <TextRow>
+                      <p>Cases:</p>
+                      <p>{item.newCases.toLocaleString()}</p>
+                    </TextRow>
+                    <TextRow>
+                      <p>Tests:</p>
+                      <p>{item.newTests.toLocaleString()}</p>
+                    </TextRow>
+                    <TextRow>{item.percentage}%</TextRow>
+                  </Flex>
+                )
+              })}
+            </Flex>
+          </PageSection>
+        </>
+      )}
+    </PageLayout>
   )
 }
 

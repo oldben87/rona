@@ -13,20 +13,18 @@ const Changes = ({ overview, nation }) => {
     error = `Error: ${overview.error} ${nation.error}`
   }
   return (
-        <PageLayout tabTitle="COVID-19 UK NewPage" headerTitle="Test Page">
-        {error ? (
-          <ErrorText error={error} />
-        ) : (
-          <>
-            <PageSection>
-              <Flex direction="row">
-                <Everything item={overview[4]} title="Overview" />
-                <Everything item={nation[4]} title="Nation" />
-              </Flex>
-            </PageSection>
-          </>
-        )}
-      </PageLayout>
+      <PageLayout tabTitle="COVID-19 UK NewPage" headerTitle="Test Page">
+      {error ? (
+        <ErrorText error={error} />
+      ) : (
+          <PageSection>
+            <Flex direction="row">
+              <Everything item={overview[4]} title="Overview" />
+              <Everything item={nation[4]} title="Nation" />
+            </Flex>
+          </PageSection>
+      )}
+    </PageLayout>
   )
 }
 

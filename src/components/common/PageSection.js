@@ -1,7 +1,11 @@
 import React from "react"
 import styled from "styled-components"
 
-export const PageSection = ({ children, background, justify="space-evenly" }) => (
+export const PageSection = ({
+  children,
+  background,
+  justify = "space-evenly",
+}) => (
   <Section
     style={{
       backgroundColor: background,

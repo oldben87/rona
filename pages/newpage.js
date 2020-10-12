@@ -1,12 +1,8 @@
-import Head from "next/head"
 import React from "react"
 import { Flex } from "@chakra-ui/core"
-import styles from "../styles/Home.module.css"
 import {
-  PageHeader,
-  PageWrap,
+  PageLayout,
   PageSection,
-  PageFooter,
   ErrorText,
 } from "../src/components/common"
 import Everything from "../src/components/Everything"
@@ -17,13 +13,7 @@ const Changes = ({ overview, nation }) => {
     error = `Error: ${overview.error} ${nation.error}`
   }
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>COVID-19 UK NewPage</title>
-        <link rel="icon" href="/assets/rona2.png" />
-      </Head>
-      <PageHeader name="Test Page" />
-      <PageWrap>
+        <PageLayout tabTitle="COVID-19 UK NewPage" headerTitle="Test Page">
         {error ? (
           <ErrorText error={error} />
         ) : (
@@ -36,9 +26,7 @@ const Changes = ({ overview, nation }) => {
             </PageSection>
           </>
         )}
-      </PageWrap>
-      <PageFooter />
-    </div>
+      </PageLayout>
   )
 }
 

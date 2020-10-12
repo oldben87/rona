@@ -1,16 +1,12 @@
 import React from "react"
-import Head from "next/head"
 import { Flex, Text } from "@chakra-ui/core"
 import { Line } from "react-chartjs-2"
 import moment from "moment"
-import styles from "../styles/Home.module.css"
 import {
-  PageHeader,
-  PageWrap,
   PageSection,
-  PageFooter,
   ErrorText,
-  TextRow
+  TextRow,
+  PageLayout
 } from "../src/components/common"
 
 export default function casestotests({ data }) {
@@ -77,13 +73,7 @@ export default function casestotests({ data }) {
   }
 
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>COVID-19 UK Case %</title>
-        <link rel="icon" href="/assets/rona2.png" />
-      </Head>
-      <PageHeader name="Questions about COVID" />
-      <PageWrap>
+    <PageLayout tabTitle="Cases to Tests" headerTitle="Cases vs Tests">
         {error ? (
           <ErrorText>{error}</ErrorText>
         ) : (
@@ -97,7 +87,7 @@ export default function casestotests({ data }) {
             >
               <Text as="h2" p={2} fontSize="3xl" color="red.800">Cases to tests</Text>
               <Flex overflow="auto">
-                {data.slice(0, 90).map((item) => {
+                {data.slice(0, 31).map((item) => {
                   
                   return (
                     <Flex width="200px" direction="column" key={item.date} flexShrink={0} boxShadow="0 0 0.1rem 0.1rem rgba(0, 0, 0, 0.2)" m="2" p="2" paddingY="4" backgroundColor="white" borderRadius="0.2rem">
@@ -112,9 +102,7 @@ export default function casestotests({ data }) {
             </PageSection>
           </>
         )}
-      </PageWrap>
-      <PageFooter />
-    </div>
+     </PageLayout>
   )
 }
 

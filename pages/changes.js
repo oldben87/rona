@@ -1,13 +1,9 @@
-import Head from "next/head"
 import React from "react"
 import fetch from "isomorphic-unfetch"
 import {Flex, Text} from '@chakra-ui/core'
-import styles from "../styles/Home.module.css"
 import {
-  PageHeader,
-  PageWrap,
+  PageLayout,
   PageSection,
-  PageFooter,
   ErrorText,
 } from "../src/components/common"
 import DayStats from "../src/components/DayStats"
@@ -17,13 +13,7 @@ import PercentageCompareChart from "../src/components/PercentageCompareChart"
 const Changes = ({ data }) => {
   const { error } = data
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>COVID-19 UK Questions</title>
-        <link rel="icon" href="/assets/rona2.png" />
-      </Head>
-      <PageHeader name={page_header_name} />
-      <PageWrap>
+        <PageLayout tabTitle="COVID-19 UK Questions" headerTitle={page_header_name}>
         {error ? (
           <ErrorText error={error} />
         ) : (
@@ -50,9 +40,7 @@ const Changes = ({ data }) => {
             </PageSection>
           </>
         )}
-      </PageWrap>
-      <PageFooter />
-    </div>
+     </PageLayout>
   )
 }
 

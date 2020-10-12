@@ -1,9 +1,10 @@
 import Head from "next/head"
 import React from "react"
 
-import { Flex, Text, Divider, Link } from "@chakra-ui/core"
+import { Flex, Text, Link } from "@chakra-ui/core"
 import styles from "../styles/Home.module.css"
 import {
+  PageLayout,
   PageHeader,
   PageWrap,
   PageSection,
@@ -12,13 +13,7 @@ import {
 
 export default function about() {
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>COVID-19 UK Figures</title>
-        <link rel="icon" href="/assets/rona2.png" />
-      </Head>
-      <PageHeader name="About Our Mission" />
-      <PageWrap>
+        <PageLayout tabTitle="COVID-19 UK About" headerTitle="About Our Mission">
         <PageSection>
           <Flex
             style={{
@@ -76,8 +71,6 @@ export default function about() {
             </Link>
           </Flex>
         </PageSection>
-      </PageWrap>
-      <PageFooter />
-    </div>
+        </PageLayout>
   )
 }

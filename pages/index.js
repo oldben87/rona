@@ -1,11 +1,7 @@
-import Head from "next/head"
 import React from "react"
 import fetch from "isomorphic-unfetch"
-import styles from "../styles/Home.module.css"
 import {
-  PageHeader,
-  PageWrap,
-  PageFooter,
+  PageLayout,
   ErrorText,
 } from "../src/components/common"
 import ChartSection from "../src/components/Dashboard/ChartSection"
@@ -15,13 +11,7 @@ const Home = ({ data }) => {
 
   const dates = !data.error ? data.map((item) => item.date) : null
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>COVID-19 UK Stats</title>
-        <link rel="icon" href="/assets/rona2.png" />
-      </Head>
-      <PageHeader name="Covid-19 Stats" />
-      <PageWrap>
+    <PageLayout tabTitle="COVID-19 UK Stats" headerTitle="COVID-19 Stats">
         {error ? (
           <ErrorText error={error} />
         ) : (
@@ -53,7 +43,7 @@ const Home = ({ data }) => {
               baseLine={data.map((item) => item.deathSevenDay)}
               baseLineTitle={"7 Day Average"}
               dates={dates}
-              background="#fff5f5"
+              background="⁴"
             />
             <ChartSection
               chartTitle="Hospitals And Healthcare"
@@ -68,9 +58,7 @@ const Home = ({ data }) => {
             />
           </>
         )}
-      </PageWrap>
-      <PageFooter />
-    </div>
+      </PageLayout>
   )
 }
 

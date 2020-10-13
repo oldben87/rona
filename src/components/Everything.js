@@ -1,14 +1,21 @@
-import React from "react"
+import React from 'react'
+import { TextRow } from './common'
 
 export default function Everything({ item, title }) {
   return (
     <div>
       <div>
-        <p>
-          {item.date}: "{title}"
-        </p>
-        <p>{item.newCases}: "newCasesByPublishDate"</p>
-        <p>{item.newTests}: "newCasesByPublishDate"</p>
+        <TextRow>
+          <p>{item.date}</p>
+          <p>:</p>
+          <p>"{title}"</p>
+        </TextRow>
+        <TextRow>
+          <p>{item.newCases}</p>
+          <p>:</p>
+          <p>"newCasesByPublishDate"</p>
+        </TextRow>
+        <p>{item.newTests}: "newTestsByPublishDate"</p>
         <p>{item.newDeaths}: "newDeaths28DaysByDeathDate"</p>
         <p>{item.newAdmissions}: "newAdmissions"</p>
         <p>{item.cumAdmissions}: "cumAdmissions"</p>

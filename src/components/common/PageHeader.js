@@ -1,7 +1,7 @@
-import React from "react"
-import { Flex, Heading } from "@chakra-ui/core"
-import Link from "next/link"
-import styled from "styled-components"
+import React from 'react'
+import { Flex, Heading } from '@chakra-ui/core'
+import Link from 'next/link'
+import styled from 'styled-components'
 
 export function PageHeader({ name }) {
   return (
@@ -11,7 +11,7 @@ export function PageHeader({ name }) {
         p="0.5rem"
         paddingLeft="1rem"
         color="red.800"
-        maxWidth="1000px"
+        maxWidth="1100px"
         m="0 auto"
       >
         {name}

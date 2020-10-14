@@ -6,15 +6,7 @@ import styled from 'styled-components'
 export function PageHeader({ name }) {
   return (
     <Header>
-      <Heading
-        boxSizing="border-box"
-        as="h1"
-        p="0.5rem"
-        paddingLeft="1rem"
-        color="red.800"
-        maxWidth="1100px"
-        m="0 auto"
-      >
+      <Heading as="h1" p="0.5rem" paddingLeft="1rem" color="red.800" m="0 auto">
         {name}
       </Heading>
       <Flex justify="center">
@@ -38,6 +30,7 @@ export function PageHeader({ name }) {
 const Header = styled.header`
   padding: 0.5rem;
   width: 100%;
+  maxWidth="1100px"
   flex-direction: column;
   justify-content: center;
   box-sizing: border-box;

@@ -6,10 +6,23 @@ import styled from 'styled-components'
 export function PageHeader({ name }) {
   return (
     <Header>
-      <Heading as="h1" p="0.5rem" paddingLeft="1rem" color="red.800" m="0 auto">
+      <Heading
+        as="h1"
+        p="0.5rem"
+        paddingLeft="1rem"
+        color="red.800"
+        m="0 auto"
+        maxWidth="1100px"
+        boxSizing="border-box"
+      >
         {name}
       </Heading>
-      <Flex justify="center">
+      <Flex
+        justify="center"
+        maxWidth="1100px"
+        boxSizing="border-box"
+        m="0 auto"
+      >
         <Link href="/" passHref>
           <NavLink>Home</NavLink>
         </Link>
@@ -30,10 +43,10 @@ export function PageHeader({ name }) {
 const Header = styled.header`
   padding: 0.5rem;
   width: 100%;
-  max-width="1100px"
   flex-direction: column;
   justify-content: center;
   box-sizing: border-box;
+  align-items: center;
 `
 const NavLink = styled.a`
   padding: 0.1rem 0.5rem;

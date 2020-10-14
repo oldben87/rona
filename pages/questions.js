@@ -1,6 +1,6 @@
-import React from "react"
-import Link from "next/link"
-import { PageLayout, PageSection } from "../src/components/common"
+import React from 'react'
+import Link from 'next/link'
+import { PageLayout, PageSection } from '../src/components/common'
 
 export default function questions() {
   return (
@@ -19,6 +19,14 @@ export default function questions() {
       <PageSection justify="start">
         <Link href="/casestotests" passHref>
           <a>What is the current percentage of cases to tests?</a>
+        </Link>
+      </PageSection>
+      <PageSection background="#fff5f5" justify="start">
+        <Link href="/herdImmunity" passHref>
+          <a>
+            What would be the impact to the UK if we followed a policy of herd
+            immunity?
+          </a>
         </Link>
       </PageSection>
     </PageLayout>

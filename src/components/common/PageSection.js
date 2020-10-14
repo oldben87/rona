@@ -1,10 +1,10 @@
-import React from "react"
-import styled from "styled-components"
+import React from 'react'
+import styled from 'styled-components'
 
 export const PageSection = ({
   children,
   background,
-  justify = "space-evenly",
+  justify = 'space-evenly',
 }) => (
   <Section
     style={{
@@ -18,7 +18,7 @@ export const PageSection = ({
 const Section = styled.section`
   display: flex;
   flex-grow: 1;
-  padding: 1rem;
+  padding: 2rem;
   box-sizing: border-box;
   margin: 0 1rem;
   flex-wrap: wrap;

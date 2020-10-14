@@ -1,7 +1,7 @@
-import React from "react"
-import { Flex } from "@chakra-ui/core"
+import React from 'react'
+import { Flex } from '@chakra-ui/core'
 
-export function TextRow({ children }) {
+export const TextRow = ({ children }) => {
   return (
     <Flex
       flexDirection="row"

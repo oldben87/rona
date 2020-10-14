@@ -7,6 +7,7 @@ export function PageHeader({ name }) {
   return (
     <Header>
       <Heading
+        boxSizing="border-box"
         as="h1"
         p="0.5rem"
         paddingLeft="1rem"

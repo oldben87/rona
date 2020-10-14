@@ -26,7 +26,10 @@ const herdImmunity = ({ data }) => {
   const popDead = ((67886011 / 100) * percent).toFixed(0)
 
   return (
-    <PageLayout tabTitle="COVID-19 UK NewPage" headerTitle="Test Page">
+    <PageLayout
+      tabTitle="COVID-19 UK Herd Immunity"
+      headerTitle="Herd Immunity"
+    >
       <PageSection background="#fff5f5">
         <Flex
           flexGrow="1"

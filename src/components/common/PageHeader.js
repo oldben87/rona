@@ -30,7 +30,7 @@ export function PageHeader({ name }) {
 const Header = styled.header`
   padding: 0.5rem;
   width: 100%;
-  maxWidth="1100px"
+  max-width="1100px"
   flex-direction: column;
   justify-content: center;
   box-sizing: border-box;

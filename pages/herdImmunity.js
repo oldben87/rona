@@ -7,6 +7,7 @@ import {
   TextRow,
   TitleText,
 } from '../src/components/common'
+import SimpleTable from '../src/components/SimpleTable'
 
 const herdImmunity = ({ data }) => {
   const { error } = data
@@ -116,100 +117,11 @@ const herdImmunity = ({ data }) => {
             without a vaccine?
           </TitleText>
         </Flex>
-        <Flex
-          flexGrow="1"
-          w={['100%', '100%', '100%', '50%']}
-          direction={['column', 'column', 'column', 'row']}
-          justify="center"
-        >
-          <Grid templateColumns="repeat(2, 1fr)" gap={3}>
-            <Text
-              textAlign="center"
-              verticalAlign="middle"
-              bg="red.100"
-              p="5px"
-            >
-              Herd Percentage
-            </Text>
-            <Text
-              textAlign="center"
-              verticalAlign="middle"
-              bg="red.100"
-              p="5px"
-            >
-              People Dead
-            </Text>
-
-            <Text
-              textAlign="center"
-              verticalAlign="middle"
-              bg="red.100"
-              p="5px"
-            >
-              {' '}
-              25%
-            </Text>
-            <Text
-              textAlign="center"
-              verticalAlign="middle"
-              bg="red.100"
-              p="5px"
-            >
-              {Math.floor(popDead * 0.25).toLocaleString()}
-            </Text>
-            <Text
-              textAlign="center"
-              verticalAlign="middle"
-              bg="red.100"
-              p="5px"
-            >
-              {' '}
-              43%
-            </Text>
-            <Text
-              textAlign="center"
-              verticalAlign="middle"
-              bg="red.100"
-              p="5px"
-            >
-              {Math.floor(popDead * 0.43).toLocaleString()}
-            </Text>
-            <Text
-              textAlign="center"
-              verticalAlign="middle"
-              bg="red.100"
-              p="5px"
-            >
-              {' '}
-              60%
-            </Text>
-            <Text
-              textAlign="center"
-              verticalAlign="middle"
-              bg="red.100"
-              p="5px"
-            >
-              {Math.floor(popDead * 0.6).toLocaleString()}
-            </Text>
-            <Text
-              textAlign="center"
-              verticalAlign="middle"
-              bg="red.100"
-              p="5px"
-            >
-              {' '}
-              90%
-            </Text>
-            <Text
-              textAlign="center"
-              verticalAlign="middle"
-              bg="red.100"
-              p="5px"
-            >
-              {Math.floor(popDead * 0.9).toLocaleString()}
-            </Text>
-          </Grid>
-        </Flex>
+        <SimpleTable
+          colTitle1="Herd Percentage"
+          colTitle2="People Dead"
+          maxNum={popDead}
+        />
       </PageSection>
       <PageSection direction="column">
         <Flex
@@ -248,100 +160,11 @@ const herdImmunity = ({ data }) => {
             without a vaccine?
           </TitleText>
         </Flex>
-        <Flex
-          flexGrow="1"
-          w={['100%', '100%', '100%', '50%']}
-          direction={['column', 'column', 'column', 'row']}
-          justify="center"
-        >
-          <Grid templateColumns="repeat(2, 1fr)" gap={3}>
-            <Text
-              textAlign="center"
-              verticalAlign="middle"
-              bg="red.100"
-              p="5px"
-            >
-              Herd Percentage
-            </Text>
-            <Text
-              textAlign="center"
-              verticalAlign="middle"
-              bg="red.100"
-              p="5px"
-            >
-              Long Covid No#
-            </Text>
-
-            <Text
-              textAlign="center"
-              verticalAlign="middle"
-              bg="red.100"
-              p="5px"
-            >
-              {' '}
-              25%
-            </Text>
-            <Text
-              textAlign="center"
-              verticalAlign="middle"
-              bg="red.100"
-              p="5px"
-            >
-              {Math.floor(longCovid * 0.25).toLocaleString()}
-            </Text>
-            <Text
-              textAlign="center"
-              verticalAlign="middle"
-              bg="red.100"
-              p="5px"
-            >
-              {' '}
-              43%
-            </Text>
-            <Text
-              textAlign="center"
-              verticalAlign="middle"
-              bg="red.100"
-              p="5px"
-            >
-              {Math.floor(longCovid * 0.43).toLocaleString()}
-            </Text>
-            <Text
-              textAlign="center"
-              verticalAlign="middle"
-              bg="red.100"
-              p="5px"
-            >
-              {' '}
-              60%
-            </Text>
-            <Text
-              textAlign="center"
-              verticalAlign="middle"
-              bg="red.100"
-              p="5px"
-            >
-              {Math.floor(longCovid * 0.6).toLocaleString()}
-            </Text>
-            <Text
-              textAlign="center"
-              verticalAlign="middle"
-              bg="red.100"
-              p="5px"
-            >
-              {' '}
-              90%
-            </Text>
-            <Text
-              textAlign="center"
-              verticalAlign="middle"
-              bg="red.100"
-              p="5px"
-            >
-              {Math.floor(longCovid * 0.9).toLocaleString()}
-            </Text>
-          </Grid>
-        </Flex>
+        <SimpleTable
+          colTitle1="Herd Percentage"
+          colTitle2="Long Covid No#"
+          maxNum={longCovid}
+        />
       </PageSection>
       <PageSection direction="column">
         <Flex
@@ -354,100 +177,11 @@ const herdImmunity = ({ data }) => {
             affected by a herd immunity policy?
           </TitleText>
         </Flex>
-        <Flex
-          flexGrow="1"
-          w={['100%', '100%', '100%', '50%']}
-          direction={['column', 'column', 'column', 'row']}
-          justify="center"
-        >
-          <Grid templateColumns="repeat(2, 1fr)" gap={3}>
-            <Text
-              textAlign="center"
-              verticalAlign="middle"
-              bg="red.100"
-              p="5px"
-            >
-              Herd Percentage
-            </Text>
-            <Text
-              textAlign="center"
-              verticalAlign="middle"
-              bg="red.100"
-              p="5px"
-            >
-              Total Affected
-            </Text>
-
-            <Text
-              textAlign="center"
-              verticalAlign="middle"
-              bg="red.100"
-              p="5px"
-            >
-              {' '}
-              25%
-            </Text>
-            <Text
-              textAlign="center"
-              verticalAlign="middle"
-              bg="red.100"
-              p="5px"
-            >
-              {Math.floor(total * 0.25).toLocaleString()}
-            </Text>
-            <Text
-              textAlign="center"
-              verticalAlign="middle"
-              bg="red.100"
-              p="5px"
-            >
-              {' '}
-              43%
-            </Text>
-            <Text
-              textAlign="center"
-              verticalAlign="middle"
-              bg="red.100"
-              p="5px"
-            >
-              {Math.floor(total * 0.43).toLocaleString()}
-            </Text>
-            <Text
-              textAlign="center"
-              verticalAlign="middle"
-              bg="red.100"
-              p="5px"
-            >
-              {' '}
-              60%
-            </Text>
-            <Text
-              textAlign="center"
-              verticalAlign="middle"
-              bg="red.100"
-              p="5px"
-            >
-              {Math.floor(total * 0.6).toLocaleString()}
-            </Text>
-            <Text
-              textAlign="center"
-              verticalAlign="middle"
-              bg="red.100"
-              p="5px"
-            >
-              {' '}
-              90%
-            </Text>
-            <Text
-              textAlign="center"
-              verticalAlign="middle"
-              bg="red.100"
-              p="5px"
-            >
-              {Math.floor(total * 0.9).toLocaleString()}
-            </Text>
-          </Grid>
-        </Flex>
+        <SimpleTable
+          colTitle1="Herd Percentage"
+          colTitle2="Total Affected"
+          maxNum={total}
+        />
       </PageSection>
     </PageLayout>
   )

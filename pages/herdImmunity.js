@@ -17,13 +17,19 @@ const herdImmunity = ({ data }) => {
       </PageLayout>
     )
   }
-
+  const population = 67886011
   const lastDay = data[0]
   const death =
     lastDay.cumDeaths28DaysByPublishDate ||
     data.map(deaths).reduce((a, b) => a + b)
   const percent = ((death / lastDay.cumCasesByPublishDate) * 100).toFixed(2)
-  const popDead = ((67886011 / 100) * percent).toFixed(0)
+  const popDead = ((population / 100) * percent).toFixed(0)
+  const admissionsArray = data.map((item) => item.cumAdmissions)
+  const hospCases = admissionsArray.find((val) => val > 0)
+  const mildCases = lastDay.cumCasesByPublishDate - hospCases
+  const hospPercent = mildCases / lastDay.cumCasesByPublishDate
+  const longCovid = (hospPercent * population) / 10
+  const total = longCovid + parseInt(popDead)
 
   return (
     <PageLayout
@@ -185,6 +191,261 @@ const herdImmunity = ({ data }) => {
             >
               {Math.floor(popDead * 0.6).toLocaleString()}
             </Text>
+            <Text
+              textAlign="center"
+              verticalAlign="middle"
+              bg="red.100"
+              p="5px"
+            >
+              {' '}
+              90%
+            </Text>
+            <Text
+              textAlign="center"
+              verticalAlign="middle"
+              bg="red.100"
+              p="5px"
+            >
+              {Math.floor(popDead * 0.9).toLocaleString()}
+            </Text>
+          </Grid>
+        </Flex>
+      </PageSection>
+      <PageSection direction="column">
+        <Flex
+          flexGrow="1"
+          w={['100%', '100%', '100%', '50%']}
+          direction={['column', 'column', 'column', 'row']}
+        >
+          <TitleText size="2xl">
+            How many would suffer with 'Long-Covid' symptoms if we followed a
+            Herd Immunity policy?
+          </TitleText>
+          <TextRow>
+            <Text>
+              There is evidence to suggest that 10% of mild cases of Covid, end
+              up developing long term debilitating symptoms of the virus. To
+              find this number of people, we can take the cases of covid{' '}
+              {lastDay.cumCasesByPublishDate.toLocaleString()}, and remove the
+              number of people who have been admitted to hospital{' '}
+              {hospCases.toLocaleString()}. This gives us{' '}
+              {mildCases.toLocaleString()} mild cases. Which would indicate that{' '}
+              {Math.floor(mildCases / 10).toLocaleString()} people will be
+              suffering from Long Covid. We can calculate that this is{' '}
+              {(hospPercent * 10).toFixed(2)}% of cases.
+            </Text>
+          </TextRow>
+        </Flex>
+      </PageSection>
+      <PageSection background="#fff5f5" direction="column">
+        <Flex
+          flexGrow="1"
+          w={['100%', '100%', '100%', '50%']}
+          direction={['column', 'column', 'column', 'row']}
+        >
+          <TitleText size="2xl">
+            How many deaths could there be if we reach the immunity number
+            without a vaccine?
+          </TitleText>
+        </Flex>
+        <Flex
+          flexGrow="1"
+          w={['100%', '100%', '100%', '50%']}
+          direction={['column', 'column', 'column', 'row']}
+          justify="center"
+        >
+          <Grid templateColumns="repeat(2, 1fr)" gap={3}>
+            <Text
+              textAlign="center"
+              verticalAlign="middle"
+              bg="red.100"
+              p="5px"
+            >
+              Herd Percentage
+            </Text>
+            <Text
+              textAlign="center"
+              verticalAlign="middle"
+              bg="red.100"
+              p="5px"
+            >
+              Long Covid No#
+            </Text>
+
+            <Text
+              textAlign="center"
+              verticalAlign="middle"
+              bg="red.100"
+              p="5px"
+            >
+              {' '}
+              25%
+            </Text>
+            <Text
+              textAlign="center"
+              verticalAlign="middle"
+              bg="red.100"
+              p="5px"
+            >
+              {Math.floor(longCovid * 0.25).toLocaleString()}
+            </Text>
+            <Text
+              textAlign="center"
+              verticalAlign="middle"
+              bg="red.100"
+              p="5px"
+            >
+              {' '}
+              43%
+            </Text>
+            <Text
+              textAlign="center"
+              verticalAlign="middle"
+              bg="red.100"
+              p="5px"
+            >
+              {Math.floor(longCovid * 0.43).toLocaleString()}
+            </Text>
+            <Text
+              textAlign="center"
+              verticalAlign="middle"
+              bg="red.100"
+              p="5px"
+            >
+              {' '}
+              60%
+            </Text>
+            <Text
+              textAlign="center"
+              verticalAlign="middle"
+              bg="red.100"
+              p="5px"
+            >
+              {Math.floor(longCovid * 0.6).toLocaleString()}
+            </Text>
+            <Text
+              textAlign="center"
+              verticalAlign="middle"
+              bg="red.100"
+              p="5px"
+            >
+              {' '}
+              90%
+            </Text>
+            <Text
+              textAlign="center"
+              verticalAlign="middle"
+              bg="red.100"
+              p="5px"
+            >
+              {Math.floor(longCovid * 0.9).toLocaleString()}
+            </Text>
+          </Grid>
+        </Flex>
+      </PageSection>
+      <PageSection direction="column">
+        <Flex
+          flexGrow="1"
+          w={['100%', '100%', '100%', '50%']}
+          direction={['column', 'column', 'column', 'row']}
+        >
+          <TitleText size="2xl">
+            What would be the total number of people either killed or severly
+            affected by a herd immunity policy?
+          </TitleText>
+        </Flex>
+        <Flex
+          flexGrow="1"
+          w={['100%', '100%', '100%', '50%']}
+          direction={['column', 'column', 'column', 'row']}
+          justify="center"
+        >
+          <Grid templateColumns="repeat(2, 1fr)" gap={3}>
+            <Text
+              textAlign="center"
+              verticalAlign="middle"
+              bg="red.100"
+              p="5px"
+            >
+              Herd Percentage
+            </Text>
+            <Text
+              textAlign="center"
+              verticalAlign="middle"
+              bg="red.100"
+              p="5px"
+            >
+              Total Affected
+            </Text>
+
+            <Text
+              textAlign="center"
+              verticalAlign="middle"
+              bg="red.100"
+              p="5px"
+            >
+              {' '}
+              25%
+            </Text>
+            <Text
+              textAlign="center"
+              verticalAlign="middle"
+              bg="red.100"
+              p="5px"
+            >
+              {Math.floor(total * 0.25).toLocaleString()}
+            </Text>
+            <Text
+              textAlign="center"
+              verticalAlign="middle"
+              bg="red.100"
+              p="5px"
+            >
+              {' '}
+              43%
+            </Text>
+            <Text
+              textAlign="center"
+              verticalAlign="middle"
+              bg="red.100"
+              p="5px"
+            >
+              {Math.floor(total * 0.43).toLocaleString()}
+            </Text>
+            <Text
+              textAlign="center"
+              verticalAlign="middle"
+              bg="red.100"
+              p="5px"
+            >
+              {' '}
+              60%
+            </Text>
+            <Text
+              textAlign="center"
+              verticalAlign="middle"
+              bg="red.100"
+              p="5px"
+            >
+              {Math.floor(total * 0.6).toLocaleString()}
+            </Text>
+            <Text
+              textAlign="center"
+              verticalAlign="middle"
+              bg="red.100"
+              p="5px"
+            >
+              {' '}
+              90%
+            </Text>
+            <Text
+              textAlign="center"
+              verticalAlign="middle"
+              bg="red.100"
+              p="5px"
+            >
+              {Math.floor(total * 0.9).toLocaleString()}
+            </Text>
           </Grid>
         </Flex>
       </PageSection>
@@ -203,9 +464,9 @@ export async function getServerSideProps() {
   const structure = {
     date: 'date',
     cumCasesByPublishDate: 'cumCasesByPublishDate',
-    cumDeaths28DaysByDeathDate: 'cumDeaths28DaysByDeathDate',
     newDeaths: 'newDeaths28DaysByPublishDate',
     cumDeaths28DaysByPublishDate: 'cumDeaths28DaysByPublishDate',
+    cumAdmissions: 'cumAdmissions',
   }
 
   const uriOverview =

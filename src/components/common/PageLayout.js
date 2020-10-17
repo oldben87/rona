@@ -1,11 +1,17 @@
-import Head from "next/head"
-import React from "react"
-import styles from "../../../styles/Home.module.css"
-import { PageHeader, PageWrap, PageFooter } from "../common"
+import Head from 'next/head'
+import React from 'react'
+import { Flex } from '@chakra-ui/core'
+import { PageHeader, PageWrap, PageFooter } from '../common'
 
 export const PageLayout = ({ children, tabTitle, headerTitle }) => {
   return (
-    <div className={styles.container}>
+    <Flex
+      min-height={'100vh'}
+      w="100%"
+      direction="column"
+      justify="flex-start"
+      align="flex-start"
+    >
       <Head>
         <title>{tabTitle}</title>
         <link rel="icon" href="/assets/rona2.png" />
@@ -13,6 +19,6 @@ export const PageLayout = ({ children, tabTitle, headerTitle }) => {
       <PageHeader name={headerTitle} />
       <PageWrap>{children}</PageWrap>
       <PageFooter />
-    </div>
+    </Flex>
   )
 }

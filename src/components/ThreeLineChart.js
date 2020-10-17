@@ -1,5 +1,5 @@
 import React from 'react'
-import { Flex } from '@chakra-ui/core'
+import { Flex, Box } from '@chakra-ui/core'
 import { Line } from 'react-chartjs-2'
 import moment from 'moment'
 
@@ -92,7 +92,7 @@ export default function MixedChart({
   const options = {
     responsive: true,
     legend: {
-      position: 'top',
+      display: false,
     },
     scales: {
       yAxes: [
@@ -124,10 +124,42 @@ export default function MixedChart({
     <Flex
       width={['100%', '100%', '70%', '70%']}
       m="1rem auto"
-      flexDir="row"
+      flexDir="column"
       justify="center"
       maxWidth="800px"
     >
+      <Flex justify="center">
+        <Flex fontSize="0.8rem" p="0.5rem" justify="center" alignItems="center">
+          <Box
+            h={3}
+            w={6}
+            border={'1px solid rgb(150, 11, 2)'}
+            backgroundColor={'rgba(150, 11, 2,0.3)'}
+            marginRight={2}
+          ></Box>
+          {line1Title}
+        </Flex>
+        <Flex fontSize="0.8rem" p="0.5rem" justify="center" alignItems="center">
+          <Box
+            h={3}
+            w={6}
+            border={'1px solid rgb(200, 5, 11)'}
+            backgroundColor={'rgba(200, 5, 11,0.3)'}
+            marginRight={2}
+          ></Box>
+          {line2Title}
+        </Flex>
+        <Flex fontSize="0.8rem" p="0.5rem" justify="center" alignItems="center">
+          <Box
+            h={3}
+            w={6}
+            border={'1px solid rgb(80, 5, 11)'}
+            backgroundColor={'rgba(80, 5, 11,0.3)'}
+            marginRight={2}
+          ></Box>
+          {thirdLineTitle}
+        </Flex>
+      </Flex>
       <Line data={chartData} options={options} />
     </Flex>
   )

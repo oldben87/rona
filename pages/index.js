@@ -15,40 +15,40 @@ const Home = ({ data }) => {
         <>
           <ChartSection
             chartTitle="Daily Case Numbers"
-            main={data.map((item) => item.newCases)}
-            mainTitle={'New Cases'}
+            line1={data.map((item) => item.newCases)}
+            line1Title={'New Cases'}
             yTitle={'Cases'}
-            baseLine={data.map((item) => item.caseSevenDay)}
-            baseLineTitle={'7 Day Average'}
+            line2={data.map((item) => item.caseSevenDay)}
+            line2Title={'7 Day Average'}
             dates={dates}
             background="#fff5f5"
           />
           <ChartSection
             chartTitle="Daily Testing Numbers"
-            main={data.map((item) => item.newTests)}
-            mainTitle={'New Tests'}
+            line1={data.map((item) => item.newTests)}
+            line1Title={'New Tests'}
             yTitle={'Tests'}
-            baseLine={data.map((item) => item.testSevenDay)}
-            baseLineTitle={'7 Day Average'}
+            line2={data.map((item) => item.testSevenDay)}
+            line2Title={'7 Day Average'}
             dates={dates}
           />
           <ChartSection
             chartTitle="Covid-19 Death Figures"
-            main={data.map((item) => item.newDeaths)}
-            mainTitle={'New Deaths'}
+            line1={data.map((item) => item.newDeaths)}
+            line1Title={'New Deaths'}
             yTitle={'Deaths'}
-            baseLine={data.map((item) => item.deathSevenDay)}
-            baseLineTitle={'7 Day Average'}
+            line2={data.map((item) => item.deathSevenDay)}
+            line2Title={'7 Day Average'}
             dates={dates}
             background="#fff5f5"
           />
           <ChartSection
             chartTitle="Hospitals And Healthcare"
-            main={data.map((item) => item.newAdmissions)}
-            mainTitle={'New Hospital Admissions'}
+            line1={data.map((item) => item.newAdmissions)}
+            line1Title={'New Hospital Admissions'}
             yTitle={'Patients'}
-            baseLine={data.map((item) => item.covidBeds)}
-            baseLineTitle={'Ventilator Beds'}
+            line2={data.map((item) => item.covidBeds)}
+            line2Title={'Ventilator Beds'}
             thirdLine={data.map((item) => item.hospitalCases)}
             thirdLineTitle="Total In Hospital"
             dates={dates}

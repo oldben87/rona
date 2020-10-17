@@ -1,86 +1,86 @@
-import React from "react"
-import { Flex } from "@chakra-ui/core"
-import { Line } from "react-chartjs-2"
-import moment from "moment"
+import React from 'react'
+import { Flex } from '@chakra-ui/core'
+import { Line } from 'react-chartjs-2'
+import moment from 'moment'
 
 export default function MixedChart({
-  main,
-  mainTitle,
+  line1,
+  line1Title,
   yTitle,
-  baseLine,
-  baseLineTitle,
+  line2,
+  line2Title,
   thirdLine,
   thirdLineTitle,
   dates,
   xTitle,
 }) {
   const chartData = {
-    labels: dates.map((item) => moment(item, "DD/MM/YYYY")).reverse(),
+    labels: dates.map((item) => moment(item, 'DD/MM/YYYY')).reverse(),
     datasets: [
       {
-        label: baseLineTitle,
+        label: line2Title,
         fill: true,
-        type: "line",
+        type: 'line',
         lineTension: 0.1,
-        backgroundColor: "rgba(200, 5, 11,0.3)",
-        borderColor: "rgb(200, 5, 11)",
-        borderCapStyle: "butt",
+        backgroundColor: 'rgba(200, 5, 11,0.3)',
+        borderColor: 'rgb(200, 5, 11)',
+        borderCapStyle: 'butt',
         borderDash: [],
         borderWidth: 1,
         borderDashOffset: 0.0,
-        borderJoinStyle: "miter",
-        pointBorderColor: "rgb(200, 5, 11)",
-        pointBackgroundColor: "#fff",
+        borderJoinStyle: 'miter',
+        pointBorderColor: 'rgb(200, 5, 11)',
+        pointBackgroundColor: '#fff',
         pointBorderWidth: 1,
         pointHoverRadius: 5,
-        pointHoverBackgroundColor: "rgb(200, 5, 11)",
-        pointHoverBorderColor: "rgb(220,220,220)",
+        pointHoverBackgroundColor: 'rgb(200, 5, 11)',
+        pointHoverBorderColor: 'rgb(220,220,220)',
         pointHoverBorderWidth: 2,
         pointRadius: 0,
         pointHitRadius: 10,
-        data: baseLine.reverse(),
+        data: line2.reverse(),
       },
       {
-        label: mainTitle,
-        type: "line",
+        label: line1Title,
+        type: 'line',
         fill: true,
         lineTension: 0.1,
-        backgroundColor: "rgba(150, 5, 11, 0.3)",
-        borderColor: "rgb(150, 11, 2)",
-        borderCapStyle: "butt",
+        backgroundColor: 'rgba(150, 5, 11, 0.3)',
+        borderColor: 'rgb(150, 11, 2)',
+        borderCapStyle: 'butt',
         borderDash: [],
         borderWidth: 1,
         borderDashOffset: 0.0,
-        borderJoinStyle: "miter",
-        pointBorderColor: "rgb(150, 5, 11)",
-        pointBackgroundColor: "#fff",
+        borderJoinStyle: 'miter',
+        pointBorderColor: 'rgb(150, 5, 11)',
+        pointBackgroundColor: '#fff',
         pointBorderWidth: 1,
         pointHoverRadius: 5,
-        pointHoverBackgroundColor: "rgb(150, 5, 11)",
-        pointHoverBorderColor: "rgb(220,220,220)",
+        pointHoverBackgroundColor: 'rgb(150, 5, 11)',
+        pointHoverBorderColor: 'rgb(220,220,220)',
         pointHoverBorderWidth: 2,
         pointRadius: 0,
         pointHitRadius: 10,
-        data: main.reverse(),
+        data: line1.reverse(),
       },
       {
         label: thirdLineTitle,
         fill: true,
-        type: "line",
+        type: 'line',
         lineTension: 0.1,
-        backgroundColor: "rgba(80, 5, 11,0.3)",
-        borderColor: "rgb(80, 5, 11)",
-        borderCapStyle: "butt",
+        backgroundColor: 'rgba(80, 5, 11,0.3)',
+        borderColor: 'rgb(80, 5, 11)',
+        borderCapStyle: 'butt',
         borderDash: [],
         borderWidth: 1,
         borderDashOffset: 0.0,
-        borderJoinStyle: "miter",
-        pointBorderColor: "rgb(80, 5, 11)",
-        pointBackgroundColor: "#fff",
+        borderJoinStyle: 'miter',
+        pointBorderColor: 'rgb(80, 5, 11)',
+        pointBackgroundColor: '#fff',
         pointBorderWidth: 1,
         pointHoverRadius: 5,
-        pointHoverBackgroundColor: "rgb(80, 5, 11)",
-        pointHoverBorderColor: "rgb(220,220,220)",
+        pointHoverBackgroundColor: 'rgb(80, 5, 11)',
+        pointHoverBorderColor: 'rgb(220,220,220)',
         pointHoverBorderWidth: 2,
         pointRadius: 0,
         pointHitRadius: 10,
@@ -92,7 +92,7 @@ export default function MixedChart({
   const options = {
     responsive: true,
     legend: {
-      position: "top",
+      position: 'top',
     },
     scales: {
       yAxes: [
@@ -106,14 +106,14 @@ export default function MixedChart({
       xAxes: [
         {
           scaleLabel: {
-            display: true,
+            display: false,
             labelString: xTitle,
           },
-          type: "time",
+          type: 'time',
           time: {
-            unit: "month",
+            unit: 'month',
             displayFormats: {
-              month: "MMM",
+              month: 'MMM',
             },
           },
         },
@@ -122,7 +122,7 @@ export default function MixedChart({
   }
   return (
     <Flex
-      width={["100%", "100%", "70%", "70%"]}
+      width={['100%', '100%', '70%', '70%']}
       m="1rem auto"
       flexDir="row"
       justify="center"

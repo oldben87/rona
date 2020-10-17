@@ -1,6 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
-import { PageLayout, PageSection } from '../src/components/common'
+import { PageLayout, PageSection } from 'components/common'
 
 export default function questions() {
   return (

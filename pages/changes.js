@@ -1,10 +1,10 @@
-import React from "react"
-import fetch from "isomorphic-unfetch"
-import { Flex, Text } from "@chakra-ui/core"
-import { PageLayout, PageSection, ErrorText } from "../src/components/common"
-import DayStats from "../src/components/DayStats"
-import { page_header_name } from "../src/resources/strings"
-import PercentageCompareChart from "../src/components/PercentageCompareChart"
+import React from 'react'
+import fetch from 'isomorphic-unfetch'
+import { Flex, Text } from '@chakra-ui/core'
+import { PageLayout, PageSection, ErrorText } from 'components/common'
+import DayStats from 'components/DayStats'
+import { page_header_name } from 'resources/strings'
+import PercentageCompareChart from 'components/PercentageCompareChart'
 
 const Changes = ({ data }) => {
   const { error } = data
@@ -18,9 +18,9 @@ const Changes = ({ data }) => {
 
           <div
             style={{
-              display: "flex",
-              width: "100%",
-              justifyContent: "center",
+              display: 'flex',
+              width: '100%',
+              justifyContent: 'center',
             }}
           ></div>
           <PageSection background="#fff5f5" flexDir="column">
@@ -43,14 +43,14 @@ export default Changes
 
 export async function getServerSideProps() {
   const headers = new Headers()
-  headers.append("Pragma", "no-cache")
-  headers.append("Cache-Control", "no-store, must-revalidate, no-cache")
-  headers.append("Expires", 0)
+  headers.append('Pragma', 'no-cache')
+  headers.append('Cache-Control', 'no-store, must-revalidate, no-cache')
+  headers.append('Expires', 0)
 
   const uri = `${
-    process.env.NODE_ENV === "production"
-      ? "https://rona-olive.vercel.app"
-      : "http://localhost:3000"
+    process.env.NODE_ENV === 'production'
+      ? 'https://rona-olive.vercel.app'
+      : 'http://localhost:3000'
   }/api/overview`
 
   const res = await fetch(uri, headers)

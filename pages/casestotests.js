@@ -2,12 +2,7 @@ import React, { useState } from 'react'
 import { Divider, Flex, Text, Button, Box } from '@chakra-ui/core'
 import { Line } from 'react-chartjs-2'
 import moment from 'moment'
-import {
-  PageSection,
-  ErrorText,
-  TextRow,
-  PageLayout,
-} from '../src/components/common'
+import { PageSection, ErrorText, TextRow, PageLayout } from 'components/common'
 
 export default function casestotests({ data }) {
   const { error } = data

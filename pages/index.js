@@ -1,7 +1,7 @@
 import React from 'react'
 import fetch from 'isomorphic-unfetch'
-import { PageLayout, ErrorText } from '../src/components/common'
-import ChartSection from '../src/components/Dashboard/ChartSection'
+import { PageLayout, ErrorText } from 'components/common'
+import ChartSection from 'components/Dashboard/ChartSection'
 
 const Home = ({ data }) => {
   const { error } = data

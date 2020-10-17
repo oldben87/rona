@@ -1,13 +1,13 @@
 import React from 'react'
-import { Flex, Grid, Text } from '@chakra-ui/core'
+import { Flex, Text } from '@chakra-ui/core'
 import {
   PageLayout,
   PageSection,
   ErrorText,
   TextRow,
   TitleText,
-} from '../src/components/common'
-import SimpleTable from '../src/components/SimpleTable'
+} from 'components/common'
+import SimpleTable from 'components/SimpleTable'
 
 const herdImmunity = ({ data }) => {
   const { error } = data

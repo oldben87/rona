@@ -6,7 +6,7 @@ import { PageHeader, PageWrap, PageFooter } from '../common'
 export const PageLayout = ({ children, tabTitle, headerTitle }) => {
   return (
     <Flex
-      min-height={'100vh'}
+      minH="100vh"
       w="100%"
       direction="column"
       justify="flex-start"

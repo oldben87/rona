@@ -124,7 +124,7 @@ export default function PercentageCompareChart({ data }) {
     responsive: true,
     title: {
       text: 'Change in case and test numbers by percentage',
-      display: true,
+      display: false,
     },
     legend: {
       position: 'bottom',
@@ -134,14 +134,14 @@ export default function PercentageCompareChart({ data }) {
         {
           scaleLabel: {
             display: true,
-            labelString: '% Percentage Changes',
+            labelString: '% Changed',
           },
         },
       ],
       xAxes: [
         {
           scaleLabel: {
-            display: true,
+            display: false,
             labelString: `Last ${dayCount} Days`,
           },
           type: 'time',

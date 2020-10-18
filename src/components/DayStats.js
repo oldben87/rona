@@ -12,12 +12,6 @@ export default function DayStats({ item }) {
       margin="0.5rem"
       color="dimgrey"
       boxShadow="0 0 3px 2px rgba(0, 0, 0, 0.2)"
-      width={[
-        '90%', // base
-        '90%', // 480px upwards
-        '45%', // 768px upwards
-        '45%', // 992px upwards
-      ]}
       boxSizing="border-box"
       flexShrink="0"
       paddingBottom="1rem"

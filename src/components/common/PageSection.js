@@ -18,13 +18,13 @@ export const PageSection = ({
 const Section = styled.section`
   display: flex;
   flex-grow: 1;
-  padding: 2rem;
+  padding: 3rem;
   box-sizing: border-box;
   margin: 0 1rem;
   flex-wrap: wrap;
   max-width: calc(100vw - 4rem);
-  @media (max-width 425px) : {
-    padding: 0.25rem;
+  @media (max-width: 768px) {
+    padding: 1rem;
     flexdirection: column;
   }
 `

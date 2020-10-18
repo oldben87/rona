@@ -84,7 +84,7 @@ export default function MixedChart({
         pointHoverBorderWidth: 2,
         pointRadius: 0,
         pointHitRadius: 10,
-        data: thirdLine ? thirdLine.reverse() : null,
+        data: thirdLine.reverse(),
       },
     ],
   }

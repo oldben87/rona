@@ -26,36 +26,32 @@ export default function ChartSection({
         <TitleText>{chartTitle}</TitleText>
         <Divider w="75%" alignSelf="center" color="red.800" />
         <Text paddingLeft="1rem">
-          Most Recent {yTitle}:{' '}
-          {line1.find((item) => item > 0).toLocaleString()}
+          Recent Admissions: {line1.find((item) => item > 0).toLocaleString()}
+        </Text>
+
+        <Text paddingLeft="1rem">
+          People in Hospital:{' '}
+          {thirdLine.find((item) => item > 0).toLocaleString()}
         </Text>
         <Text paddingLeft="1rem">
-          Total {yTitle}: {line1.reduce((a, b) => a + b).toLocaleString()}
+          Total on Ventilators:{' '}
+          {line2.find((item) => item > 0).toLocaleString()}
+        </Text>
+        <Text paddingLeft="1rem">
+          Total Admitted: {line1.reduce((a, b) => a + b).toLocaleString()}
         </Text>
       </Flex>
-      {thirdLine ? (
-        <ThreeLineChart
-          line1={line1}
-          line2={line2}
-          line1Title={line1Title}
-          line2Title={line2Title}
-          thirdLine={thirdLine}
-          thirdLineTitle={thirdLineTitle}
-          dates={dates}
-          xTitle={'Date'}
-          yTitle={yTitle}
-        />
-      ) : (
-        <CompareChart
-          line1={line1}
-          line2={line2}
-          line1Title={line1Title}
-          line2Title={line2Title}
-          dates={dates}
-          xTitle={'Date'}
-          yTitle={yTitle}
-        />
-      )}
+      <ThreeLineChart
+        line1={line1}
+        line2={line2}
+        line1Title={line1Title}
+        line2Title={line2Title}
+        thirdLine={thirdLine}
+        thirdLineTitle={thirdLineTitle}
+        dates={dates}
+        xTitle={'Date'}
+        yTitle={yTitle}
+      />
     </PageSection>
   )
 }

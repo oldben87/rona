@@ -2,6 +2,7 @@ import React from 'react'
 import fetch from 'isomorphic-unfetch'
 import { PageLayout, ErrorText } from 'components/common'
 import ChartSection from 'components/charts/ChartSection'
+import ChartSectionHospital from 'components/charts/ChartSectionHospital'
 
 const Home = ({ data }) => {
   const { error } = data
@@ -42,7 +43,7 @@ const Home = ({ data }) => {
             dates={dates}
             background="#fff5f5"
           />
-          <ChartSection
+          <ChartSectionHospital
             chartTitle="Hospitals And Healthcare"
             line1={data.map((item) => item.newAdmissions)}
             line1Title={'New Hospital Admissions'}

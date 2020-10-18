@@ -1,129 +1,124 @@
-import React from "react"
-import { Flex, Text, Divider } from "@chakra-ui/core"
-import { TextRow } from "./common"
+import React from 'react'
+import { Flex, Grid } from '@chakra-ui/core'
+import { TitleText, TableCell } from './common'
 
 export default function DayStats({ item }) {
   return (
     <Flex
-      bg="blackAlpha.400"
+      bg="white"
       direction="column"
       borderRadius="0.2rem"
       padding="1rem"
       margin="0.5rem"
-      color="white"
-      border="1px dimgrey solid"
-      boxShadow="0 0 0.1rem 0.1rem rgba(0, 0, 0, 0.2)"
+      color="dimgrey"
+      boxShadow="0 0 3px 2px rgba(0, 0, 0, 0.2)"
       width={[
-        "90%", // base
-        "90%", // 480px upwards
-        "45%", // 768px upwards
-        "45%", // 992px upwards
+        '90%', // base
+        '90%', // 480px upwards
+        '45%', // 768px upwards
+        '45%', // 992px upwards
       ]}
       boxSizing="border-box"
       flexShrink="0"
+      paddingBottom="1rem"
     >
-      {item.date ? (
-        <Text fontSize="1.4rem" fontWeight="600" alignSelf="center">
-          {item.date}
-        </Text>
-      ) : null}
-      {item.newCases ? (
-        <>
-          <TextRow>
-            <Text>New Cases in last 24 hours:</Text>
-            <Text textAlign="end">{item.newCases.toLocaleString()}</Text>
-          </TextRow>
-          <Divider />
-        </>
-      ) : null}
-      {item.caseChange ? (
-        <>
-          <TextRow>
-            <Text>Change in cases from previous day:</Text>
-            <Text textAlign="end">
-              {item.caseChange.toLocaleString()} (
+      <TitleText align="center" size="2xl">
+        {item.date}
+      </TitleText>
+      <Grid templateColumns="repeat(4, 1fr)" gap={1} bg="blackAlpha.50">
+        <TableCell></TableCell>
+        <TableCell weight="bold">Day Total</TableCell>
+        <TableCell weight="bold">Change</TableCell>
+        <TableCell weight="bold">7 Day avg</TableCell>
+        <TableCell weight="bold">Cases</TableCell>
+        <TableCell>{item.newCases.toLocaleString()}</TableCell>
+        {item.caseChange ? (
+          <TableCell>
+            <span>{item.caseChange.toLocaleString()}</span>{' '}
+            <span>
+              (
               <span
                 style={
                   item.casePercentage > 0
-                    ? { color: "red" }
-                    : { color: "green" }
+                    ? { color: 'red' }
+                    : { color: 'green' }
                 }
               >
                 {item.casePercentage}%
               </span>
               )
-            </Text>
-          </TextRow>
-          <Divider />
-        </>
-      ) : null}
-      {item.caseSevenDay ? (
-        <>
-          <TextRow>
-            <Text>Cases average from last 7 days:</Text>
-            <Text textAlign="end">
-              {parseInt(item.caseSevenDay).toLocaleString()} (
+            </span>
+          </TableCell>
+        ) : (
+          <TableCell>n/a</TableCell>
+        )}
+        {item.caseSevenDay ? (
+          <TableCell>
+            <span>{parseInt(item.caseSevenDay).toLocaleString()}</span>
+            <span>
+              {' '}
+              (
               <span
                 style={
                   item.sevenDayCasePercentage > 0
-                    ? { color: "red" }
-                    : { color: "green" }
+                    ? { color: 'red' }
+                    : { color: 'green' }
                 }
               >
                 {item.sevenDayCasePercentage}%
               </span>
               )
-            </Text>
-          </TextRow>
-          <Divider />
-        </>
-      ) : null}
-      {item.newTests ? (
-        <>
-          <TextRow>
-            <Text>Tests in last 24 hours:</Text>
-            <Text textAlign="end">{item.newTests.toLocaleString()}</Text>
-          </TextRow>
-          <Divider />
-          <TextRow>
-            <Text>Change in tests number from previous day:</Text>
-            <Text textAlign="end">
-              {item.testChange.toLocaleString()} (
+            </span>
+          </TableCell>
+        ) : (
+          <TableCell>n/a</TableCell>
+        )}
+        <TableCell weight="bold">Tests</TableCell>
+        <TableCell>
+          {item.newTests > 0 ? item.newTests.toLocaleString() : 'n/a'}
+        </TableCell>
+        {item.testChange & (item.testPercentage !== '-100.0') ? (
+          <TableCell>
+            <span>{item.testChange.toLocaleString()}</span>{' '}
+            <span>
+              (
               <span
                 style={
                   item.testPercentage < 0
-                    ? { color: "red" }
-                    : { color: "green" }
+                    ? { color: 'red' }
+                    : { color: 'green' }
                 }
               >
                 {item.testPercentage}%
               </span>
               )
-            </Text>
-          </TextRow>
-          <Divider />
-        </>
-      ) : null}
-      {item.testSevenDay ? (
-        <>
-          <TextRow>
-            <Text>Testing average last 7 days:</Text>
-            <Text textAlign="end">
-              {parseInt(item.testSevenDay).toLocaleString()} (
+            </span>
+          </TableCell>
+        ) : (
+          <TableCell>n/a</TableCell>
+        )}
+        {item.testSevenDay ? (
+          <TableCell>
+            <span>{parseInt(item.testSevenDay).toLocaleString()}</span>
+            <span>
+              {' '}
+              (
               <span
                 style={
                   item.sevenDayTestPercentage < 0
-                    ? { color: "red" }
-                    : { color: "green" }
+                    ? { color: 'red' }
+                    : { color: 'green' }
                 }
               >
                 {item.sevenDayTestPercentage}%
               </span>
               )
-            </Text>
-          </TextRow>
-        </>
-      ) : null}
+            </span>
+          </TableCell>
+        ) : (
+          <TableCell>n/a</TableCell>
+        )}
+      </Grid>
     </Flex>
   )
 }

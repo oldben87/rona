@@ -4,7 +4,7 @@ import { Flex, Text } from '@chakra-ui/core'
 import { PageLayout, PageSection, ErrorText } from 'components/common'
 import DayStats from 'components/DayStats'
 import { page_header_name } from 'resources/strings'
-import PercentageCompareChart from 'components/PercentageCompareChart'
+import PercentageCompareChart from 'components/charts/PercentageCompareChart'
 
 const Changes = ({ data }) => {
   const { error } = data

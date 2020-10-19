@@ -20,11 +20,11 @@ export default function MixedChart({
         fill: true,
         type: 'line',
         lineTension: 0.1,
-        backgroundColor: 'rgba(200, 5, 11,0.3)',
+        backgroundColor: 'rgba(200, 5, 11,0.1)',
         borderColor: 'rgb(200, 5, 11)',
         borderCapStyle: 'butt',
         borderDash: [],
-        borderWidth: 1,
+        borderWidth: 2,
         borderDashOffset: 0.0,
         borderJoinStyle: 'miter',
         pointBorderColor: 'rgb(200, 5, 11)',
@@ -119,7 +119,8 @@ export default function MixedChart({
             h={3}
             w={6}
             border={'1px solid rgb(200, 5, 11)'}
-            backgroundColor={'rgba(200, 5, 11,0.3)'}
+            borderWidth={'3px'}
+            backgroundColor={'rgba(200, 5, 11,0.1)'}
             marginRight={2}
           ></Box>
           {line2Title}

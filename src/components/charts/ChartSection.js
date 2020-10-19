@@ -15,6 +15,7 @@ export default function ChartSection({
   thirdLineTitle,
   dates,
   background,
+  cumStat,
 }) {
   return (
     <PageSection flexDir="column" background={background}>
@@ -30,7 +31,7 @@ export default function ChartSection({
           {line1.find((item) => item > 0).toLocaleString()}
         </Text>
         <Text paddingLeft="1rem">
-          Total {yTitle}: {line1.reduce((a, b) => a + b).toLocaleString()}
+          Total {yTitle}: {cumStat}
         </Text>
       </Flex>
       {thirdLine ? (

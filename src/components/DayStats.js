@@ -3,6 +3,29 @@ import { Flex, Grid } from '@chakra-ui/core'
 import { TitleText, TableCell } from './common'
 
 export default function DayStats({ item }) {
+  const renderTest = () => {
+    if (item.testChange && item.testPercentage !== '-100.0') {
+      return (
+        <TableCell>
+          <span>{item.testChange.toLocaleString()}</span>{' '}
+          <span>
+            (
+            <span
+              style={
+                item.testPercentage < 0 ? { color: 'red' } : { color: 'green' }
+              }
+            >
+              {item.testPercentage}%
+            </span>
+            )
+          </span>
+        </TableCell>
+      )
+    } else {
+      return <TableCell>n/a</TableCell>
+    }
+  }
+
   return (
     <Flex
       bg="white"
@@ -71,26 +94,7 @@ export default function DayStats({ item }) {
         <TableCell>
           {item.newTests > 0 ? item.newTests.toLocaleString() : 'n/a'}
         </TableCell>
-        {item.testChange & (item.testPercentage !== '-100.0') ? (
-          <TableCell>
-            <span>{item.testChange.toLocaleString()}</span>{' '}
-            <span>
-              (
-              <span
-                style={
-                  item.testPercentage < 0
-                    ? { color: 'red' }
-                    : { color: 'green' }
-                }
-              >
-                {item.testPercentage}%
-              </span>
-              )
-            </span>
-          </TableCell>
-        ) : (
-          <TableCell>n/a</TableCell>
-        )}
+        {renderTest()}
         {item.testSevenDay ? (
           <TableCell>
             <span>{parseInt(item.testSevenDay).toLocaleString()}</span>

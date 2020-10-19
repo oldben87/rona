@@ -156,8 +156,8 @@ const herdImmunity = ({ data }) => {
           direction={['column', 'column', 'column', 'row']}
         >
           <TitleText size="2xl">
-            How many deaths could there be if we reach the immunity number
-            without a vaccine?
+            How many mild cases could develop Long Covid symptoms if we try to
+            reach herd immunity without a vaccine?
           </TitleText>
         </Flex>
         <SimpleTable

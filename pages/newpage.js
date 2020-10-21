@@ -4,22 +4,22 @@ import { PageLayout, PageSection, ErrorText } from 'components/common'
 import Everything from 'components/Everything'
 
 const Changes = ({ overview, nation }) => {
-  let error
   if (overview.error || nation.error) {
-    error = `Error: ${overview.error} ${nation.error}`
+    return (
+      <PageLayout tabTitle="COVID-19 UK Error" headerTitle="Test Page">
+        <ErrorText error={overview.error || nation.error} />
+      </PageLayout>
+    )
   }
+
   return (
     <PageLayout tabTitle="COVID-19 UK NewPage" headerTitle="Test Page">
-      {error ? (
-        <ErrorText error={error} />
-      ) : (
-        <PageSection>
-          <Flex direction="row">
-            <Everything item={overview[4]} title="Overview" />
-            <Everything item={nation[4]} title="Nation" />
-          </Flex>
-        </PageSection>
-      )}
+      <PageSection>
+        <Flex direction="row">
+          <Everything item={overview[4]} title="Overview" />
+          <Everything item={nation[4]} title="Nation" />
+        </Flex>
+      </PageSection>
     </PageLayout>
   )
 }

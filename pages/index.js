@@ -14,7 +14,6 @@ const Home = ({ data }) => {
   }
 
   const dates = data.map((item) => item.date)
-  const lastDay = data[0]
   return (
     <PageLayout tabTitle="COVID-19 UK Stats" headerTitle="COVID-19 Stats">
       <ChartSection
@@ -26,7 +25,10 @@ const Home = ({ data }) => {
         line2Title={'7 Day Average'}
         dates={dates}
         background="#fff5f5"
-        cumStat={lastDay.cumCasesByPublishDate.toLocaleString()}
+        cumStat={data
+          .map((item) => item.cumCasesByPublishDate)
+          .find((num) => num > 0)
+          .toLocaleString()}
       />
       <ChartSection
         chartTitle="Daily Testing Numbers"
@@ -36,7 +38,10 @@ const Home = ({ data }) => {
         line2={data.map((item) => item.testSevenDay)}
         line2Title={'7 Day Average'}
         dates={dates}
-        cumStat={lastDay.cumTestsByPublishDate.toLocaleString()}
+        cumStat={data
+          .map((item) => item.cumTestsByPublishDate)
+          .find((num) => num > 0)
+          .toLocaleString()}
       />
       <ChartSection
         chartTitle="Covid-19 Death Figures"
@@ -47,7 +52,10 @@ const Home = ({ data }) => {
         line2Title={'7 Day Average'}
         dates={dates}
         background="#fff5f5"
-        cumStat={lastDay.cumDeaths28DaysByPublishDate.toLocaleString()}
+        cumStat={data
+          .map((item) => item.cumDeaths28DaysByPublishDate)
+          .find((num) => num > 0)
+          .toLocaleString()}
       />
       <ChartSectionHospital
         chartTitle="Hospitals And Healthcare"

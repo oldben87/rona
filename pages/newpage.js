@@ -3,7 +3,7 @@ import { Flex } from '@chakra-ui/core'
 import { PageLayout, PageSection, ErrorText } from 'components/common'
 import Everything from 'components/Everything'
 
-const Changes = ({ overview, nation }) => {
+const NewPage = ({ overview, nation }) => {
   if (overview.error || nation.error) {
     return (
       <PageLayout tabTitle="COVID-19 UK Error" headerTitle="Test Page">
@@ -24,7 +24,7 @@ const Changes = ({ overview, nation }) => {
   )
 }
 
-export default Changes
+export default NewPage
 
 export async function getServerSideProps() {
   const headers = new Headers()

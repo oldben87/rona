@@ -10,10 +10,10 @@ export const fetchCasesToTests = async () => {
     newTests: 'newTestsByPublishDate',
   }
 
-  const uriOverview =
+  const uri =
     'https://api.coronavirus.data.gov.uk/v1/data?filters=areaType=overview&structure='
 
-  const result = await fetch(uriOverview + JSON.stringify(structure), headers)
+  const result = await fetch(uri + JSON.stringify(structure), headers)
     .then((response) => response.json())
     .then((data) => {
       if (data.statusCode > 204 || data.data === null) {
@@ -31,7 +31,7 @@ export const fetchCasesToTests = async () => {
         return result_no_null
       })
 
-      return noNull.splice(0, noNull.length - 85).map((item, index) => {
+      return noNull.splice(0, noNull.length - 85).map((item) => {
         const percentage = Math.min(
           (item.newCases / item.newTests) * 100
         ).toFixed(2)

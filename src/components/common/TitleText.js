@@ -1,5 +1,5 @@
 import React from 'react'
-import { Text, Divider } from '@chakra-ui/core'
+import { Text } from '@chakra-ui/core'
 
 export function TitleText({ children, size = '3xl', align }) {
   return (

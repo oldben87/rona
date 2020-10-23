@@ -38,7 +38,3 @@ export const fetchImmunity = async () => {
 
   return data
 }
-
-function deaths(item) {
-  return item.newDeaths
-}

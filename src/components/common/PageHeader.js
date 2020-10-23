@@ -32,6 +32,9 @@ export function PageHeader({ name }) {
         <Link href="/questions" passHref>
           <NavLink>Questions</NavLink>
         </Link>
+        <Link href="/countries" passHref>
+          <NavLink>UK Countries</NavLink>
+        </Link>
         {/* <Link href="/newpage">
           <NavLink>New Page</NavLink>
         </Link> */}

@@ -1,12 +1,7 @@
 import React from 'react'
 
 import { fetchCountries } from 'queries'
-import {
-  PageLayout,
-  PageSection,
-  ErrorText,
-  TitleText,
-} from 'components/common'
+import { PageLayout, ErrorText } from 'components/common'
 import ChartSection from 'components/charts/ChartSection'
 
 const Countries = ({ england, wales, scotland, northernIreland }) => {

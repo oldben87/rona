@@ -26,9 +26,8 @@ export async function fetchHome() {
       if (data.statusCode > 204 || data.data === null) {
         throw new Error('Not good status')
       }
-      const response = data.data
-      // reformat to populate null responses from fetch
-      const noNull = response.map((item) => {
+      // Remove Null's and replace with 0
+      const noNull = data.data.map((item) => {
         let result_no_null = {
           date: item.date.split('-').reverse().join('-'),
           newCases: item.newCases || 0,
@@ -81,7 +80,7 @@ export async function fetchHome() {
       return result
     })
     .catch(() => {
-      return { error: 'Server Error Nation' }
+      return { error: 'Server Error, Failed to get response from API' }
     })
 
   return res

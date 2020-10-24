@@ -42,9 +42,9 @@ export function PageHeader({ name }) {
         <Link href="/countries" passHref>
           <NavLink>UK Countries</NavLink>
         </Link>
-        <Link href="/testpage">
+        {/* <Link href="/testpage">
           <NavLink>Test Page</NavLink>
-        </Link>
+        </Link> */}
       </Flex>
     )
   }

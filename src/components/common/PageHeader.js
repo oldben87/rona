@@ -1,27 +1,34 @@
-import React from 'react'
-import { Flex, Heading } from '@chakra-ui/core'
+import React, { useState } from 'react'
+import { Flex, Heading, Button, Box } from '@chakra-ui/core'
 import Link from 'next/link'
 import styled from 'styled-components'
+import { HiMenu } from 'react-icons/hi'
 
 export function PageHeader({ name }) {
-  return (
-    <Header>
-      <Heading
-        as="h1"
-        p="0.5rem"
-        paddingLeft="1rem"
-        color="red.800"
-        m="0 auto"
-        maxWidth="1100px"
-        boxSizing="border-box"
-      >
-        {name}
-      </Heading>
+  const [showLinks, setShowLinks] = useState(true)
+
+  const renderLinksWrap = () => {
+    return (
+      <>
+        <Button
+          onClick={() => setShowLinks(!showLinks)}
+          display={['block', 'block', 'none', 'none']}
+        >
+          <Box as={HiMenu} />
+        </Button>
+        <Flex direction={['column', 'column', 'row', 'row']}>
+          {renderLinks()}
+        </Flex>
+      </>
+    )
+  }
+
+  const renderLinks = () => {
+    const DISPLAY_VAR = showLinks ? 'flex' : 'none'
+    return (
       <Flex
-        justify="center"
-        maxWidth="1100px"
-        boxSizing="border-box"
-        m="0 auto"
+        display={[DISPLAY_VAR, DISPLAY_VAR, 'flex', 'flex']}
+        direction={['column', 'column', 'row', 'row']}
       >
         <Link href="/" passHref>
           <NavLink>Home</NavLink>
@@ -38,6 +45,30 @@ export function PageHeader({ name }) {
         <Link href="/testpage">
           <NavLink>Test Page</NavLink>
         </Link>
+      </Flex>
+    )
+  }
+  return (
+    <Header>
+      <Heading
+        as="h1"
+        p="0.5rem"
+        paddingLeft="1rem"
+        color="red.800"
+        m="0 auto"
+        maxWidth="1100px"
+        boxSizing="border-box"
+      >
+        {name}
+      </Heading>
+      <Flex
+        justify={['start', 'start', 'center', 'center']}
+        maxWidth="1100px"
+        boxSizing="border-box"
+        m="0 auto"
+        paddingLeft={['2rem', '2rem', '0', '0']}
+      >
+        {renderLinksWrap()}
       </Flex>
     </Header>
   )

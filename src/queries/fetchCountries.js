@@ -1,4 +1,4 @@
-import { formatResults } from 'resources/helpers'
+import { formatHomeResults } from 'resources/helpers'
 
 export async function fetchCountries() {
   const headers = new Headers()
@@ -28,7 +28,7 @@ export async function fetchCountries() {
       if (data.statusCode > 204 || data.data === null) {
         throw new Error('Not good status')
       }
-      return formatResults(data.data)
+      return formatHomeResults(data.data)
       // reformat to populate null responses from fetch
     })
     .catch(() => {
@@ -44,7 +44,7 @@ export async function fetchCountries() {
       if (data.statusCode > 204 || data.data === null) {
         throw new Error('Not good status')
       }
-      return formatResults(data.data)
+      return formatHomeResults(data.data)
       // reformat to populate null responses from fetch
     })
     .catch(() => {
@@ -60,7 +60,7 @@ export async function fetchCountries() {
       if (data.statusCode > 204 || data.data === null) {
         throw new Error('Not good status')
       }
-      return formatResults(data.data)
+      return formatHomeResults(data.data)
       // reformat to populate null responses from fetch
     })
     .catch(() => {
@@ -79,7 +79,7 @@ export async function fetchCountries() {
       if (data.statusCode > 204 || data.data === null) {
         throw new Error('Not good status')
       }
-      return formatResults(data.data)
+      return formatHomeResults(data.data)
       // reformat to populate null responses from fetch
     })
     .catch(() => {

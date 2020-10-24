@@ -1,4 +1,4 @@
-export function formatResults(array) {
+export function formatHomeResults(array) {
   const noNull = array.map((item) => {
     let result_no_null = {
       date: item.date.split('-').reverse().join('-'),

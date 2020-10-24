@@ -1,1 +1,1 @@
-export * from './formatResults'
+export * from './formatHomeResults'

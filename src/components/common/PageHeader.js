@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
 import { Flex, Heading, Button, Box } from '@chakra-ui/core'
+import { motion } from 'framer-motion'
 import Link from 'next/link'
 import styled from 'styled-components'
 import { HiMenu } from 'react-icons/hi'
 
 export function PageHeader({ name }) {
-  const [showLinks, setShowLinks] = useState(true)
+  const [showLinks, setShowLinks] = useState(false)
+  const MotionFlex = motion.custom(Flex)
 
   const renderLinksWrap = () => {
     return (
@@ -16,9 +18,7 @@ export function PageHeader({ name }) {
         >
           <Box as={HiMenu} />
         </Button>
-        <Flex direction={['column', 'column', 'row', 'row']}>
-          {renderLinks()}
-        </Flex>
+        {renderLinks()}
       </>
     )
   }
@@ -29,19 +29,28 @@ export function PageHeader({ name }) {
       <Flex
         display={[DISPLAY_VAR, DISPLAY_VAR, 'flex', 'flex']}
         direction={['column', 'column', 'row', 'row']}
+        paddingLeft={['1rem', '1rem', '0', '0']}
       >
-        <Link href="/" passHref>
-          <NavLink>Home</NavLink>
-        </Link>
-        <Link href="/about" passHref>
-          <NavLink>About</NavLink>
-        </Link>
-        <Link href="/questions" passHref>
-          <NavLink>Questions</NavLink>
-        </Link>
-        <Link href="/countries" passHref>
-          <NavLink>UK Countries</NavLink>
-        </Link>
+        <MotionFlex whileTap={{ scale: 0.9 }} whileHover={{ scale: 1.1 }}>
+          <Link href="/" passHref>
+            <NavLink>Home</NavLink>
+          </Link>
+        </MotionFlex>
+        <MotionFlex whileTap={{ scale: 0.9 }} whileHover={{ scale: 1.1 }}>
+          <Link href="/about" passHref>
+            <NavLink>About</NavLink>
+          </Link>
+        </MotionFlex>
+        <MotionFlex whileTap={{ scale: 0.9 }} whileHover={{ scale: 1.1 }}>
+          <Link href="/questions" passHref>
+            <NavLink>Questions</NavLink>
+          </Link>
+        </MotionFlex>
+        <MotionFlex whileTap={{ scale: 0.9 }} whileHover={{ scale: 1.1 }}>
+          <Link href="/countries" passHref>
+            <NavLink>UK Countries</NavLink>
+          </Link>
+        </MotionFlex>
         {/* <Link href="/testpage">
           <NavLink>Test Page</NavLink>
         </Link> */}

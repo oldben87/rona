@@ -1,13 +1,22 @@
-import React, { useState } from 'react'
-import { Flex, Heading, Button, Box } from '@chakra-ui/core'
-import { motion } from 'framer-motion'
-import Link from 'next/link'
+import React, { useState, useEffect } from 'react'
+import { Flex, Heading, Button, Box, Collapse } from '@chakra-ui/core'
 import styled from 'styled-components'
 import { HiMenu } from 'react-icons/hi'
 
+import { NavLinks } from 'components/common'
+
 export function PageHeader({ name }) {
   const [showLinks, setShowLinks] = useState(false)
-  const MotionFlex = motion.custom(Flex)
+  const [showCollapse, setShowCollapse] = useState(null)
+
+  useEffect(() => {
+    function toggleCollapse() {
+      window.innerWidth <= 768 ? setShowCollapse(true) : setShowCollapse(false)
+    }
+    window.addEventListener('resize', toggleCollapse)
+    toggleCollapse()
+    return () => window.removeEventListener('resize', toggleCollapse)
+  }, [])
 
   const renderLinksWrap = () => {
     return (
@@ -15,6 +24,9 @@ export function PageHeader({ name }) {
         <Button
           onClick={() => setShowLinks(!showLinks)}
           display={['block', 'block', 'none', 'none']}
+          color="#cfcfcf"
+          border="#cfcfcf solid 2px"
+          borderRadius="3px"
         >
           <Box as={HiMenu} />
         </Button>
@@ -24,39 +36,17 @@ export function PageHeader({ name }) {
   }
 
   const renderLinks = () => {
-    const DISPLAY_VAR = showLinks ? 'flex' : 'none'
-    return (
-      <Flex
-        display={[DISPLAY_VAR, DISPLAY_VAR, 'flex', 'flex']}
-        direction={['column', 'column', 'row', 'row']}
-        paddingLeft={['1rem', '1rem', '0', '0']}
-      >
-        <MotionFlex whileTap={{ scale: 0.9 }} whileHover={{ scale: 1.1 }}>
-          <Link href="/" passHref>
-            <NavLink>Home</NavLink>
-          </Link>
-        </MotionFlex>
-        <MotionFlex whileTap={{ scale: 0.9 }} whileHover={{ scale: 1.1 }}>
-          <Link href="/about" passHref>
-            <NavLink>About</NavLink>
-          </Link>
-        </MotionFlex>
-        <MotionFlex whileTap={{ scale: 0.9 }} whileHover={{ scale: 1.1 }}>
-          <Link href="/questions" passHref>
-            <NavLink>Questions</NavLink>
-          </Link>
-        </MotionFlex>
-        <MotionFlex whileTap={{ scale: 0.9 }} whileHover={{ scale: 1.1 }}>
-          <Link href="/countries" passHref>
-            <NavLink>UK Countries</NavLink>
-          </Link>
-        </MotionFlex>
-        {/* <Link href="/testpage">
-          <NavLink>Test Page</NavLink>
-        </Link> */}
+    return showCollapse ? (
+      <Collapse mt={4} isOpen={showLinks} flexDirection={'column'}>
+        <NavLinks />
+      </Collapse>
+    ) : (
+      <Flex>
+        <NavLinks />
       </Flex>
     )
   }
+
   return (
     <Header>
       <Heading

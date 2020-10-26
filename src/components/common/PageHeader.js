@@ -24,11 +24,8 @@ export function PageHeader({ name }) {
         <Button
           onClick={() => setShowLinks(!showLinks)}
           display={['block', 'block', 'none', 'none']}
-          color="#cfcfcf"
-          border="#cfcfcf solid 2px"
-          borderRadius="3px"
         >
-          <Box as={HiMenu} />
+          <Box as={HiMenu} size={28} color="red.800" />
         </Button>
         {renderLinks()}
       </>
@@ -37,11 +34,13 @@ export function PageHeader({ name }) {
 
   const renderLinks = () => {
     return showCollapse ? (
-      <Collapse mt={4} isOpen={showLinks} flexDirection={'column'}>
-        <NavLinks />
+      <Collapse mt={4} isOpen={showLinks} flexDirection="column">
+        <Flex direction="column">
+          <NavLinks />
+        </Flex>
       </Collapse>
     ) : (
-      <Flex>
+      <Flex flexDirection="row">
         <NavLinks />
       </Flex>
     )

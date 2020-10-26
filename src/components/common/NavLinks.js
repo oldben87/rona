@@ -1,5 +1,4 @@
 import React from 'react'
-import { Flex } from '@chakra-ui/core'
 import { motion } from 'framer-motion'
 import styled from 'styled-components'
 import Link from 'next/link'
@@ -24,23 +23,29 @@ export function NavLinks() {
     },
   ]
 
-  const MotionFlex = motion.custom(Flex)
+  const MotionFlex = motion.custom(NavLink)
   return (
-    <React.Fragment>
+    <>
       {navLinkList.map((link) => {
         return (
-          <MotionFlex
-            whileTap={{ scale: 0.9 }}
-            whileHover={{ scale: 1.1 }}
-            key={link.title}
-          >
-            <Link href={link.path} passHref>
-              <NavLink>{link.title}</NavLink>
-            </Link>
-          </MotionFlex>
+          <Link href={link.path} passHref>
+            <MotionFlex
+              whileTap={{ scale: 0.9 }}
+              whileHover={{
+                scale: 1.1,
+                backgroundColor: '#9b2c2c',
+                color: 'white',
+                borderRadius: '3px',
+                transition: { ease: 'linear' },
+              }}
+              key={link.title}
+            >
+              {link.title}
+            </MotionFlex>
+          </Link>
         )
       })}
-    </React.Fragment>
+    </>
   )
 }
 
@@ -50,10 +55,7 @@ const NavLink = styled.a`
   border-bottom: #9b2c2c 2px solid;
   border-bottom-length: 75%;
   &:hover {
-    background-color: #9b2c2c;
     cursor: pointer;
-    border-radius: 3px;
-    color: #fff;
   }
   &:focus {
     outline-color: #212121;

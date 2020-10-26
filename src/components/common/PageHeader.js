@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Flex, Heading, Button, Box, Collapse } from '@chakra-ui/core'
+import { Flex, Heading, Box, Collapse } from '@chakra-ui/core'
 import styled from 'styled-components'
 import { HiMenu } from 'react-icons/hi'
 
@@ -21,12 +21,12 @@ export function PageHeader({ name }) {
   const renderLinksWrap = () => {
     return (
       <>
-        <Button
+        <NavButton
           onClick={() => setShowLinks(!showLinks)}
           display={['block', 'block', 'none', 'none']}
         >
           <Box as={HiMenu} size={28} color="red.800" />
-        </Button>
+        </NavButton>
         {renderLinks()}
       </>
     )
@@ -80,19 +80,21 @@ const Header = styled.header`
   box-sizing: border-box;
   align-items: center;
 `
-const NavLink = styled.a`
-  padding: 0.1rem 0.5rem;
-  margin: 0.2rem;
-  border-bottom: #9b2c2c 2px solid;
-  border-bottom-length: 75%;
-  &:hover {
-    background-color: #9b2c2c;
-    cursor: pointer;
-    border-radius: 3px;
-    color: #fff;
-  }
+const NavButton = styled.button`
+  display: flex;
+  flex-grow: 0;
   &:focus {
-    outline-color: #212121;
-    outline-width: 5px;
+    outline: none;
+    border: 2px black solid;
+    border-radius: 3px;
+  }
+  justify-content: start;
+  padding: 0.5rem;
+  box-sizing: border-box;
+  max-height: calc(1rem + 28px);
+  justify-content: center;
+  align-items: center;
+  @media (min-width: 768px) {
+    display: none;
   }
 `

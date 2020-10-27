@@ -32,7 +32,7 @@ export async function fetchCountries() {
       // reformat to populate null responses from fetch
     })
     .catch(() => {
-      return { error: 'Server Error Nation' }
+      return { error: 'Server Error, England data not found' }
     })
 
   const uriWales =
@@ -48,7 +48,7 @@ export async function fetchCountries() {
       // reformat to populate null responses from fetch
     })
     .catch(() => {
-      return { error: 'Server Error Nation' }
+      return { error: 'Server Error, Wales data not found' }
     })
 
   const uriScotland =
@@ -64,7 +64,7 @@ export async function fetchCountries() {
       // reformat to populate null responses from fetch
     })
     .catch(() => {
-      return { error: 'Server Error Nation' }
+      return { error: 'Server Error, Scotland data not found' }
     })
 
   const uriNorthernIreland =
@@ -83,7 +83,7 @@ export async function fetchCountries() {
       // reformat to populate null responses from fetch
     })
     .catch(() => {
-      return { error: 'Server Error Nation' }
+      return { error: 'Server Error, NI data not found' }
     })
 
   return { england, wales, scotland, northernIreland }

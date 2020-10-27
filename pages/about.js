@@ -12,7 +12,6 @@ export default function about() {
             flexDirection: 'column',
             justifyContent: 'center',
             width: '75%',
-            minWidth: '290px',
             color: 'dimgray',
           }}
         >
@@ -41,7 +40,6 @@ export default function about() {
             flexDirection: 'column',
             justifyContent: 'center',
             width: '75%',
-            minWidth: '290px',
             color: 'dimgray',
           }}
         >

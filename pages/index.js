@@ -9,7 +9,7 @@ const Home = ({ data }) => {
   const { error } = data
   if (error) {
     return (
-      <PageLayout tabTitle="COVID-19 UK Error" headerTitle="Test Page">
+      <PageLayout tabTitle="COVID-19 UK Stats" headerTitle="COVID-19 Stats">
         <ErrorText error={error} />
       </PageLayout>
     )

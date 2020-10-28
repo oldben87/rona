@@ -26,17 +26,17 @@ export function NavLinks() {
   const MotionFlex = motion.custom(NavLink)
   return (
     <>
-      {navLinkList.map((link) => {
+      {navLinkList.map((link, index) => {
         return (
-          <Link href={link.path} passHref>
+          <Link href={link.path} passHref key={index}>
             <MotionFlex
               whileTap={{ scale: 0.9 }}
               whileHover={{
                 scale: 1.1,
                 backgroundColor: '#9b2c2c',
-                color: 'white',
                 borderRadius: '3px',
                 transition: { ease: 'linear' },
+                color: 'rgb(255, 255, 255)',
               }}
               key={link.title}
             >

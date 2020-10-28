@@ -63,6 +63,8 @@ export function PageHeader({ name }) {
         justify={['start', 'start', 'center', 'center']}
         maxWidth="1100px"
         boxSizing="border-box"
+        color="red.800"
+        fontWeight="500"
         m="0 auto"
         paddingLeft={['2rem', '2rem', '0', '0']}
       >

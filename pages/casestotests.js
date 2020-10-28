@@ -81,7 +81,7 @@ export default function casestotests({ data }) {
   return (
     <PageLayout tabTitle="Cases to Tests" headerTitle="Cases vs Tests">
       <PageSection background="#fff5f5" flexDir="column">
-        <Text as="h2" p={2} fontSize="2xl" color="red.800">
+        <Text as="h2" p={2} fontSize="2xl" color="red.700">
           What is the current percentage of Cases to Tests?
         </Text>
         <Divider w="75%" alignSelf="center" />
@@ -109,7 +109,7 @@ export default function casestotests({ data }) {
         <Line data={chartData} options={options} />
       </PageSection>
       <PageSection background="#fff5f5" flexDir="column">
-        <Text as="h2" p={2} fontSize="2xl" color="red.800">
+        <Text as="h2" p={2} fontSize="2xl" color="red.700">
           Cases to tests daily figures
         </Text>
 

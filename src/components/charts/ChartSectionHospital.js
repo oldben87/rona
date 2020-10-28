@@ -25,7 +25,7 @@ export default function ChartSection({
         w={['100%', '100%', '25%', '25%']}
       >
         <TitleText>{chartTitle}</TitleText>
-        <Divider w="75%" alignSelf="center" color="red.800" />
+        <Divider w="75%" alignSelf="center" color="red.700" />
         <Text paddingLeft="1rem">
           Recent Admissions: {line1.find((item) => item > 0).toLocaleString()}
         </Text>

@@ -25,7 +25,7 @@ export function PageHeader({ name }) {
           onClick={() => setShowLinks(!showLinks)}
           display={['block', 'block', 'none', 'none']}
         >
-          <Box as={HiMenu} size={28} color="red.800" />
+          <Box as={HiMenu} size={28} color="red.700" />
         </NavButton>
         {renderLinks()}
       </>
@@ -52,7 +52,7 @@ export function PageHeader({ name }) {
         as="h1"
         p="0.5rem"
         paddingLeft="1rem"
-        color="red.800"
+        color="red.700"
         m="0 auto"
         maxWidth="1100px"
         boxSizing="border-box"
@@ -63,7 +63,7 @@ export function PageHeader({ name }) {
         justify={['start', 'start', 'center', 'center']}
         maxWidth="1100px"
         boxSizing="border-box"
-        color="red.800"
+        color="red.700"
         fontWeight="500"
         m="0 auto"
         paddingLeft={['2rem', '2rem', '0', '0']}

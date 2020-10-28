@@ -9,7 +9,7 @@ export function TitleText({ children, size = '3xl', align }) {
         p={2}
         fontSize={size}
         textAlign={align}
-        color="red.800"
+        color="red.700"
         p="1rem"
       >
         {children}

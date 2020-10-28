@@ -1,11 +1,11 @@
-import React from "react"
-import styled from "styled-components"
-import { Divider } from "@chakra-ui/core"
+import React from 'react'
+import styled from 'styled-components'
+import { Divider } from '@chakra-ui/core'
 
 export function PageFooter() {
   return (
     <Footer>
-      <Divider color="red.800" />
+      <Divider color="red.700" />
       <a href="mailto:questionsaboutcovid@gmail.com" target="_blank">
         Email
       </a>

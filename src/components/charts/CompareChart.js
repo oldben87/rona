@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
-import { Flex, Box, Button } from '@chakra-ui/core'
+import React from 'react'
+import { Flex, Box } from '@chakra-ui/core'
 import { Line } from 'react-chartjs-2'
 import moment from 'moment'
 
-export default function MixedChart({
+export default function CompareChart({
   line1,
   line1Title,
   yTitle,
@@ -13,7 +13,7 @@ export default function MixedChart({
   xTitle,
 }) {
   const chartData = {
-    labels: dates.map((item) => moment(item, 'DD/MM/YYYY')).reverse(),
+    labels: dates.map((item) => moment(item, 'DD/MM/YYYY')),
     datasets: [
       {
         label: line2Title,
@@ -36,7 +36,7 @@ export default function MixedChart({
         pointHoverBorderWidth: 2,
         pointRadius: 0,
         pointHitRadius: 10,
-        data: line2.reverse(),
+        data: line2,
       },
       {
         label: line1Title,
@@ -59,7 +59,7 @@ export default function MixedChart({
         pointHoverBorderWidth: 2,
         pointRadius: 0,
         pointHitRadius: 10,
-        data: line1.reverse(),
+        data: line1,
       },
     ],
   }

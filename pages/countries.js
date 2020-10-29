@@ -61,7 +61,7 @@ const Countries = ({ england, wales, scotland, northernIreland }) => {
       cumState: northernIreland
         .map((item) => item.cumCasesByPublishDate)
         .find((num) => num > 0)
-        .toLocaleString(),
+				.toLocaleString(),
     },
   ]
 

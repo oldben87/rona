@@ -1,5 +1,5 @@
-import React from "react"
-import { Text } from "@chakra-ui/core"
+import React from 'react'
+import { Text } from '@chakra-ui/core'
 
 export function ErrorText({ error }) {
   return (

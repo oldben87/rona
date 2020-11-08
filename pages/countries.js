@@ -2,15 +2,11 @@ import React from 'react'
 
 import { fetchCountries } from 'queries'
 import { PageLayout, ErrorText } from 'components/common'
-import ChartSection from 'components/charts/ChartSection'
 import CountrySelectChart from 'components/charts/CountrySelectChart'
 
-const Countries = ({ england, wales, scotland, northernIreland }) => {
+const Countries = ({ england, wales, scotland, northernIreland, loadData }) => {
   const error =
     england.error || wales.error || scotland.error || northernIreland.error
-
-  const englandLine1 = england.map((item) => item.newCases)
-  const englandLine2 = england.map((item) => item.caseSevenDay)
 
   if (error) {
     return (
@@ -22,11 +18,23 @@ const Countries = ({ england, wales, scotland, northernIreland }) => {
       </PageLayout>
     )
   }
+
+  const englandObject = {
+    country: 'England',
+    line1: loadData.map((item) => item.newCases),
+    line2: loadData.map((item) => item.caseSevenDay),
+    dates: loadData.map((item) => item.date),
+    cumState: loadData
+      .map((item) => item.cumCasesByPublishDate)
+      .find((num) => num > 0)
+      .toLocaleString(),
+  }
+
   const casesArray = [
     {
       country: 'England',
-      line1: englandLine1,
-      line2: englandLine2,
+      line1: england.map((item) => item.newCases),
+      line2: england.map((item) => item.caseSevenDay),
       dates: england.map((item) => item.date),
       cumState: england
         .map((item) => item.cumCasesByPublishDate)
@@ -61,13 +69,18 @@ const Countries = ({ england, wales, scotland, northernIreland }) => {
       cumState: northernIreland
         .map((item) => item.cumCasesByPublishDate)
         .find((num) => num > 0)
-				.toLocaleString(),
+        .toLocaleString(),
     },
   ]
 
   return (
     <PageLayout tabTitle="COVID-19 UK Breakdown" headerTitle="Breakdown of UK">
-      <CountrySelectChart array={casesArray} background="#fff5f5" />
+      <CountrySelectChart
+        array={casesArray}
+        loadData={englandObject}
+        background="#fff5f5"
+      />
+
       {/* <ChartSection
         chartTitle="Wales' Case Numbers"
         line1={wales.map((item) => item.newCases)}
@@ -122,6 +135,7 @@ export async function getServerSideProps() {
       wales,
       scotland,
       northernIreland,
+      loadData: england,
     },
   }
 }

@@ -11,7 +11,7 @@ export default function casestotests({ data }) {
   if (error) {
     return (
       <PageLayout tabTitle="Cases to Tests" headerTitle="Cases vs Tests">
-        <ErrorText>{error}</ErrorText>
+        <ErrorText error={error} />
       </PageLayout>
     )
   }

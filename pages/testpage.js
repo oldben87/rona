@@ -92,7 +92,7 @@ export async function getServerSideProps() {
       return noNull
     })
     .catch(() => {
-      return { error: 'Server Error Overvire' }
+      return { error: 'Server Error Overview' }
     })
 
   const uriNation =

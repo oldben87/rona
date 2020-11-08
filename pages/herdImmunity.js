@@ -101,7 +101,7 @@ const herdImmunity = ({ data }) => {
           </TitleText>
           <TextRow>
             <Text>
-              Figures vary from as low as 43% to as high as 90%, with the higher
+              Figures vary from as low as 25% to as high as 90%, with the higher
               number of 90% saved for viruses that are more contagious. And the
               lower figures for viruses that aren't as contagious. A general
               concensus has averaged at around 60% of our population would need

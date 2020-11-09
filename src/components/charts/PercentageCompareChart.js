@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Flex, Text, Radio, RadioGroup, Divider } from '@chakra-ui/core'
+import { Flex, Text, Radio, RadioGroup } from '@chakra-ui/core'
 import { Line } from 'react-chartjs-2'
 import moment from 'moment'
 

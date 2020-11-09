@@ -31,7 +31,7 @@ const Changes = ({ data }) => {
               hadn't really seen any data supporting this theory so thought I
               would attempt to find an answer to that statement.
             </Text>
-            <Divider width={'75%'} alignSelf="center" color="red.700" />
+            <Divider width={'75%'} alignSelf="center" borderColor="red.700" />
             <Text padding="0.4rem" color="dimgray">
               This chart aims to show the change in the new number of COVID-19
               cases in the UK, compared to the change in the new number of tests

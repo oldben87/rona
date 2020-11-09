@@ -37,12 +37,7 @@ export default function CountrySelectChart({ array, background, loadData }) {
       >
         <TitleText size="2xl">{`${countryData.country}'s Cases`}</TitleText>
         {/* What's strange is how this TitleText does update. */}
-        <Divider
-          w="75%"
-          alignSelf="center"
-          color="red.700"
-          borderColor="none"
-        />
+        <Divider w="75%" alignSelf="center" borderColor="red.700" />
         <Text paddingLeft="1rem">
           Most Recent {'Cases'}:{' '}
           {countryData.line1.find((item) => item > 0).toLocaleString()}

@@ -82,7 +82,7 @@ export default function casestotests({ data }) {
         <Text as="h2" p={2} fontSize="2xl" color="red.700">
           What is the current percentage of Cases to Tests?
         </Text>
-        <Divider w="75%" alignSelf="center" />
+        <Divider w="75%" alignSelf="center" borderColor="red.700" />
         <Text padding="0.2rem">
           This chart will aim to show what the current percentage the number of
           Covid cases is in relation to the number of tests done. The government

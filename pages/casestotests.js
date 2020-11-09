@@ -139,11 +139,17 @@ export default function casestotests({ data }) {
                 </TextRow>
                 <TextRow>
                   <p>Tests:</p>
-                  <p>{item.newTests.toLocaleString()}</p>
+                  <p>
+                    {item.newTests !== 0
+                      ? item.newTests.toLocaleString()
+                      : 'n/a'}
+                  </p>
                 </TextRow>
                 <TextRow>
                   <p>Percent:</p>
-                  <p>{item.percentage}%</p>
+                  <p>
+                    {item.percentage !== '0' ? `${item.percentage}%` : 'n/a'}
+                  </p>
                 </TextRow>
               </Flex>
             )

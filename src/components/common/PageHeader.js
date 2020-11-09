@@ -11,7 +11,7 @@ export function PageHeader({ name }) {
 
   useEffect(() => {
     function toggleCollapse() {
-      window.innerWidth <= 768 ? setShowCollapse(true) : setShowCollapse(false)
+      window.innerWidth < 768 ? setShowCollapse(true) : setShowCollapse(false)
     }
     window.addEventListener('resize', toggleCollapse)
     toggleCollapse()

@@ -4,7 +4,13 @@ import { fetchCountries } from 'queries'
 import { PageLayout, ErrorText } from 'components/common'
 import CountrySelectChart from 'components/charts/CountrySelectChart'
 
-const Countries = ({ england, wales, scotland, northernIreland, loadData }) => {
+const Countries = ({
+  england,
+  wales,
+  scotland,
+  northernIreland,
+  intialValue,
+}) => {
   const error =
     england.error || wales.error || scotland.error || northernIreland.error
 
@@ -21,10 +27,10 @@ const Countries = ({ england, wales, scotland, northernIreland, loadData }) => {
 
   const englandObject = {
     country: 'England',
-    line1: loadData.map((item) => item.newCases),
-    line2: loadData.map((item) => item.caseSevenDay),
-    dates: loadData.map((item) => item.date),
-    cumState: loadData
+    line1: intialValue.map((item) => item.newCases),
+    line2: intialValue.map((item) => item.caseSevenDay),
+    dates: intialValue.map((item) => item.date),
+    cumState: intialValue
       .map((item) => item.cumCasesByPublishDate)
       .find((num) => num > 0)
       .toLocaleString(),
@@ -80,47 +86,6 @@ const Countries = ({ england, wales, scotland, northernIreland, loadData }) => {
         loadData={englandObject}
         background="#fff5f5"
       />
-
-      {/* <ChartSection
-        chartTitle="Wales' Case Numbers"
-        line1={wales.map((item) => item.newCases)}
-        line1Title={'New Cases'}
-        yTitle={'Cases'}
-        line2={wales.map((item) => item.caseSevenDay)}
-        line2Title={'7 Day Average'}
-        dates={wales.map((item) => item.date)}
-        cumStat={wales
-          .map((item) => item.cumCasesByPublishDate)
-          .find((num) => num > 0)
-          .toLocaleString()}
-      />
-      <ChartSection
-        chartTitle="Scotland's Case Numbers"
-        line1={scotland.map((item) => item.newCases)}
-        line1Title={'New Cases'}
-        yTitle={'Cases'}
-        line2={scotland.map((item) => item.caseSevenDay)}
-        line2Title={'7 Day Average'}
-        dates={scotland.map((item) => item.date)}
-        background="#fff5f5"
-        cumStat={scotland
-          .map((item) => item.cumCasesByPublishDate)
-          .find((num) => num > 0)
-          .toLocaleString()}
-      />
-      <ChartSection
-        chartTitle="Northern Ireland's Case Numbers"
-        line1={northernIreland.map((item) => item.newCases)}
-        line1Title={'New Cases'}
-        yTitle={'Cases'}
-        line2={northernIreland.map((item) => item.caseSevenDay)}
-        line2Title={'7 Day Average'}
-        dates={northernIreland.map((item) => item.date)}
-        cumStat={northernIreland
-          .map((item) => item.cumCasesByPublishDate)
-          .find((num) => num > 0)
-          .toLocaleString()}
-      /> */}
     </PageLayout>
   )
 }
@@ -135,7 +100,7 @@ export async function getServerSideProps() {
       wales,
       scotland,
       northernIreland,
-      loadData: england,
+      intialValue: england,
     },
   }
 }

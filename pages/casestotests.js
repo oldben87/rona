@@ -19,7 +19,7 @@ export default function casestotests({ data }) {
   const [showLine, setShowLine] = useState(true)
 
   const chartData = {
-    labels: data.map((item) => moment(item.date, 'DD/MM/YYYY')).reverse(),
+    labels: data.map((item) => moment(item.date, 'YYYY-MM-DD')).reverse(),
     datasets: [
       {
         label: '% - cases to tests done',
@@ -42,7 +42,7 @@ export default function casestotests({ data }) {
         pointHoverBorderWidth: 2,
         pointRadius: 0,
         pointHitRadius: 10,
-        data: showLine ? data.map((item) => item.percentage).reverse() : null,
+        data: data.map((item) => item.percentage).reverse(),
       },
     ],
   }
@@ -128,7 +128,11 @@ export default function casestotests({ data }) {
                 backgroundColor="white"
                 borderRadius="0.2rem"
               >
-                <Text alignSelf="center">{item.date}</Text>
+                <Text alignSelf="center">
+                  {moment(item.date, 'YYYY-MM-DD')
+                    .format('DD MMM YYYY')
+                    .toString()}
+                </Text>
                 <TextRow>
                   <p>Cases:</p>
                   <p>{item.newCases.toLocaleString()}</p>

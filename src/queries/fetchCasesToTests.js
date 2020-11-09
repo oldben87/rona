@@ -1,3 +1,5 @@
+import { noNulls } from 'resources/helpers'
+
 export const fetchCasesToTests = async () => {
   const headers = new Headers()
   headers.append('Pragma', 'no-cache')
@@ -19,18 +21,11 @@ export const fetchCasesToTests = async () => {
       if (data.statusCode > 204 || data.data === null) {
         throw new Error('Not good status')
       }
-      const response = data.data
-      // reformat to populate null responses from fetch
-      const noNull = response.map((item) => {
-        let result_no_null = {
-          ...item,
-          date: item.date.split('-').reverse().join('-'),
-          newCases: item.newCases || 0,
-          newTests: item.newTests || 0,
-        }
-        return result_no_null
-      })
 
+      // reformat to populate null responses from fetch
+      const noNull = data.data.map(noNulls)
+
+      // work out percentage difference
       return noNull.splice(0, noNull.length - 85).map((item) => {
         const percentage = Math.min(
           (item.newCases / item.newTests) * 100

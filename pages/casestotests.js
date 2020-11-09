@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { Divider, Flex, Text, Button, Box } from '@chakra-ui/core'
+import React from 'react'
+import { Divider, Flex, Text, Box } from '@chakra-ui/core'
 import { Line } from 'react-chartjs-2'
 import moment from 'moment'
 
@@ -15,8 +15,6 @@ export default function casestotests({ data }) {
       </PageLayout>
     )
   }
-
-  const [showLine, setShowLine] = useState(true)
 
   const chartData = {
     labels: data.map((item) => moment(item.date, 'YYYY-MM-DD')).reverse(),
@@ -92,11 +90,7 @@ export default function casestotests({ data }) {
         </Text>
       </PageSection>
       <PageSection>
-        <Button
-          onClick={() => setShowLine(!showLine)}
-          fontSize="0.8rem"
-          p="0.5rem"
-        >
+        <Flex fontSize="0.8rem" p="0.5rem" justify="center" align="center">
           <Box
             h={3}
             w={6}
@@ -105,7 +99,7 @@ export default function casestotests({ data }) {
             marginRight={2}
           ></Box>
           Cases to Tests
-        </Button>
+        </Flex>
         <Line data={chartData} options={options} />
       </PageSection>
       <PageSection background="#fff5f5" flexDir="column">

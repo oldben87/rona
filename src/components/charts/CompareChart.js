@@ -13,7 +13,7 @@ export default function CompareChart({
   xTitle,
 }) {
   const chartData = {
-    labels: dates.map((item) => moment(item, 'DD/MM/YYYY')),
+    labels: dates.map((item) => moment(item, 'YYYY/MM/DD')),
     datasets: [
       {
         label: line2Title,

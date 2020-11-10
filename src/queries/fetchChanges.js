@@ -1,3 +1,5 @@
+import { noNulls } from 'resources/helpers'
+
 export const fetchChanges = async () => {
   const headers = new Headers()
   headers.append('Pragma', 'no-cache')
@@ -23,14 +25,7 @@ export const fetchChanges = async () => {
 
       const response = data.data
       // reformat to populate null responses from fetch
-      const noNull = response.map((item) => {
-        let result_no_null = {
-          date: item.date.split('-').reverse().join('-'),
-          newCases: item.newCases || 0,
-          newTests: item.newTests || 0,
-        }
-        return result_no_null
-      })
+      const noNull = response.map(noNulls)
       // calculate difference in days and add to reponse
 
       const result = noNull.map((fill, index) => {

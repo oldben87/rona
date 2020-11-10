@@ -1,20 +1,7 @@
+import { noNulls } from 'resources/helpers'
+
 export function formatHomeResults(array) {
-  const noNull = array.map((item) => {
-    let result_no_null = {
-      date: item.date.split('-').reverse().join('-'),
-      newCases: item.newCases || 0,
-      newTests: item.newTests || 0,
-      newDeaths: item.newDeaths || 0,
-      newAdmissions: item.newAdmissions || 0,
-      covidBeds: item.covidBeds || 0,
-      hospitalCases: item.hospitalCases || 0,
-      cumCasesByPublishDate: item.cumCasesByPublishDate || 0,
-      cumDeaths28DaysByPublishDate: item.cumDeaths28DaysByPublishDate || 0,
-      cumAdmissions: item.cumAdmissions || 0,
-      cumTestsByPublishDate: item.cumTestsByPublishDate || 0,
-    }
-    return result_no_null
-  })
+  const noNull = array.map(noNulls)
   // calculate difference in days and add to reponse
   const result = noNull.map((fill, index) => {
     const testSevenDay =

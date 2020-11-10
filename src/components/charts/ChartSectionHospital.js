@@ -1,7 +1,6 @@
 import React from 'react'
 import { Text, Flex, Divider } from '@chakra-ui/core'
 import { PageSection, TitleText } from '../common'
-import CompareChart from './CompareChart'
 import ThreeLineChart from './ThreeLineChart'
 
 export default function ChartSection({

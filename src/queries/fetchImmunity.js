@@ -1,3 +1,5 @@
+import { noNulls } from 'resources/helpers'
+
 export const fetchImmunity = async () => {
   const headers = new Headers()
   headers.append('Pragma', 'no-cache')
@@ -21,16 +23,8 @@ export const fetchImmunity = async () => {
       if (data.statusCode > 204 || data.data === null) {
         throw new Error('Not good status')
       }
-      const response = data.data
       // reformat to populate null responses from fetch
-      const noNull = response.map((item) => {
-        let result_no_null = {
-          ...item,
-          date: item.date.split('-').reverse().join('-'),
-        }
-        return result_no_null
-      })
-      return noNull
+      return data.data.map(noNulls)
     })
     .catch(() => {
       return { error: 'Server Error: unable to fetch' }

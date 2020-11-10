@@ -15,7 +15,7 @@ export default function MixedChart({
   xTitle,
 }) {
   const chartData = {
-    labels: dates.map((item) => moment(item, 'DD/MM/YYYY')).reverse(),
+    labels: dates.map((item) => moment(item, 'YYYY/MM/DD')).reverse(),
     datasets: [
       {
         label: line2Title,

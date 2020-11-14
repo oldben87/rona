@@ -40,7 +40,7 @@ export const fetchCasesToTests = async () => {
       })
     })
     .catch(() => {
-      return { error: 'Server Error Overview' }
+      return { error: 'Server Error' }
     })
 
   return result

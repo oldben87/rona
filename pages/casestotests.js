@@ -142,7 +142,9 @@ export default function casestotests({ data }) {
                 <TextRow>
                   <p>Percent:</p>
                   <p>
-                    {item.percentage !== '0' ? `${item.percentage}%` : 'n/a'}
+                    {item.percentage !== 0
+                      ? `${item.percentage.toFixed(2)}%`
+                      : 'n/a'}
                   </p>
                 </TextRow>
               </Flex>

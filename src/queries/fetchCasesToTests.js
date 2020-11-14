@@ -1,3 +1,5 @@
+import * as R from 'ramda'
+
 import { noNulls } from 'resources/helpers'
 
 export const fetchCasesToTests = async () => {
@@ -22,25 +24,19 @@ export const fetchCasesToTests = async () => {
         throw new Error('Not good status')
       }
 
-      // reformat to populate null responses from fetch
-      const noNull = data.data.map(noNulls)
+      // reformat to populate null responses from fetch and remove jan-march
+      const trimmed = R.compose(R.map(noNulls), R.dropLast(85))(data.data)
 
       // work out percentage difference
-      return noNull.splice(0, noNull.length - 85).map((item) => {
-        const percentage = Math.min(
-          (item.newCases / item.newTests) * 100
-        ).toFixed(2)
-        if (percentage === 'Infinity' || percentage === 'NaN') {
-          return {
-            ...item,
-            percentage: '0',
-          }
-        } else {
-          return {
-            ...item,
-            percentage,
-          }
+      return trimmed.map((item) => {
+        if (item.newCases === 0 || item.newTests === 0) {
+          return R.assoc('percentage', 0, item)
         }
+        return R.assoc(
+          'percentage',
+          R.compose(R.multiply(100), R.divide)(item.newCases, item.newTests),
+          item
+        )
       })
     })
     .catch(() => {

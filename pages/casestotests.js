@@ -40,7 +40,7 @@ export default function casestotests({ data }) {
         pointHoverBorderWidth: 2,
         pointRadius: 0,
         pointHitRadius: 10,
-        data: data.map((item) => item.percentage).reverse(),
+        data: data.map((item) => item.percentage.toFixed(2)).reverse(),
       },
     ],
   }

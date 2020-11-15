@@ -9,10 +9,10 @@ const sevenDay = (fn, arr, i) => {
 export function formatHomeResults(array) {
   const noNull = R.compose(R.map(noNulls), R.dropLast(60))(array)
   // calculate difference in days and add to reponse
-  const result = noNull.map((fill, index) => {
+  const result = noNull.map((obj, index) => {
     if (index < 3) {
       return {
-        ...fill,
+        ...obj,
       }
     }
     const testSevenDay = sevenDay(tests, noNull, index)
@@ -22,7 +22,7 @@ export function formatHomeResults(array) {
     const deathSevenDay = sevenDay(deaths, noNull, index)
 
     return {
-      ...fill,
+      ...obj,
       testSevenDay: testSevenDay.toFixed(1),
       caseSevenDay: caseSevenDay.toFixed(1),
       deathSevenDay: deathSevenDay.toFixed(1),

@@ -1,38 +1,31 @@
+import * as R from 'ramda'
+
 import { noNulls } from 'resources/helpers'
 
+const sevenDay = (fn, arr, i) => {
+  return R.compose(R.mean, R.map(fn), R.slice(i - 3, i + 3))(arr)
+}
+
 export function formatHomeResults(array) {
-  const noNull = array.map(noNulls)
+  const noNull = R.compose(R.map(noNulls), R.dropLast(60))(array)
   // calculate difference in days and add to reponse
   const result = noNull.map((fill, index) => {
-    const testSevenDay =
-      noNull
-        .slice(index - 3, index + 3)
-        .map(tests)
-        .reduce((a, b) => a + b, 0) / 7
-
-    const caseSevenDay =
-      noNull
-        .slice(index - 3, index + 3)
-        .map(cases)
-        .reduce((a, b) => a + b, 0) / 7
-
-    const deathSevenDay =
-      noNull
-        .slice(index - 3, index + 3)
-        .map(deaths)
-        .reduce((a, b) => a + b, 0) / 7
-
     if (index < 3) {
       return {
         ...fill,
       }
-    } else {
-      return {
-        ...fill,
-        testSevenDay: testSevenDay.toFixed(1),
-        caseSevenDay: caseSevenDay.toFixed(1),
-        deathSevenDay: deathSevenDay.toFixed(1),
-      }
+    }
+    const testSevenDay = sevenDay(tests, noNull, index)
+
+    const caseSevenDay = sevenDay(cases, noNull, index)
+
+    const deathSevenDay = sevenDay(deaths, noNull, index)
+
+    return {
+      ...fill,
+      testSevenDay: testSevenDay.toFixed(1),
+      caseSevenDay: caseSevenDay.toFixed(1),
+      deathSevenDay: deathSevenDay.toFixed(1),
     }
   })
   // send result of data

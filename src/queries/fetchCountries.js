@@ -28,8 +28,8 @@ export async function fetchCountries() {
       if (data.statusCode > 204 || data.data === null) {
         throw new Error('Not good status')
       }
+
       return formatHomeResults(data.data)
-      // reformat to populate null responses from fetch
     })
     .catch(() => {
       return { error: 'Server Error, England data not found' }
@@ -45,7 +45,6 @@ export async function fetchCountries() {
         throw new Error('Not good status')
       }
       return formatHomeResults(data.data)
-      // reformat to populate null responses from fetch
     })
     .catch(() => {
       return { error: 'Server Error, Wales data not found' }
@@ -61,7 +60,6 @@ export async function fetchCountries() {
         throw new Error('Not good status')
       }
       return formatHomeResults(data.data)
-      // reformat to populate null responses from fetch
     })
     .catch(() => {
       return { error: 'Server Error, Scotland data not found' }
@@ -80,7 +78,6 @@ export async function fetchCountries() {
         throw new Error('Not good status')
       }
       return formatHomeResults(data.data)
-      // reformat to populate null responses from fetch
     })
     .catch(() => {
       return { error: 'Server Error, NI data not found' }

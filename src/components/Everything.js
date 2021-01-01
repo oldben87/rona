@@ -25,8 +25,8 @@ export default function Everything({ item, title }) {
         <p>{item.cumCasesBySpecimenDateRate}: "cumCasesBySpecimenDateRate"</p>
         <p>{item.newCasesBySpecimenDate}: "newCasesBySpecimenDate"</p>
         <p>{item.cumCasesBySpecimenDateRate}: "cumCasesBySpecimenDateRate"</p>
-        <p>{item.maleCases}: "maleCases"</p>
-        <p>{item.femaleCases}: "femaleCases"</p>
+        {/* <p>{item.maleCases}: "maleCases"</p>
+        <p>{item.femaleCases}: "femaleCases"</p> */}
         <p>
           {item.newPillarOneTestsByPublishDate}:
           "newPillarOneTestsByPublishDate"
@@ -63,11 +63,11 @@ export default function Everything({ item, title }) {
           {item.cumAdmissionsByAge
             ? item.cumAdmissionsByAge.map((age) => {
                 return (
-                  <>
+                  <React.Fragment key={age.age}>
                     <p>
                       age : {age.age} | value : {age.value} | rate : {age.rate}
                     </p>
-                  </>
+                  </React.Fragment>
                 )
               })
             : null}

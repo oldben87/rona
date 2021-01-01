@@ -21,6 +21,11 @@ export default function questions() {
           </a>
         </Link>
       </PageSection>
+      <PageSection justify="start" background="#fff5f5">
+        <Link href="/children-cases" passHref>
+          <a>Children Admitted to hospital</a>
+        </Link>
+      </PageSection>
     </PageLayout>
   )
 }

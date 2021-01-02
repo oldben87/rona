@@ -19,22 +19,9 @@ const Home = ({ data }) => {
       </PageLayout>
     )
   }
-  const newObj = data.map((item, i, arr) => {
-    let curr =
-      item.cumAdmissionsByAge[4].value + item.cumAdmissionsByAge[3].value
-    let next = arr[i + 1]
-      ? arr[i + 1].cumAdmissionsByAge[4].value +
-        arr[i + 1].cumAdmissionsByAge[3].value
-      : 0
-
-    return {
-      date: item.date,
-      newAdmission: curr - next || 0,
-    }
-  })
 
   const chartData = {
-    labels: newObj.map((item) => moment(item.date, 'YYYY/MM/DD')),
+    labels: data.map((item) => moment(item.date, 'YYYY/MM/DD')),
     datasets: [
       {
         label: 'New Admissions',
@@ -57,7 +44,7 @@ const Home = ({ data }) => {
         pointHoverBorderWidth: 2,
         pointRadius: 0,
         pointHitRadius: 10,
-        data: newObj.map((item) => item.newAdmission),
+        data: data.map((item) => item.newAdmission),
       },
     ],
   }

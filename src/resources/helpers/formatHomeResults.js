@@ -6,7 +6,7 @@ export const sevenDay = (mapFunction, array, indexOfItem) => {
   return R.compose(
     R.mean,
     R.map(mapFunction),
-    R.slice(indexOfItem - 3, indexOfItem + 3)
+    R.slice(indexOfItem - 3, indexOfItem + 3),
   )(array)
 }
 
@@ -34,7 +34,7 @@ export function formatHomeResults(array) {
     }
   })
   // send result of data
-  return result
+  return result.slice(0, 180)
 }
 
 export function cases(item) {

@@ -29,7 +29,7 @@ export async function fetchCountries() {
         throw new Error('Not good status')
       }
 
-      return formatHomeResults(data.data.slice(0, 180))
+      return formatHomeResults(data.data)
     })
     .catch(() => {
       return { error: 'Server Error, England data not found' }
@@ -44,7 +44,7 @@ export async function fetchCountries() {
       if (data.statusCode > 204 || data.data === null) {
         throw new Error('Not good status')
       }
-      return formatHomeResults(data.data.slice(0, 180))
+      return formatHomeResults(data.data)
     })
     .catch(() => {
       return { error: 'Server Error, Wales data not found' }
@@ -59,7 +59,7 @@ export async function fetchCountries() {
       if (data.statusCode > 204 || data.data === null) {
         throw new Error('Not good status')
       }
-      return formatHomeResults(data.data.slice(0, 180))
+      return formatHomeResults(data.data)
     })
     .catch(() => {
       return { error: 'Server Error, Scotland data not found' }
@@ -77,7 +77,7 @@ export async function fetchCountries() {
       if (data.statusCode > 204 || data.data === null) {
         throw new Error('Not good status')
       }
-      return formatHomeResults(data.data.slice(0, 180))
+      return formatHomeResults(data.data)
     })
     .catch(() => {
       return { error: 'Server Error, NI data not found' }

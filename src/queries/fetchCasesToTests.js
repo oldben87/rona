@@ -18,8 +18,8 @@ export const fetchCasesToTests = async () => {
     'https://api.coronavirus.data.gov.uk/v1/data?filters=areaType=overview&structure='
 
   const result = await fetch(uri + JSON.stringify(structure), headers)
-    .then((response) => response.json())
-    .then((data) => {
+    .then(response => response.json())
+    .then(data => {
       if (data.statusCode > 204 || data.data === null) {
         throw new Error('Not good status')
       }
@@ -28,14 +28,14 @@ export const fetchCasesToTests = async () => {
       const trimmed = R.compose(R.map(noNulls), R.dropLast(85))(data.data)
 
       // work out percentage difference
-      return trimmed.map((item) => {
+      return trimmed.map(item => {
         if (item.newCases === 0 || item.newTests === 0) {
           return R.assoc('percentage', 0, item)
         }
         return R.assoc(
           'percentage',
           R.compose(R.multiply(100), R.divide)(item.newCases, item.newTests),
-          item
+          item,
         )
       })
     })
@@ -43,5 +43,5 @@ export const fetchCasesToTests = async () => {
       return { error: 'Server Error' }
     })
 
-  return result
+  return result.slice(0, 180)
 }

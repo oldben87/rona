@@ -23,13 +23,13 @@ export async function fetchCountries() {
     'https://api.coronavirus.data.gov.uk/v1/data?filters=areaType=nation;areaName=england&structure='
 
   const england = await fetch(uriEngland + JSON.stringify(structure), headers)
-    .then((response) => response.json())
-    .then((data) => {
+    .then(response => response.json())
+    .then(data => {
       if (data.statusCode > 204 || data.data === null) {
         throw new Error('Not good status')
       }
 
-      return formatHomeResults(data.data)
+      return formatHomeResults(data.data.slice(0, 180))
     })
     .catch(() => {
       return { error: 'Server Error, England data not found' }
@@ -39,12 +39,12 @@ export async function fetchCountries() {
     'https://api.coronavirus.data.gov.uk/v1/data?filters=areaType=nation;areaName=wales&structure='
 
   const wales = await fetch(uriWales + JSON.stringify(structure), headers)
-    .then((response) => response.json())
-    .then((data) => {
+    .then(response => response.json())
+    .then(data => {
       if (data.statusCode > 204 || data.data === null) {
         throw new Error('Not good status')
       }
-      return formatHomeResults(data.data)
+      return formatHomeResults(data.data.slice(0, 180))
     })
     .catch(() => {
       return { error: 'Server Error, Wales data not found' }
@@ -54,12 +54,12 @@ export async function fetchCountries() {
     'https://api.coronavirus.data.gov.uk/v1/data?filters=areaType=nation;areaName=scotland&structure='
 
   const scotland = await fetch(uriScotland + JSON.stringify(structure), headers)
-    .then((response) => response.json())
-    .then((data) => {
+    .then(response => response.json())
+    .then(data => {
       if (data.statusCode > 204 || data.data === null) {
         throw new Error('Not good status')
       }
-      return formatHomeResults(data.data)
+      return formatHomeResults(data.data.slice(0, 180))
     })
     .catch(() => {
       return { error: 'Server Error, Scotland data not found' }
@@ -70,14 +70,14 @@ export async function fetchCountries() {
 
   const northernIreland = await fetch(
     uriNorthernIreland + JSON.stringify(structure),
-    headers
+    headers,
   )
-    .then((response) => response.json())
-    .then((data) => {
+    .then(response => response.json())
+    .then(data => {
       if (data.statusCode > 204 || data.data === null) {
         throw new Error('Not good status')
       }
-      return formatHomeResults(data.data)
+      return formatHomeResults(data.data.slice(0, 180))
     })
     .catch(() => {
       return { error: 'Server Error, NI data not found' }

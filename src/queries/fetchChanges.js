@@ -16,8 +16,8 @@ export const fetchChanges = async () => {
     'https://api.coronavirus.data.gov.uk/v1/data?filters=areaType=overview&structure='
 
   const res = await fetch(uri + JSON.stringify(structure), headers)
-    .then((response) => response.json())
-    .then((data) => {
+    .then(response => response.json())
+    .then(data => {
       if (data.statusCode > 204 || data.data === null) {
         console.log('Error Thrown')
         throw new Error('Not good status')
@@ -99,7 +99,7 @@ export const fetchChanges = async () => {
       return { error: 'Unable to retrieve data' }
     })
 
-  return res
+  return res.slice(0, 180)
 }
 
 function cases(item) {

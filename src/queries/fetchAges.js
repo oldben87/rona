@@ -12,8 +12,8 @@ export const fetchAges = async () => {
     'https://api.coronavirus.data.gov.uk/v1/data?filters=areaType=nation;areaName=england&structure='
 
   const data = await fetch(uri + JSON.stringify(structure), headers)
-    .then((response) => response.json())
-    .then((data) => {
+    .then(response => response.json())
+    .then(data => {
       const { statusCode } = data
       if (statusCode > 204 || data.data === null) {
         throw new Error('Not good status')
@@ -21,10 +21,10 @@ export const fetchAges = async () => {
       // reformat to populate null responses from fetch
       return data.data.map((item, i, arr) => {
         const under5 = item.cumAdmissionsByAge.findIndex(
-          (item) => item.age === '0_to_5'
+          item => item.age === '0_to_5',
         )
         const under17 = item.cumAdmissionsByAge.findIndex(
-          (item) => item.age === '6_to_17'
+          item => item.age === '6_to_17',
         )
         let curr =
           item.cumAdmissionsByAge[under17].value +
@@ -43,5 +43,5 @@ export const fetchAges = async () => {
       return { error: 'Server Error: unable to fetch' }
     })
 
-  return data
+  return data.slice(0, 180)
 }

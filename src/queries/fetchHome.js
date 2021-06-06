@@ -23,8 +23,8 @@ export async function fetchHome() {
     'https://api.coronavirus.data.gov.uk/v1/data?filters=areaType=overview&structure='
 
   const res = await fetch(uri + JSON.stringify(structure), headers)
-    .then((response) => response.json())
-    .then((data) => {
+    .then(response => response.json())
+    .then(data => {
       if (data.statusCode > 204 || data.data === null) {
         throw new Error('Not good status')
       }
@@ -35,5 +35,5 @@ export async function fetchHome() {
       return { error: 'Server Error, Failed to get response from API' }
     })
 
-  return res
+  return res.slice(0, 180)
 }

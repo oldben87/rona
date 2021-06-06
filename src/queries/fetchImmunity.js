@@ -18,8 +18,8 @@ export const fetchImmunity = async () => {
     'https://api.coronavirus.data.gov.uk/v1/data?filters=areaType=overview&structure='
 
   const data = await fetch(uri + JSON.stringify(structure), headers)
-    .then((response) => response.json())
-    .then((data) => {
+    .then(response => response.json())
+    .then(data => {
       if (data.statusCode > 204 || data.data === null) {
         throw new Error('Not good status')
       }
@@ -30,5 +30,5 @@ export const fetchImmunity = async () => {
       return { error: 'Server Error: unable to fetch' }
     })
 
-  return data
+  return data.slice(0, 180)
 }
